@@ -1,9 +1,5 @@
 const Ambulance = () => {
-    return (
-        <div className=''>
-            Ambulance
-        </div>
-    );
+  return <div className="">Ambulanceeee</div>;
 };
 
 export default Ambulance;
