@@ -1,7 +1,8 @@
 const Home = () => {
     return (
         <div className=''>
-            Home
+            Home hello sifat
+            hello world
         </div>
     );
 };
