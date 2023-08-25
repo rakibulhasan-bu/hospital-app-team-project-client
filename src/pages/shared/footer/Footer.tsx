@@ -1,5 +1,5 @@
-import React from "react";
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaMapMarkerAlt, FaEnvelope, FaPhone } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 
 const Footer: React.FC = () => {
@@ -10,49 +10,81 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-gray-800 text-white py-8">
+    <footer className="text-primary font-medium py-8 mt-40">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div className="text-center lg:text-left">
             <img src={logo} alt="Hospital Logo" className="h-16" />
-            <p className="mt-4">Providing quality healthcare services.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Social Media</h3>
-            <ul>
+            <p className="mt-4 text-textBlack">
+              To serve the humanity as a whole with this noble vision, Lifecare Hospital started its journey in 2023.
+            </p>
+            <div className="mt-4 flex items-center">
               {socialLinks.map((link) => (
-                <li key={link.name} className="mb-2 flex items-center">
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    {link.icon}
-                    <span className="ml-2">{link.name}</span>
-                  </a>
-                </li>
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-secondary mr-4 transition-colors duration-300"
+                >
+                  {link.icon}
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
+            <h3 className="text-lg font-bold mb-4">Services</h3>
             <ul>
-              <li className="mb-2">Emergency Care</li>
-              <li className="mb-2">Specialized Treatments</li>
-              <li className="mb-2">Diagnostic Services</li>
+              <li className="mb-2 text-textBlack transition-all duration-300 hover:text-secondary hover:ml-4">
+                <Link to="/emergency-care">Emergency Care</Link>
+              </li>
+              <li className="mb-2 text-textBlack transition-all duration-300 hover:text-secondary hover:ml-4">
+                <Link to="/specialized-treatments">Specialized Treatments</Link>
+              </li>
+              <li className="mb-2 text-textBlack transition-all duration-300 hover:text-secondary hover:ml-4">
+                <Link to="/diagnostic-services">Diagnostic Services</Link>
+              </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <p>123 Hospital Street</p>
-            <p>City, Country</p>
-            <p>Email: info@hospital.com</p>
-            <p>Phone: +123 456 7890</p>
+            <h3 className="text-lg font-bold mb-4">For Doctors</h3>
+            <ul>
+              <li className="mb-2 text-textBlack transition-all duration-300 hover:text-secondary hover:ml-4">
+                <Link to="/appointments">Appointments</Link>
+              </li>
+              <li className="mb-2 text-textBlack transition-all duration-300 hover:text-secondary hover:ml-4">
+                <Link to="/login">Login</Link>
+              </li>
+              <li className="mb-2 text-textBlack transition-all duration-300 hover:text-secondary hover:ml-4">
+                <Link to="/register">Register</Link>
+              </li>
+              <li className="mb-2 text-textBlack transition-all duration-300 hover:text-secondary hover:ml-4">
+                <Link to="/doctor-dashboard">Doctor Dashboard</Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-bold mb-4">Contact Us</h3>
+            <ul>
+              <li className="mb-2 flex items-center text-textBlack">
+                <FaMapMarkerAlt className="mr-2 hover:text-secondary transition-colors duration-300" />
+                123 Hospital Street, City, Country
+              </li>
+              <li className="mb-2 flex items-center text-textBlack">
+                <FaEnvelope className="mr-2 hover:text-secondary transition-colors duration-300" />
+                Email: info@hospital.com
+              </li>
+              <li className="mb-2 flex items-center text-textBlack">
+                <FaPhone className="mr-2 hover:text-secondary transition-colors duration-300" />
+                Phone: +123 456 7890
+              </li>
+            </ul>
           </div>
         </div>
+       
         <div className="mt-8 text-center">
-          <p>&copy; 2023 Your Hospital. All rights reserved.</p>
+          <hr />
+          <p className="text-textBlack mt-5">&copy; 2023 Your Hospital. All rights reserved.</p>
         </div>
       </div>
     </footer>
