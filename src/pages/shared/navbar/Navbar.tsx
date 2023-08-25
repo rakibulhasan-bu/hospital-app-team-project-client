@@ -63,11 +63,13 @@ const Navbar: React.FC = () => {
         <div className=" hidden lg:block">
           <ul className="flex justify-between items-center gap-10">
             {navlinks.map((link) => (
-              <li
-                key={link.path}
-                className="  text-textBlack font-medium hover:font-bold hover:text-secondary duration-300"
-              >
-                <NavLink to={link.path}>{link.title}</NavLink>
+              <li key={link.path} className=" relative">
+                <NavLink
+                  className="  text-textBlack font-bold hover:font-bold hover:text-secondary duration-500 nav-link"
+                  to={link.path}
+                >
+                  {link.title}
+                </NavLink>
               </li>
             ))}
           </ul>
