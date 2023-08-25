@@ -55,18 +55,20 @@ const Navbar: React.FC = () => {
             <img src={logo} className=" h-14" alt="logo" />
           </Link>
         </div>
-        <ul className="flex justify-between items-center gap-10">
-          {navlinks.map((link) => (
-            <li
-              key={link.path}
-              className="  text-textBlack font-medium hover:font-bold hover:text-secondary duration-300"
-            >
-              <NavLink to={link.path}>{link.title}</NavLink>
-            </li>
-          ))}
-        </ul>
         <div className=" hidden lg:block">
-          <button className=" bg-slate-200 rounded-full px-6 py-3 font-semibold text-textBlack">
+          <ul className="flex justify-between items-center gap-10">
+            {navlinks.map((link) => (
+              <li
+                key={link.path}
+                className="  text-textBlack font-medium hover:font-bold hover:text-secondary duration-300"
+              >
+                <NavLink to={link.path}>{link.title}</NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className=" hidden lg:block">
+          <button className=" bg-secondary rounded-full px-6 py-3 font-semibold text-textBlack">
             Login
           </button>
         </div>
