@@ -13,7 +13,7 @@
     @apply text-xs font-medium text-textBlack md:text-sm 2xl:text-base;
   }
   .myBorder {
-    @apply rounded border border-grey;
+    @apply border rounded border-grey;
   }
   .myInput {
     @apply rounded border border-grey px-2 py-0.5 text-base placeholder:text-sm lg:px-3  lg:py-1 lg:placeholder:text-base 2xl:py-2;
@@ -23,7 +23,7 @@
   }
 }
 .active {
-  @apply text-secondary font-bold;
+  @apply font-bold text-secondary;
 }
 .nav-link:hover::before {
   width: 100%;
@@ -77,3 +77,17 @@
     border-radius: 2px;
   }
 }
+/* bouncing style */
+.bounce-up {
+    position: relative;
+    animation: bounce 3s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
