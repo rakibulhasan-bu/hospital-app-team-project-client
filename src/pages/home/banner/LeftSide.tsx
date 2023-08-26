@@ -1,8 +1,9 @@
 import { FaHeartbeat } from "react-icons/fa";
+import "./Btn.css";
 
 const LeftSide = () => {
   return (
-    <div className=" lg:space-y-6 pt-10 space-y-4">
+    <div className=" lg:space-y-6 pt-10 space-y-4 self-center">
       <div className=" flex items-center gap-4 text-white">
         <span>
           <FaHeartbeat size={30} />
@@ -14,15 +15,12 @@ const LeftSide = () => {
         <span className="text-3xl lg:text-6xl font-bold">Healthy Heart</span>
       </h1>
       <p className="text-white font-medium text-lg lg:w-2/3 md:w-11/12">
-        {`We can guide you through issues like Cardiac arrest, 
-  Heart Failure, Peripheral Artery Disease, Arrhythmia, Atrial 
-  Fibrillation, Cholesterol, and High BP.`}
+        We can guide you through issues like Cardiac arrest, Heart Failure,
+        Peripheral Artery Disease, Arrhythmia, Atrial Fibrillation, Cholesterol,
+        and High BP.
       </p>
       <div>
-        <button>Start Consult</button>
-        <button className="custom-button relative rounded-full text-gray-800 hover:border-2 hover:border-gray-800 group">
-          Click Me
-        </button>
+        <button className=" btn plan-btn">Start Consultnn</button>
       </div>
     </div>
   );
