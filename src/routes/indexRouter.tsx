@@ -13,52 +13,52 @@ import Pharmacy from "../pages/pharmacy/Pharmacy";
 import Services from "../pages/services/Services";
 
 export const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
         path: "/",
-        element: <App />,
-        errorElement: <ErrorPage />,
-        children: [
-            {
-                path: "",
-                element: <Home />
-            },
-            {
-                path: "doctors",
-                element: <Doctors />
-            },
-            {
-                path: "newsMedia",
-                element: <NewsMedia />
-            },
-            {
-                path: "gallery",
-                element: <Gallery />
-            },
-            {
-                path: "aboutUs",
-                element: <AboutUs />
-            },
-            {
-                path: "branches",
-                element: <Branches />
-            },
-            {
-                path: "contactUs",
-                element: <ContactUs />
-            },
-            {
-                path: "pharmacy",
-                element: <Pharmacy />
-            },
-            {
-                path: "services",
-                element: <Services />
-            },
-        ]
-    },
-    {
-        path: "/dashboard",
-        element: <DashboardLayout />,
-        errorElement: <ErrorPage />
-    },
+        element: <Home />,
+      },
+      {
+        path: "doctors",
+        element: <Doctors />,
+      },
+      {
+        path: "newsMedia",
+        element: <NewsMedia />,
+      },
+      {
+        path: "gallery",
+        element: <Gallery />,
+      },
+      {
+        path: "aboutUs",
+        element: <AboutUs />,
+      },
+      {
+        path: "branches",
+        element: <Branches />,
+      },
+      {
+        path: "contactUs",
+        element: <ContactUs />,
+      },
+      {
+        path: "pharmacy",
+        element: <Pharmacy />,
+      },
+      {
+        path: "services",
+        element: <Services />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    errorElement: <ErrorPage />,
+  },
 ]);
