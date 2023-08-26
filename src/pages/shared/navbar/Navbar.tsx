@@ -53,8 +53,13 @@ const Navbar: React.FC = () => {
   ];
 
   return (
+<<<<<<< HEAD
     <header className="">
       <nav className="container relative flex items-center justify-between h-24 px-4 mx-auto ">
+=======
+    <header className=" sticky top-0 bg-white z-50">
+      <nav className=" flex justify-between items-center container mx-auto h-24 px-4 relative">
+>>>>>>> 6de4e6ff2866644635b812fa05b36ee29670d6dd
         <div>
           <Link to="/">
             <img src={logo} className=" h-14" alt="logo" />
