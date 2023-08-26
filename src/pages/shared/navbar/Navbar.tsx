@@ -53,19 +53,19 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className=" sticky top-0 bg-white z-50">
-      <nav className=" flex justify-between items-center container mx-auto h-24 px-4 relative">
+    <header className="sticky top-0 z-50 bg-white ">
+      <nav className="container relative flex items-center justify-between h-24 px-4 mx-auto ">
         <div>
           <Link to="/">
             <img src={logo} className=" h-14" alt="logo" />
           </Link>
         </div>
-        <div className=" hidden lg:block">
-          <ul className="flex justify-between items-center gap-10">
+        <div className="hidden lg:block">
+          <ul className="flex flex-col items-center justify-between gap-10 md:flex-row">
             {navlinks.map((link) => (
-              <li key={link.path} className=" relative">
+              <li key={link.path} className="relative ">
                 <NavLink
-                  className="  text-textBlack font-bold hover:font-bold hover:text-secondary duration-500 nav-link"
+                  className="font-bold duration-500 text-textBlack hover:font-bold hover:text-secondary nav-link"
                   to={link.path}
                 >
                   {link.title}
@@ -74,8 +74,8 @@ const Navbar: React.FC = () => {
             ))}
           </ul>
         </div>
-        <div className=" hidden lg:block">
-          <button className=" bg-secondary rounded-full px-6 py-3 font-semibold text-textBlack">
+        <div className="hidden lg:block">
+          <button className="px-6 py-3 font-semibold rounded-full bg-secondary text-textBlack">
             Login
           </button>
         </div>
