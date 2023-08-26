@@ -11,21 +11,21 @@ import Specialities from "./specialities/Specialities";
 import Testimonial from "./testimonial/Testimonial";
 
 const Home = () => {
-    return (
-        <div className=''>
-            <Banner />
-            <PopularDoctor />
-            <GalleryHome />
-            <Specialities />
-            <AboutUsHome />
-            <PharmacyHome />
-            <BranchesHome />
-            <Testimonial />
-            <NewsMediaHome />
-            <Faq />
-            <Partners />
-        </div>
-    );
+  return (
+    <div className="">
+      <Banner />
+      <PopularDoctor />
+      <GalleryHome />
+      <Specialities />
+      <AboutUsHome />
+      <PharmacyHome />
+      <BranchesHome />
+      <Testimonial />
+      <NewsMediaHome />
+      <Faq />
+      <Partners />
+    </div>
+  );
 };
 
 export default Home;
