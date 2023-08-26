@@ -5,24 +5,28 @@ import virus2 from "../../../assets/virus2.png";
 import badge from "../../../assets/badge.png";
 const RightSide = () => {
   return (
-    <div className=" relative lg:pt-24">
-      <img className="z-20" src={rightBanner} alt="" />
+    <div className=" relative 2xl:pt-24 lg:pt-4">
       <img
-        className="hidden lg:block md:block absolute lg:-left-[315px] md:-left-[140px] bottom-0 w-3/4 animate-pulse z-10"
+        className="z-20 2xl:h-[610px] lg:h-[26rem]"
+        src={rightBanner}
+        alt=""
+      />
+      <img
+        className="hidden lg:block md:block absolute lg:-left-[200px] md:-left-[140px] bottom-0 w-3/4 animate-pulse 2xl:-left-[300px] 2xl:bottom-[80px]"
         src={heart}
         alt=""
       />
       <div>
         <img
           style={{ animation: "spin 4s linear infinite" }}
-          className="hidden lg:block absolute lg:right-[180px] md:right-0 md:top-[70px] lg:top-[230px] animate-spin"
+          className="hidden lg:block absolute lg:right-[50px] md:right-0 md:top-[70px] lg:top-[115px] animate-spin 2xl:top-[180px] 2xl:right-24"
           src={virus2}
           alt=""
         />
         <img
           style={{ animation: "bounce 3s linear infinite" }}
           src={badge}
-          className="hidden lg:block md:block absolute md:right-[35px] lg:right-[150px] lg:-bottom-[150px] md:-bottom-[50px] animate-bounce md:w-2/3"
+          className="hidden lg:block md:block absolute md:right-[35px] 2xl:right-[80px] 2xl:-bottom-[150px] md:-bottom-[50px] animate-bounce lg:w-[70%]"
           alt=""
         />
         {/* <img

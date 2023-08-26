@@ -9,9 +9,9 @@ const Banner = () => {
         backgroundImage: `url(${banner})`,
         backgroundRepeat: "no-repeat",
       }}
-      className="lg:h-[100vh]"
+      className="lg:h-[83dvh] 2xl:h-[90dvh] "
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 items-center container mx-auto px-5 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 justify-items-center container mx-auto px-5 gap-5">
         <LeftSide />
         <RightSide />
       </div>
