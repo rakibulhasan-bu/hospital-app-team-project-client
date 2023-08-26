@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="">
+    <header className=" sticky top-0 bg-white z-50">
       <nav className=" flex justify-between items-center container mx-auto h-24 px-4 relative">
         <div>
           <Link to="/">
