@@ -10,7 +10,7 @@ export default {
         primary: " #04235A",
         secondary: "#2686E0",
         accent: "#A5D7E8",
-        textBlack: "#272B41",
+        textBlack: "#3D4461",
         textGray: "#6B7280",
         grey: '#D8D8D8',
       }
