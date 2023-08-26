@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper/modules";
 import TestimonialCard from "./TestimonialCard";
+import { FaCircle } from "react-icons/fa";
 
 const Testimonial = () => {
   return (
