@@ -5,7 +5,7 @@ const Banner = () => {
   return (
     <div className="lg:h-[90vh] mx-auto container flex justify-center ">
       <div className=" lg:flex items-center justify-between">
-        <h1>kdjfhksdfkj</h1>
+        <h1>Main banner</h1>
         <LeftSide />
         <RightSide />
       </div>
