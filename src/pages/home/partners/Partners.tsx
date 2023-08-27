@@ -11,31 +11,61 @@ const Partners: React.FC = () => {
         {
           img: 'https://i.ibb.co/tXq2jjP/bro-01.png',
           title: 'Urology',
-          number:'120'
+          number:'110'
         },
         {
           img: 'https://i.ibb.co/N7Q8DT6/bro-02.png',
-          title: 'Card 2 Title',
-          number:'120'
+          title: 'Neurology',
+          number:'90'
         },
         {
           img: 'https://i.ibb.co/xHdjjWZ/bro-03.png',
-          title: 'Card 1 Title',
-          number:'120'
+          title: 'Orthopedic',
+          number:'100'
         },
         {
           img: 'https://i.ibb.co/J34dDJs/bro-04.png',
-          title: 'Card 2 Title',
-          number:'120'
+          title: 'Cardiologist',
+          number:'115'
         },
         {
           img: 'https://i.ibb.co/JzCyKRT/bro-05.png',
-          title: 'Card 1 Title',
+          title: 'Dentist',
+          number:'105'
+        },
+        {
+          img: 'https://i.ibb.co/tXq2jjP/bro-01.png',
+          title: 'Heart surgery',
           number:'120'
         },
         {
           img: 'https://i.ibb.co/tXq2jjP/bro-01.png',
-          title: 'Card 2 Title',
+          title: 'Urology',
+          number:'110'
+        },
+        {
+          img: 'https://i.ibb.co/N7Q8DT6/bro-02.png',
+          title: 'Neurology',
+          number:'90'
+        },
+        {
+          img: 'https://i.ibb.co/xHdjjWZ/bro-03.png',
+          title: 'Orthopedic',
+          number:'100'
+        },
+        {
+          img: 'https://i.ibb.co/J34dDJs/bro-04.png',
+          title: 'Cardiologist',
+          number:'115'
+        },
+        {
+          img: 'https://i.ibb.co/JzCyKRT/bro-05.png',
+          title: 'Dentist',
+          number:'105'
+        },
+        {
+          img: 'https://i.ibb.co/tXq2jjP/bro-01.png',
+          title: 'Heart surgery',
           number:'120'
         },
         
