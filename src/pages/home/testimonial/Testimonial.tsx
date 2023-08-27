@@ -1,4 +1,4 @@
-import testimonial from "../../../assets/testimonial.png";
+import hospital from "../../../assets/hospital.png";
 import "../../../../src/index.css";
 
 // Import Swiper React components
@@ -26,8 +26,8 @@ const Testimonial = () => {
       />
       <div className="grid items-center justify-center grid-cols-1 gap-2 md:grid-cols-2 ">
         <img
-          src={"https://contessahealth.com/wp-content/uploads/2022/08/Website-Photos-5.png"}
-          className="w-4/5 lg:min-h-[60vh] mx-auto bounce-up"
+          src={hospital}
+          className="w-full lg:min-h-[60vh] mx-auto bounce-up"
           alt="logo"
         />
 
