@@ -11,7 +11,6 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper/modules";
 import TestimonialCard from "./TestimonialCard";
-import { FaCircle } from "react-icons/fa";
 import SharedTitle from "../../../components/sharedTitle/SharedTitle";
 
 const Testimonial = () => {
