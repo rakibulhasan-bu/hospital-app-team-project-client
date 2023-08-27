@@ -86,7 +86,7 @@ const Partners: React.FC = () => {
             <p className="text-slate-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
             <p className="text-slate-500">tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
-            <div className="grid grid-cols-6 gap-3 mt-7 mx-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-3 mt-7 mx-6">
       {cardData.map((card, index) => (
         <div key={index} className="card grid justify-items-center border-8 border-white rounded-lg p-4">
           <img className="bg-blue-500 p-3 rounded-full my-4" src={card.img} alt={`Card ${index + 1}`} />
@@ -98,6 +98,14 @@ const Partners: React.FC = () => {
     <div className="text-center mt-9 pb-6">
     <button className=" btn plan-btn">View More</button>
     </div>
+            </section>
+            <section className="grid ">
+                <div>
+
+                </div>
+                <div>
+
+                </div>
             </section>
         </div>
     );
