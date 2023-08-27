@@ -3,33 +3,40 @@ import { FaCircle } from "react-icons/fa";
 interface Card {
     img: string;
     title: string;
+    number:string;
   }
 
 const Partners: React.FC = () => {
     const cardData:Card[] = [
         {
           img: 'https://i.ibb.co/tXq2jjP/bro-01.png',
-          title: 'Card 1 Title',
+          title: 'Urology',
+          number:'120'
         },
         {
           img: 'https://i.ibb.co/N7Q8DT6/bro-02.png',
           title: 'Card 2 Title',
+          number:'120'
         },
         {
           img: 'https://i.ibb.co/xHdjjWZ/bro-03.png',
           title: 'Card 1 Title',
+          number:'120'
         },
         {
           img: 'https://i.ibb.co/J34dDJs/bro-04.png',
           title: 'Card 2 Title',
+          number:'120'
         },
         {
           img: 'https://i.ibb.co/JzCyKRT/bro-05.png',
           title: 'Card 1 Title',
+          number:'120'
         },
         {
           img: 'https://i.ibb.co/tXq2jjP/bro-01.png',
           title: 'Card 2 Title',
+          number:'120'
         },
         
       ];
@@ -51,8 +58,8 @@ const Partners: React.FC = () => {
             </div>
             <div className="grid grid-cols-6 gap-3 mt-7 mx-6">
       {cardData.map((card, index) => (
-        <div key={index} className="card border-4 border-white rounded-lg p-4">
-          <img src={card.img} alt={`Card ${index + 1}`} />
+        <div key={index} className="card grid justify-items-center border-4 border-white rounded-lg p-4">
+          <img className="bg-blue-500 p-3 rounded-full my-4" src={card.img} alt={`Card ${index + 1}`} />
           <h2>{card.title}</h2>
         </div>
       ))}
