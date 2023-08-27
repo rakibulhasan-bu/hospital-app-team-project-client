@@ -8,27 +8,27 @@ interface Card {
 const Partners: React.FC = () => {
     const cardData:Card[] = [
         {
-          img: 'image-url-1.jpg',
+          img: 'https://i.ibb.co/tXq2jjP/bro-01.png',
           title: 'Card 1 Title',
         },
         {
-          img: 'image-url-2.jpg',
+          img: 'https://i.ibb.co/N7Q8DT6/bro-02.png',
           title: 'Card 2 Title',
         },
         {
-          img: 'image-url-1.jpg',
+          img: 'https://i.ibb.co/xHdjjWZ/bro-03.png',
           title: 'Card 1 Title',
         },
         {
-          img: 'image-url-2.jpg',
+          img: 'https://i.ibb.co/J34dDJs/bro-04.png',
           title: 'Card 2 Title',
         },
         {
-          img: 'image-url-1.jpg',
+          img: 'https://i.ibb.co/JzCyKRT/bro-05.png',
           title: 'Card 1 Title',
         },
         {
-          img: 'image-url-2.jpg',
+          img: 'https://i.ibb.co/tXq2jjP/bro-01.png',
           title: 'Card 2 Title',
         },
         
@@ -49,7 +49,7 @@ const Partners: React.FC = () => {
             <p className="text-slate-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
             <p className="text-slate-500">tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
-            <div className="grid grid-cols-6 gap-3 mx-6">
+            <div className="grid grid-cols-6 gap-3 mt-7 mx-6">
       {cardData.map((card, index) => (
         <div key={index} className="card border-4 border-white rounded-lg p-4">
           <img src={card.img} alt={`Card ${index + 1}`} />
