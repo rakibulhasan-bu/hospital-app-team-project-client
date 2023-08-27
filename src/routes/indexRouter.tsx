@@ -11,6 +11,8 @@ import Branches from "../pages/branches/Branches";
 import ContactUs from "../pages/contactUs/ContactUs";
 import Pharmacy from "../pages/pharmacy/Pharmacy";
 import Services from "../pages/services/Services";
+import Login from "../pages/login/Login";
+import Register from "../pages/register/Register";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
       },
       {
         path: "doctors",
