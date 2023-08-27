@@ -13,11 +13,11 @@ const Partners = () => {
     return (
         <div className='container mx-auto px-2 lg:px-0 py-12'>
             <h1 className="text-[34px] leading-[34px] text-textBlack font-extrabold text-center pb-12">Our valuable <span className="text-secondary">Partners</span></h1>
-            <Marquee gradient>
+            <Marquee>
                 <div className='flex items-center gap-20 pl-20'>
                     {
                         image.map((img, index) => {
-                            return <div key={index} className='w-28 h-20 bg-white shadow-xl rounded'>
+                            return <div key={index} className='w-28 h-20'>
                                 <img className="h-full w-full object-contain" src={img} alt="" />
                             </div>
                         })
