@@ -23,13 +23,12 @@ const Testimonial = () => {
         coloredTitle="Clients"
         subTitle="Patient Voices : A Glimpse into LifeCare Hospital Through the Eyes of Those We've Cared For."
       />
-      <div className="grid items-center justify-center grid-cols-1 gap-2 md:grid-cols-2 ">
+      <div className="grid items-center justify-center grid-cols-1 my-10 gap-x-3 gap-y-10 md:grid-cols-2">
         <img
           src={hospital}
-          className="w-full lg:min-h-[60vh] mx-auto bounce-up"
-          alt="logo"
+          className="w-full lg:min-h-[60vh] mx-auto bounce-up rounded-2xl"
+          alt="reviews"
         />
-
         <div className="">
           <Swiper
             pagination={{

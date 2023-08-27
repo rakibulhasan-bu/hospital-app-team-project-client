@@ -15,7 +15,7 @@ const TestimonialCard = () => {
         <img
           src="https://doccure-laravel.dreamguystech.com/template/public/assets/img/clients/client-01.jpg"
           alt="patient"
-          className="absolute top-0 z-0 object-cover right-16 rounded-2xl w-36 h-36"
+          className="absolute top-0 z-0 object-cover rounded-full right-2 md:right-16 md:rounded-2xl w-36 h-36"
         />
       </div>
 
