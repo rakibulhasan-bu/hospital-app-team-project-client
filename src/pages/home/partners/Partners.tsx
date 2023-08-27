@@ -99,14 +99,14 @@ const Partners: React.FC = () => {
     <button className=" btn plan-btn">View More</button>
     </div>
             </section>
-            <section className="grid grid-cols-2">
+            <section className="grid grid-cols-1 md:grid-cols-2">
             <div className="relative bg-[url('https://i.ibb.co/f21Z6Q1/doctor-bg.jpg')] bg-cover bg-center ">
             <div className="absolute inset-0 bg-black opacity-70"></div>
-            <div className="m-8 relative z-10">
+            <div className="m-10 relative z-10">
           <h2 className="mt-24 mb-12 text-white text-5xl font-bold">ARE YOU A DOCTOR?</h2>
     <p className="text-white mb-16">The service allows you to get maximum visibility online and to manage appointments and contacts coming from the site, in a simple and fast way.</p>
-    <div className="text-center mt-9 pb-6">
-    <button className=" btn plan-btn">View More</button>
+    <div className=" mb-9 ">
+    <button className=" btn plan-btn">Book Now</button>
     </div>
   </div>
             </div>
@@ -115,8 +115,8 @@ const Partners: React.FC = () => {
   <div className="m-8 relative z-10">
     <h2 className="mt-24 mb-12 text-white text-5xl font-bold">ARE YOU A DOCTOR?</h2>
     <p className="text-white mb-16">The service allows you to get maximum visibility online and to manage appointments and contacts coming from the site, in a simple and fast way.</p>
-    <div className=" mb-9 pb-6">
-    <button className=" btn plan-btn">View More</button>
+    <div className=" mb-9 ">
+    <button className=" btn plan-btn">Book Now</button>
     </div>
   </div>
             </div>
