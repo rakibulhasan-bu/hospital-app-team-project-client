@@ -95,6 +95,9 @@ const Partners: React.FC = () => {
         </div>
       ))}
     </div>
+    <div className="text-center mt-9 pb-6">
+    <button className=" btn plan-btn">View More</button>
+    </div>
             </section>
         </div>
     );
