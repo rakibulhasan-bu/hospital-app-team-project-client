@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="text-primary font-medium mt-40 mb-10 relative px-2">
+    <footer className="text-primary font-medium mb-10 relative px-2">
       <div className="absolute inset-x-0 top-0 h-3 bg-gradient-to-t from-gray-200 to-transparent"></div>
       <div className="shadow-t sm:shadow-md py-8">
         <div className="container mx-auto">
