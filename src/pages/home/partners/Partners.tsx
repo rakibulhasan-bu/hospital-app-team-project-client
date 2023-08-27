@@ -1,4 +1,3 @@
-
 const Partners = () => {
   return (
     <div>

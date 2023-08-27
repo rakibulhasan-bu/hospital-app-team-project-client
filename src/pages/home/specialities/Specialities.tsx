@@ -72,7 +72,7 @@ const Specialities:React.FC = () => {
         
       ];
     return (
-        <div className="container px-2 mx-auto my-10 text-xl lg:min-h-screen lg:px-0 bg-sky-100">
+        <div className="container px-2 mx-auto my-10 text-xl lg:min-h-screen lg:px-0 ">
             <section >
             <div className="text-center pt-12">
             <h1 className="flex items-center justify-center gap-1 mb-5 text-2xl font-semibold text-secondary/90 ">
@@ -87,10 +87,10 @@ const Specialities:React.FC = () => {
             <p className="text-slate-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
             <p className="text-slate-500">tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mt-7 mx-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-7 mx-6">
       {cardData.map((card, index) => (
-        <div key={index} className="card grid justify-items-center cursor-default border-8 hover:bg-sky-200 border-white rounded-lg p-4">
-          <img className="bg-blue-500 p-3 rounded-full my-4" src={card.img} alt={`Card ${index + 1}`} />
+        <div key={index} className="card grid justify-items-center bg-sky-100 cursor-default  hover:bg-sky-200  rounded-lg p-4">
+          <img className="bg-blue-500 p-3  rounded-full my-4" src={card.img} alt={`Card ${index + 1}`} />
           <h2 className="text-blue-600 font-semibold">{card.title}</h2>
           <p className="text-lg font-medium"><span className="text-red-600">{card.number}</span> Doctors</p>
         </div>
