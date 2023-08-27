@@ -99,13 +99,23 @@ const Partners: React.FC = () => {
     <button className=" btn plan-btn">View More</button>
     </div>
             </section>
-            <section className="grid ">
-                <div>
-
-                </div>
-                <div>
-
-                </div>
+            <section className="grid grid-cols-2">
+            <div className="relative bg-[url('https://i.ibb.co/f21Z6Q1/doctor-bg.jpg')] bg-cover bg-center h-screen">
+  <div className="absolute inset-0 bg-black opacity-50"></div>
+  <div className="m-8 relative z-10">
+    <h2 className="mt-12 mb-6 text-white">ARE YOU A DOCTOR?</h2>
+    <p className="text-white">The service allows you to get maximum visibility online and to manage</p>
+    <p className="text-white">appointments and contacts coming from the site, in a simple and fast way.</p>
+  </div>
+            </div>
+            <div className="relative bg-[url('https://i.ibb.co/PDZQWRJ/doctor-right-bg.jpg')] bg-cover bg-center h-screen">
+  <div className="absolute inset-0 bg-black opacity-50"></div>
+  <div className="m-8 relative z-10">
+    <h2 className="mt-12 mb-6 text-white">ARE YOU A DOCTOR?</h2>
+    <p className="text-white">The service allows you to get maximum visibility online and to manage</p>
+    <p className="text-white">appointments and contacts coming from the site, in a simple and fast way.</p>
+  </div>
+            </div>
             </section>
         </div>
     );
