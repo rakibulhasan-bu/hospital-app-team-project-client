@@ -1,4 +1,3 @@
-import { FaCircle } from "react-icons/fa";
 import SectionHeading from "../../../components/sharedTitle/SectionHeading";
 
 interface Card {
