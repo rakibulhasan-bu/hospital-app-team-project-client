@@ -88,9 +88,10 @@ const Partners: React.FC = () => {
             </div>
             <div className="grid grid-cols-6 gap-3 mt-7 mx-6">
       {cardData.map((card, index) => (
-        <div key={index} className="card grid justify-items-center border-4 border-white rounded-lg p-4">
+        <div key={index} className="card grid justify-items-center border-8 border-white rounded-lg p-4">
           <img className="bg-blue-500 p-3 rounded-full my-4" src={card.img} alt={`Card ${index + 1}`} />
-          <h2>{card.title}</h2>
+          <h2 className="text-blue-600 font-semibold">{card.title}</h2>
+          <p className="text-lg font-medium"><span className="text-red-600">{card.number}</span> Doctors</p>
         </div>
       ))}
     </div>
