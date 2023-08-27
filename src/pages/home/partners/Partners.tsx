@@ -105,7 +105,9 @@ const Partners: React.FC = () => {
             <div className="m-8 relative z-10">
           <h2 className="mt-24 mb-12 text-white text-5xl font-bold">ARE YOU A DOCTOR?</h2>
     <p className="text-white mb-16">The service allows you to get maximum visibility online and to manage appointments and contacts coming from the site, in a simple and fast way.</p>
-    
+    <div className="text-center mt-9 pb-6">
+    <button className=" btn plan-btn">View More</button>
+    </div>
   </div>
             </div>
             <div className="relative bg-[url('https://i.ibb.co/PDZQWRJ/doctor-right-bg.jpg')] bg-cover bg-center ">
@@ -113,7 +115,9 @@ const Partners: React.FC = () => {
   <div className="m-8 relative z-10">
     <h2 className="mt-24 mb-12 text-white text-5xl font-bold">ARE YOU A DOCTOR?</h2>
     <p className="text-white mb-16">The service allows you to get maximum visibility online and to manage appointments and contacts coming from the site, in a simple and fast way.</p>
-    
+    <div className=" mb-9 pb-6">
+    <button className=" btn plan-btn">View More</button>
+    </div>
   </div>
             </div>
             </section>
