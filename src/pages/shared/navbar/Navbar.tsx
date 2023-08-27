@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import { GrClose } from "react-icons/gr";
 import MobileMenu from "./MobileMenu";
+import DarkToggle from "./DarkToggle";
 
 interface NavLink {
   path: string;
@@ -89,12 +90,13 @@ const Navbar: React.FC = () => {
         <div
           className={` absolute duration-300 ease-out ${
             open
-              ? "left-0 top-20 md:-left-[22px]"
-              : "-left-[190px] top-20 bottom-0 md:-left-[220px]"
+              ? "left-0 top-[56px] md:-left-[30px]"
+              : "-left-[220px] top-[56px] bottom-0 md:-left-[220px]"
           }`}
         >
           <MobileMenu />
         </div>
+        <DarkToggle />
       </nav>
     </header>
   );

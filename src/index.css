@@ -97,3 +97,7 @@ body {
     transform: translateY(-20px);
   }
 }
+
+body.dark {
+  background-color: #0c192b;
+}
