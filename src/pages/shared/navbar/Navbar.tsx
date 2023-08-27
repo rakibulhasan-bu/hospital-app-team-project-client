@@ -76,9 +76,7 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
         <div className="hidden lg:block">
-          <button className="px-6 py-3 font-semibold rounded-full bg-secondary text-textBlack">
-            Login
-          </button>
+          <button className="bttn common-btn text-textBlack">Login</button>
         </div>
         <div className="lg:hidden" onClick={() => setOpen(!open)}>
           {open ? (
