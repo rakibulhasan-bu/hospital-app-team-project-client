@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import PopularDoctorCard from "./PopularDoctorCard";
 
 interface Card {
@@ -48,7 +48,7 @@ const PopularDoctor: React.FC = () => {
   ];
 
   return (
-    <section className="bg-[#F7FCFC] h-[80vh] py-20">
+    <section className="bg-[#F7FCFC] h-[80vh] lg:py-20 2xl:py-20">
       <h1 className="flex items-center justify-center gap-1 mb-16 text-2xl font-semibold text-primary text-center">
         <FaCircle className="text-xs text-accent" />
         <FaCircle className="text-xl text-secondary" />
@@ -60,7 +60,7 @@ const PopularDoctor: React.FC = () => {
         <FaCircle className="text-xl text-secondary" />
         <FaCircle className="text-xs text-accent" />
       </h1>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 py-10">
         <Swiper
           slidesPerView={1}
           spaceBetween={10}
@@ -85,7 +85,7 @@ const PopularDoctor: React.FC = () => {
             delay: 28000,
             disableOnInteraction: false,
           }}
-          modules={[Autoplay, Navigation]}
+          modules={[Autoplay, Navigation, Pagination]}
           className="mySwiper"
         >
           {cardData.map((card, index) => (
