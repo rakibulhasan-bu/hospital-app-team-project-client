@@ -13,6 +13,7 @@ interface NavLink {
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const UserLoggedIn: boolean = false;
 
   const navlinks: NavLink[] = [
     {
@@ -76,7 +77,13 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
         <div className="hidden lg:block">
-          <button className="bttn common-btn text-textBlack">Login</button>
+          {UserLoggedIn ? (
+            <button className="bttn common-btn text-textBlack">Login</button>
+          ) : (
+            <Link to="/register" className="bttn common-btn text-textBlack">
+              Register
+            </Link>
+          )}
         </div>
         <div className="lg:hidden" onClick={() => setOpen(!open)}>
           {open ? (
