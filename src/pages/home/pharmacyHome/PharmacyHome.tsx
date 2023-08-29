@@ -60,7 +60,7 @@ const PharmacyHome: React.FC = () => {
              title="Our Pharmacy"
              subTitle="Check our pharmacy for your medicine and product"
             />
-             <div className="container mx-auto px-4 py-10">
+             <div className="container px-4 py-10 mx-auto">
         <Swiper
           slidesPerView={1}
           spaceBetween={10}
@@ -89,7 +89,7 @@ const PharmacyHome: React.FC = () => {
           className="mySwiper"
         >
           {cardData.map((card, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className="my-12">
               <PharmacyCard card={card} />
             </SwiperSlide>
           ))}

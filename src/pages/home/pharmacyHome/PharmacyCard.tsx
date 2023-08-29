@@ -9,9 +9,9 @@ interface PharmacyCardProps {
 
 const PharmacyCard: React.FC<PharmacyCardProps> = ({ card }) => {
     return (
-        <div className="m-4 w-64 text-center">
-        <img src={card.img} alt= "medicine" className="max-w-full h-auto rounded-2xl" />
-        <p className="font-medium mt-4 text-textGray">{card.title}</p>
+        <div className="w-64 m-4 mx-auto text-center">
+        <img src={card.img} alt= "medicine" className="h-auto max-w-full rounded-2xl" />
+        <p className="mt-4 font-medium text-textGray">{card.title}</p>
       </div>
     );
 };
