@@ -48,19 +48,19 @@ const PopularDoctor: React.FC = () => {
   ];
 
   return (
-    <section className="bg-[#F7FCFC] h-[80vh] lg:py-20 2xl:py-20">
-      <h1 className="flex items-center justify-center gap-1 mb-16 text-2xl font-semibold text-primary text-center">
+    <section className="bg-[#F7FCFC] h-[80vh] lg:py-20 2xl:py-20 my-20 min-h-[100vh]">
+      <h1 className="flex items-center justify-center gap-1 text-2xl font-semibold text-center lg:mb-16 text-primary">
         <FaCircle className="text-xs text-accent" />
         <FaCircle className="text-xl text-secondary" />
         <FaCircle className="text-xs text-accent" />
-        <span className="mx-1 text-3xl">
+        <span className="mx-1 text-3xl text-center">
           Our <span className=" text-secondary">Popular</span> Doctor
         </span>
         <FaCircle className="text-xs text-accent" />
         <FaCircle className="text-xl text-secondary" />
         <FaCircle className="text-xs text-accent" />
       </h1>
-      <div className="container mx-auto px-4 py-10">
+      <div className="container px-4 py-10 mx-auto">
         <Swiper
           slidesPerView={1}
           spaceBetween={10}
