@@ -13,6 +13,8 @@ import Pharmacy from "../pages/pharmacy/Pharmacy";
 import Services from "../pages/services/Services";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
+import PatientRegister from "../pages/patientRegister/PatientRegister";
+import DoctorRegister from "../pages/doctorRegister/DoctorRegister";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ export const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "patient-register",
+        element: <PatientRegister />,
+      },
+      {
+        path: "doctor-register",
+        element: <DoctorRegister />,
       },
       {
         path: "doctors",
