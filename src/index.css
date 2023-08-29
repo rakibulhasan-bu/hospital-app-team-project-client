@@ -6,13 +6,13 @@
 
 @layer base {
   .title {
-    @apply text-base font-semibold text-textBlack md:text-xl lg:text-[22px] 2xl:text-2xl;
+    @apply text-base font-semibold text-textDarkBlack md:text-xl lg:text-[22px] 2xl:text-2xl;
   }
   .subTitle {
-    @apply text-sm font-medium text-textBlack lg:text-base 2xl:text-lg;
+    @apply text-sm font-medium text-textDarkBlack lg:text-base 2xl:text-lg;
   }
   .text {
-    @apply text-xs font-medium text-textBlack md:text-sm 2xl:text-base;
+    @apply text-xs text-textBlack md:text-sm 2xl:text-base;
   }
   .myBorder {
     @apply border rounded border-grey;
