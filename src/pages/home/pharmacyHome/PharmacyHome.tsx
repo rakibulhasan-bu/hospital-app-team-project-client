@@ -56,9 +56,9 @@ const PharmacyHome: React.FC = () => {
     return (
         <div className=''>
             <SectionHeading
-             semiSubTitle="What out patients says about us"
-             title="Happy Clients"
-             subTitle="Patient Voices : A Glimpse into LifeCare Hospital Through the Eyes of Those We've Cared For."
+             semiSubTitle="What product do we have"
+             title="Our Pharmacy"
+             subTitle="Check our pharmacy for your medicine and product"
             />
              <div className="container mx-auto px-4 py-10">
         <Swiper
