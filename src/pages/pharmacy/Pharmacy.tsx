@@ -1,9 +1,11 @@
+
+
 const Pharmacy = () => {
-    return (
-        <div className=''>
-            Pharmacy
-        </div>
-    );
+  return (
+    <div>
+      
+    </div>
+  );
 };
 
 export default Pharmacy;
