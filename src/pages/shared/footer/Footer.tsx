@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="text-primary font-medium mb-10 relative px-2">
+    <footer className="text-primary font-medium relative px-2 mb-10">
       <div className="absolute inset-x-0 top-0 h-3 bg-gradient-to-t from-gray-200 to-transparent"></div>
       <div className="shadow-t sm:shadow-md py-8">
         <div className="container mx-auto">
@@ -84,9 +84,9 @@ const Footer: React.FC = () => {
               </ul>
             </div>
           </div>
-          <div className="mt-8 text-center">
+          <div className="mt-5 text-center">
             <hr />
-            <p className="text-textBlack mt-5">&copy; 2023 Lifecare Hospital. All rights reserved.</p>
+            <p className="text-textBlack mt-3">&copy; 2023 Lifecare Hospital. All rights reserved.</p>
           </div>
         </div>
       </div>
