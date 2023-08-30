@@ -1,8 +1,10 @@
+
 const Gallery = () => {
+
     return (
-        <div className=''>
-            Gallery
-        </div>
+        <section>
+            <h2>Gallery</h2>
+        </section>
     );
 };
 
