@@ -1,30 +1,17 @@
-import design from "../../assets/design.jpg";
+import { Link } from "react-router-dom";
+import design from "../../assets/login-02.png";
+import logo from "../../assets/logo.png";
+import { FaGoogle } from "react-icons/fa";
 const PatientRegister = () => {
   return (
-    <section className=" container mx-auto 2xl:h-[80vh] 2xl:py-20 py-5">
-      <div className=" lg:flex gap-2 bg-[#edf0ff] rounded-lg p-2 justify-between">
-        <div
-          className=" lg:w-3/5 2xl:w-3/5 flex-col justify-center flex rounded-xl"
-          style={{
-            backgroundImage: `url(${design})`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "cover center",
-            backgroundSize: "cover",
-          }}
-        >
-          <div className=" lg:pl-20 p-4 space-y-3">
-            <h2 className="text-2xl lg:text-4xl text-white font-bold">
-              LifeCare <br /> medical hospital
-            </h2>
-            <div className=" space-y-3">
-              <p className=" font-medium  text-textGray">Data Analytics</p>
-              <p className=" font-medium  text-textGray">Data Analytics</p>
-              <p className=" font-medium  text-textGray">Data Analytics</p>
-              <p className=" font-medium  text-textGray">Data Analytics</p>
-            </div>
-          </div>
-        </div>
-        <form className=" space-y-5 lg:w-2/5 2xl:w-2/5 p-5">
+    <section className=" bg-[#edf0ff] w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-2 lg:gap-20 2xl:pr-20 lg:pr-20 min-h-[70vh]">
+      <div className=" bg-secondary rounded-r-[50px] hidden lg:block 2xl:block">
+        <img src={design} alt="" />
+      </div>
+      <div className=" self-center bg-white rounded-3xl p-10 space-y-5">
+        <img className=" h-16 hidden lg:block" src={logo} alt="" />
+        <h2 className=" title text-2xl">Getting Started</h2>
+        <form className=" space-y-5">
           <div className="flex flex-col">
             <label>
               <span className="text">Name</span>
@@ -45,16 +32,7 @@ const PatientRegister = () => {
               className=" border border-gray-200 px-6 py-2 rounded outline-secondary"
             />
           </div>
-          <div className="flex flex-col">
-            <label>
-              <span className="text">Phone</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Phone"
-              className=" border border-gray-200 px-6 py-2 rounded outline-secondary"
-            />
-          </div>
+
           <div className="flex flex-col">
             <label>
               <span className="text">Password</span>
@@ -76,10 +54,23 @@ const PatientRegister = () => {
             />
           </div>
 
-          <div className="form-control mt-6">
-            <button className=" bttn common-btn">Register</button>
+          <div className="flex items-center justify-between mt-6">
+            <button className=" bttn common-btn w-full">Register</button>
           </div>
         </form>
+        <div className=" flex justify-between items-center">
+          <p className=" text-gray-400 font-semibold">
+            Already have an account?
+            <Link className=" text-secondary ml-2" to="/login">
+              LogIn
+            </Link>
+          </p>
+          <div>
+            <button>
+              <FaGoogle />
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );
