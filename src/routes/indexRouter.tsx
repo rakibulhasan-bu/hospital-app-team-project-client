@@ -15,6 +15,10 @@ import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import PatientRegister from "../pages/patientRegister/PatientRegister";
 import DoctorRegister from "../pages/doctorRegister/DoctorRegister";
+import DashboardSetting from "../dashboardPages/dashboardSetting/DashboardSetting";
+import DashboardNewsAll from "../dashboardPages/dashboradNewsAll/DashboardNewsAll";
+import AddNews from "../dashboardPages/dashboradNewsAll/addNews/AddNews";
+import AddNewsCategory from "../dashboardPages/dashboradNewsAll/addNewsCategory/AddNewsCategory";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +84,23 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: <DashboardLayout />,
     errorElement: <ErrorPage />,
-    children: []
+    children: [
+      {
+        path: "/dashboard/dashboard-setting",
+        element: <DashboardSetting />
+      },
+      {
+        path: "/dashboard/dashboard-news",
+        element: <DashboardNewsAll />
+      },
+      {
+        path: "/dashboard/add-news",
+        element: <AddNews />
+      },
+      {
+        path: "/dashboard/add-news-category",
+        element: <AddNewsCategory />
+      },
+    ]
   },
 ]);

@@ -45,6 +45,15 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
+.dashboard-bg {
+  background: linear-gradient(
+      0deg,
+      rgba(51, 53, 72, 0.05),
+      rgba(51, 53, 72, 0.05)
+    ),
+    #ffffff;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
