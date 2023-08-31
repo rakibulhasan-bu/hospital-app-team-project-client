@@ -1,16 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { BiSolidDashboard } from "react-icons/bi";
 import { IoIosArrowForward } from "react-icons/io";
 import { HiOutlineNewspaper } from "react-icons/hi";
 import { LuCalendarDays } from "react-icons/lu";
 import { NavLink, useLocation } from "react-router-dom";
+import { DashboardContext } from "../dashboardContext/DashboardContext";
 
-interface leftNavbarProps {
-    close: boolean;
-    setClose: React.Dispatch<React.SetStateAction<boolean>>
-}
 
-const LeftNavbar = ({ close, setClose }: leftNavbarProps) => {
+const LeftNavbar = () => {
+    const { close, setClose } = useContext(DashboardContext)
     const location = useLocation();
     const isActive = (path: string) => {
         return location.pathname === path;
@@ -75,7 +73,7 @@ const LeftNavbar = ({ close, setClose }: leftNavbarProps) => {
         },
 
     ];
-    console.log(close);
+
     return (
         <div onClick={handleClose} className={`h-[87dvh] overflow-y-auto bg-white py-4 space-y-4 rounded-tr-3xl myShadow w-full ${close ? "px-4" : "pl-2.5"}`}>
             {

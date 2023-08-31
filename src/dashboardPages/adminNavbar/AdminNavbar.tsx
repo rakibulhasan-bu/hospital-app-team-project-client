@@ -1,16 +1,14 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { IoMdSettings } from "react-icons/io";
 import { MdNotifications } from "react-icons/md";
 import { RiMenuFoldLine, RiMenuUnfoldLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import Notifications from "../notifications/Notifications";
+import { DashboardContext } from "../dashboardContext/DashboardContext";
 
-interface adminNavbarProps {
-    close: boolean;
-    setClose: React.Dispatch<React.SetStateAction<boolean>>;
-}
-const AdminNavbar = ({ close, setClose }: adminNavbarProps) => {
-    const [open, setOpen] = useState<boolean>(false);
+const AdminNavbar = () => {
+    const { open, setOpen, close, setClose } = useContext(DashboardContext);
+
     return (
         <div className='bg-white py-2 px-4 w-full flex items-center justify-between myShadow'>
             <div className={`flex items-center ${close ? "gap-10" : "gap-4"}`}>
