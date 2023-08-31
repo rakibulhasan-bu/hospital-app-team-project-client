@@ -9,7 +9,7 @@ const DashboardLayout = () => {
         <div className='w-screen h-screen overscroll-auto dashboard-bg'>
             <AdminNavbar close={close} setClose={setClose} />
             <div className='flex'>
-                <div className={`${close ? "w-1/6" : "w-0 hidden"} bg-red-400`}>
+                <div className={`${close ? "w-1/6" : "w-0 hidden"} pt-5`}>
                     <LeftNavbar />
                 </div>
                 <Outlet />
