@@ -5,11 +5,20 @@ import { HiOutlineNewspaper } from "react-icons/hi";
 import { LuCalendarDays } from "react-icons/lu";
 import { NavLink } from "react-router-dom";
 
+interface leftNavbarProps {
+    close: boolean;
+    setClose: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-const LeftNavbar = () => {
+const LeftNavbar = ({ close, setClose }: leftNavbarProps) => {
     const [newsOpen, setNewsOpen] = useState<boolean>(false);
     const [appointmentOpen, setAppointmentOpen] = useState<boolean>(false);
 
+    const handleClose = () => {
+        if (!close) {
+            setClose(true)
+        }
+    }
     const handleNews = () => {
         setNewsOpen(prev => (!prev))
     }
@@ -62,20 +71,21 @@ const LeftNavbar = () => {
         },
 
     ];
+    console.log(close);
     return (
-        <div className='h-[87dvh] overflow-y-auto bg-white px-4 py-4 space-y-4 rounded-tr-3xl myShadow'>
+        <div onClick={handleClose} className={`h-[87dvh] overflow-y-auto bg-white py-4 space-y-4 rounded-tr-3xl myShadow w-full ${close ? "px-4" : "pl-2.5"}`}>
             {
                 navLinks.map(singleLink => (
                     <div className=''>
                         <div onClick={singleLink?.handler} className='flex items-center justify-between group cursor-pointer'>
-                            <div className='flex items-center gap-4'>
+                            <div className={`flex items-center ${close ? "gap-4" : ""}`}>
                                 <div className='bg-primary/10 p-1 rounded'>
                                     {singleLink?.icon}
                                 </div>
-                                <p className="font-medium text-primary/50 select-none group-hover:text-primary">{singleLink?.label}</p>
+                                <p className="font-medium text-primary/50 select-none group-hover:text-primary">{close && singleLink?.label}</p>
                             </div>
                             {
-                                singleLink?.children && <IoIosArrowForward className={`text-lg font-medium text-primary/50 group-hover:text-primary ${singleLink?.state ? "rotate-90 transition-all duration-300" : " transition-all duration-300"}`} />
+                                singleLink?.children && close && <IoIosArrowForward className={`text-lg font-medium text-primary/50 group-hover:text-primary ${singleLink?.state ? "rotate-90 transition-all duration-300" : " transition-all duration-300"}`} />
                             }
                         </div>
                         {
@@ -86,7 +96,7 @@ const LeftNavbar = () => {
                                             <div className='bg-primary/10 p-1 rounded'>
                                                 {singleChildren?.icon}
                                             </div>
-                                            <p className="font-medium text-sm text-primary/50 select-none group-hover:text-primary">{singleChildren?.label}</p>
+                                            <p className="font-medium text-sm text-primary/50 select-none group-hover:text-primary">{close && singleChildren?.label}</p>
                                         </div>
                                     </NavLink>
                                 ))
