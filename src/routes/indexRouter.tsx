@@ -19,6 +19,9 @@ import DashboardSetting from "../dashboardPages/dashboardSetting/DashboardSettin
 import DashboardNewsAll from "../dashboardPages/dashboradNewsAll/DashboardNewsAll";
 import AddNews from "../dashboardPages/dashboradNewsAll/addNews/AddNews";
 import AddNewsCategory from "../dashboardPages/dashboradNewsAll/addNewsCategory/AddNewsCategory";
+import DashboardAdmin from "../dashboardPages/dashboardAdmin/DashboardAdmin";
+import DashboardDoctors from "../dashboardPages/dashboardDoctors/DashboardDoctors";
+import DashboardPatient from "../dashboardPages/dashboardPatient/DashboardPatient";
 
 export const router = createBrowserRouter([
   {
@@ -88,6 +91,18 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/dashboard-setting",
         element: <DashboardSetting />
+      },
+      {
+        path: "/dashboard/admin-dashboard",
+        element: <DashboardAdmin />
+      },
+      {
+        path: "/dashboard/doctor-dashboard",
+        element: <DashboardDoctors />
+      },
+      {
+        path: "/dashboard/patient-dashboard",
+        element: <DashboardPatient />
       },
       {
         path: "/dashboard/dashboard-news",
