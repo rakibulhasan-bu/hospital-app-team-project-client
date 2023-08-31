@@ -16,12 +16,16 @@ import Register from "../pages/register/Register";
 import PatientRegister from "../pages/patientRegister/PatientRegister";
 import DoctorRegister from "../pages/doctorRegister/DoctorRegister";
 import DashboardSetting from "../dashboardPages/dashboardSetting/DashboardSetting";
-import DashboardNewsAll from "../dashboardPages/dashboradNewsAll/DashboardNewsAll";
+import DashboardNewsAll from "../dashboardPages/dashboradNewsAll/DashboardNewsList";
 import AddNews from "../dashboardPages/dashboradNewsAll/addNews/AddNews";
 import AddNewsCategory from "../dashboardPages/dashboradNewsAll/addNewsCategory/AddNewsCategory";
 import DashboardAdmin from "../dashboardPages/dashboardAdmin/DashboardAdmin";
 import DashboardDoctors from "../dashboardPages/dashboardDoctors/DashboardDoctors";
 import DashboardPatient from "../dashboardPages/dashboardPatient/DashboardPatient";
+import DoctorsList from "../dashboardPages/doctorsDashboard/DoctorsList";
+import PatientList from "../dashboardPages/patiendDashboard/PatientList";
+import AppointmentsList from "../dashboardPages/appointmentsList/AppointmentsList";
+import DashboardNewsList from "../dashboardPages/dashboradNewsAll/DashboardNewsList";
 
 export const router = createBrowserRouter([
   {
@@ -103,6 +107,22 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/patient-dashboard",
         element: <DashboardPatient />
+      },
+      {
+        path: "/dashboard/doctors-list",
+        element: <DoctorsList />
+      },
+      {
+        path: "/dashboard/patients-list",
+        element: <PatientList />
+      },
+      {
+        path: "/dashboard/appointments-list",
+        element: <AppointmentsList />
+      },
+      {
+        path: "/dashboard/news-list",
+        element: <DashboardNewsList />
       },
       {
         path: "/dashboard/dashboard-news",
