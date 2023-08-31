@@ -3,7 +3,7 @@ import { BiSolidDashboard } from "react-icons/bi";
 import { IoIosArrowForward } from "react-icons/io";
 import { HiOutlineNewspaper } from "react-icons/hi";
 import { LuCalendarDays } from "react-icons/lu";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 interface leftNavbarProps {
     close: boolean;
@@ -11,6 +11,10 @@ interface leftNavbarProps {
 }
 
 const LeftNavbar = ({ close, setClose }: leftNavbarProps) => {
+    const location = useLocation();
+    const isActive = (path: string) => {
+        return location.pathname === path;
+    };
     const [newsOpen, setNewsOpen] = useState<boolean>(false);
     const [appointmentOpen, setAppointmentOpen] = useState<boolean>(false);
 
@@ -39,12 +43,12 @@ const LeftNavbar = ({ close, setClose }: leftNavbarProps) => {
             children: [
                 {
                     label: "News & blog List",
-                    link: "/dashboard/dashboard-setting",
+                    link: "/dashboard",
                     icon: <HiOutlineNewspaper className="text-primary/60 cursor-pointer group-hover:text-primary" />,
                 },
                 {
                     label: "News & blog List",
-                    link: "/dashboard/dashboard-setting",
+                    link: "/dashboard",
                     icon: <HiOutlineNewspaper className="text-primary/60 cursor-pointer group-hover:text-primary" />,
                 },
 
@@ -58,13 +62,13 @@ const LeftNavbar = ({ close, setClose }: leftNavbarProps) => {
             children: [
                 {
                     label: "News & blog List",
-                    link: "/dashboard/dashboard-setting",
+                    link: "/dashboard",
                     icon: <HiOutlineNewspaper className="text-primary/60 cursor-pointer group-hover:text-primary" />,
                 },
                 {
                     label: "News & blog List",
                     link: "/dashboard/dashboard-setting",
-                    icon: <HiOutlineNewspaper className="text-primary/60 cursor-pointer group-hover:text-primary" />,
+                    icon: <HiOutlineNewspaper className={`cursor-pointer group-hover:text-primary ${isActive("/dashboard/dashboard-setting") ? 'text-primary' : 'text-primary/60'}`} />,
                 },
 
             ]
@@ -96,7 +100,7 @@ const LeftNavbar = ({ close, setClose }: leftNavbarProps) => {
                                             <div className='bg-primary/10 p-1 rounded'>
                                                 {singleChildren?.icon}
                                             </div>
-                                            <p className="font-medium text-sm text-primary/50 select-none group-hover:text-primary">{close && singleChildren?.label}</p>
+                                            <p className={`font-medium text-sm select-none group-hover:text-primary ${isActive(singleChildren?.link) ? 'text-primary' : 'text-primary/50'}`}>{close && singleChildren?.label}</p>
                                         </div>
                                     </NavLink>
                                 ))
