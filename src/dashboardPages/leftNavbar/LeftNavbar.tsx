@@ -23,15 +23,37 @@ const LeftNavbar = () => {
             icon: <BiSolidDashboard className="text-lg text-primary/60 cursor-pointer group-hover:text-primary" />
         },
         {
-            label: "News & Article",
+            label: "News & blog",
             handler: handleNews,
             state: newsOpen,
-            icon: <HiOutlineNewspaper className="text-lg text-primary/60 cursor-pointer group-hover:text-primary" />
+            icon: <HiOutlineNewspaper className="text-lg text-primary/60 cursor-pointer group-hover:text-primary" />,
+            children: [
+                {
+                    label: "News & blog List",
+                    icon: <HiOutlineNewspaper className="text-lg text-primary/60 cursor-pointer group-hover:text-primary" />,
+                },
+                {
+                    label: "News & blog List",
+                    icon: <HiOutlineNewspaper className="text-lg text-primary/60 cursor-pointer group-hover:text-primary" />,
+                },
+                {
+                    label: "News & blog List",
+                    icon: <HiOutlineNewspaper className="text-lg text-primary/60 cursor-pointer group-hover:text-primary" />,
+                },
+                {
+                    label: "News & blog List",
+                    icon: <HiOutlineNewspaper className="text-lg text-primary/60 cursor-pointer group-hover:text-primary" />,
+                },
+                {
+                    label: "News & blog List",
+                    icon: <HiOutlineNewspaper className="text-lg text-primary/60 cursor-pointer group-hover:text-primary" />,
+                },
+            ]
         },
 
     ];
     return (
-        <div className='h-[90.2dvh] overflow-y-auto bg-red-300 pt-4'>
+        <div className='h-[90.2dvh] overflow-y-auto pt-4'>
             <div className='bg-white px-4 py-4 space-y-4 h-full rounded-tr-3xl'>
                 {
                     navLinks.map(singleLink => (
