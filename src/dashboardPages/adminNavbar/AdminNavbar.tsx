@@ -7,7 +7,7 @@ import Notifications from "../notifications/Notifications";
 import { DashboardContext } from "../dashboardContext/DashboardContext";
 
 const AdminNavbar = () => {
-    const { open, setOpen, close, setClose } = useContext(DashboardContext);
+    const { open, setOpen, close, setClose, handleClose } = useContext(DashboardContext);
 
     return (
         <div className='bg-white py-2 px-4 w-full flex items-center justify-between myShadow'>
@@ -20,7 +20,7 @@ const AdminNavbar = () => {
                 </div>
                 {
                     close ?
-                        <RiMenuFoldLine onClick={() => setClose(prev => (!prev))} className="text-2xl text-primary/90 hover:text-primary cursor-pointer" /> :
+                        <RiMenuFoldLine onClick={handleClose} className="text-2xl text-primary/90 hover:text-primary cursor-pointer" /> :
                         <RiMenuUnfoldLine onClick={() => setClose(prev => (!prev))} className="text-2xl text-primary/90 hover:text-primary cursor-pointer" />
                 }
 
