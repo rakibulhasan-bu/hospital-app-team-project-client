@@ -8,6 +8,8 @@ import { DashboardContext } from "../dashboardContext/DashboardContext";
 import { FaUserDoctor } from "react-icons/fa6";
 import { BsPeopleFill } from "react-icons/bs";
 import { FaListUl } from "react-icons/fa";
+import { TbNewSection } from "react-icons/tb";
+import { SiGooglenews } from "react-icons/si";
 
 const LeftNavbar = () => {
     const { close, setClose, newsOpen, handleNews, appointmentOpen, handleAppointment } = useContext(DashboardContext);
@@ -64,10 +66,16 @@ const LeftNavbar = () => {
                     icon: <HiOutlineNewspaper className={`cursor-pointer group-hover:text-primary ${isActive("/dashboard/news-list") ? 'text-primary' : 'text-primary/60'}`} />,
                 },
                 {
-                    label: "News & blog List",
-                    link: "/dashboard",
-                    icon: <HiOutlineNewspaper className="text-primary/60 cursor-pointer group-hover:text-primary" />,
+                    label: "Add news",
+                    link: "/dashboard/add-news",
+                    icon: <TbNewSection className={`cursor-pointer group-hover:text-primary ${isActive("/dashboard/add-news") ? 'text-primary' : 'text-primary/60'}`} />,
                 },
+                {
+                    label: "Add news category",
+                    link: "/dashboard/add-news-category",
+                    icon: <SiGooglenews className={`cursor-pointer group-hover:text-primary ${isActive("/dashboard/add-news-category") ? 'text-primary' : 'text-primary/60'}`} />,
+                },
+
             ],
         },
         {

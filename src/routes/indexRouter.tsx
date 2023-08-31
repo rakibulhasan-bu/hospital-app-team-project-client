@@ -16,7 +16,6 @@ import Register from "../pages/register/Register";
 import PatientRegister from "../pages/patientRegister/PatientRegister";
 import DoctorRegister from "../pages/doctorRegister/DoctorRegister";
 import DashboardSetting from "../dashboardPages/dashboardSetting/DashboardSetting";
-import DashboardNewsAll from "../dashboardPages/dashboradNewsAll/DashboardNewsList";
 import AddNews from "../dashboardPages/dashboradNewsAll/addNews/AddNews";
 import AddNewsCategory from "../dashboardPages/dashboradNewsAll/addNewsCategory/AddNewsCategory";
 import DashboardAdmin from "../dashboardPages/dashboardAdmin/DashboardAdmin";
@@ -123,10 +122,6 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/news-list",
         element: <DashboardNewsList />
-      },
-      {
-        path: "/dashboard/dashboard-news",
-        element: <DashboardNewsAll />
       },
       {
         path: "/dashboard/add-news",
