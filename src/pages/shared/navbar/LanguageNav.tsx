@@ -3,34 +3,39 @@ import { BiGlobe } from 'react-icons/bi';
 import { useTranslation } from 'react-i18next';
 
 const LanguageNav: React.FC = () => {
+    const [open, setOpen] = useState<boolean>(false);
     const [selectedLanguage, setSelectedLanguage] = useState('en');
+
     const { i18n } = useTranslation();
 
-    const handleLanguageChange = (language: string) => {
-        setSelectedLanguage(language);
-        i18n.changeLanguage(language)
+    const handleLanguageChangeBangla = () => {
+        setSelectedLanguage('bn')
+        i18n.changeLanguage('bn')
+        setOpen(false)
     };
-    console.log('selectedLanguage :>> ', selectedLanguage);
+
+    const handleLanguageChangeEnglish = () => {
+        setSelectedLanguage('en')
+        i18n.changeLanguage('en')
+        setOpen(false)
+    };
+
     return (
-        <nav className="bg-blue-500 relative group">
-            <div className="flex items-center text-white cursor-pointer">
+        <nav className="relative group">
+            <div onClick={() => setOpen(prev => (!prev))} className={`flex items-center select-none border px-2 py-0.5 rounded-full  text-secondary cursor-pointer ${open ? "bg-secondary text-white" : ""}`}>
                 <BiGlobe className="mr-2" />
                 {selectedLanguage === 'en' ? 'EN' : 'BN'}
             </div>
-            <div className="absolute top-6 right-0 bg-white rounded-lg shadow-md hidden group-hover:block">
-                <ul>
-                    <li>
-                        <button onClick={() => handleLanguageChange('en')} className="block px-4 py-2 text-gray-800 hover:bg-gray-200 w-full">
-                            EN
-                        </button>
-                    </li>
-                    <li>
-                        <button onClick={() => handleLanguageChange('bn')} className="block px-4 py-2 text-gray-800 hover:bg-gray-200 w-full">
-                            BN
-                        </button>
-                    </li>
-                </ul>
-            </div>
+            {open &&
+                <div className="absolute top-8 -left-2 bg-white rounded-lg border shadow-md">
+                    <button onClick={handleLanguageChangeEnglish} className=" px-4 py-2 text-gray-800 hover:text-primary hover:bg-blue-50 rounded-t-lg w-full">
+                        English
+                    </button>
+                    <button onClick={handleLanguageChangeBangla} className=" px-4 py-2 text-gray-800 hover:text-primary hover:bg-blue-50 rounded-b-lg w-full">
+                        বাংলা
+                    </button>
+                </div>
+            }
         </nav>
     );
 };

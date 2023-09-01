@@ -1,7 +1,27 @@
 {
-  "title": "english e gan gai",
-  "description": {
-    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-    "part2": "Switch language between english and german using buttons above."
-  }
+  "home": {
+    "banner": {
+      "slogan": "Every Beat, Every Moment",
+      "care": "Preventive Care",
+      "for": "Is Essential For",
+      "heart": "Healthy Heart",
+      "paragraph": "We can guide you through issues like Cardiac arrest, Heart Failure, Peripheral Artery Disease, Arrhythmia, Atrial Fibrillation, Cholesterol, and High BP."
+    },
+    "popular-doctor": {},
+    "gallery": {},
+    "specialties": {},
+    "about-us": {},
+    "pharmacy": {},
+    "testimonials": {},
+    "blogs": {},
+    "faq": {},
+    "footer": {}
+  },
+  "about-us": {},
+  "services": {},
+  "doctors": {},
+  "gallery": {},
+  "branches": {},
+  "pharmacy": {},
+  "news-and-blog": {}
 }
