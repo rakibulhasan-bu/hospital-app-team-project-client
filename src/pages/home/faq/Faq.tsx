@@ -1,6 +1,5 @@
 import { FaCircle } from "react-icons/fa";
 import faq from "../../../assets/faq2.png";
-import SectionHeading from "../../../components/sharedTitle/SectionHeading";
 import Accordion from "./Accordion";
 const Faq = () => {
   return (
