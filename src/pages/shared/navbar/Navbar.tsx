@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white ">
-      <nav className="container relative flex items-center justify-between 2xl:h-24  px-4 mx-auto lg:py-2">
+      <nav className="container relative flex items-center justify-between px-4 mx-auto 2xl:h-24 lg:py-2">
         <div>
           <Link to="/">
             <img src={logo} className=" h-14" alt="logo" />
