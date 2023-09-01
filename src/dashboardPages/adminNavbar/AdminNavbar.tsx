@@ -12,12 +12,14 @@ const AdminNavbar = () => {
     return (
         <div className='bg-white py-2 px-4 w-full flex items-center justify-between myShadow'>
             <div className={`flex items-center ${close ? "gap-10" : "gap-4"}`}>
-                <div className='flex items-center gap-2'>
-                    <img className="h-10 w-10 object-cover" src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1693413583/Website-assets/LifeCare/lifecare_logo_ktasdt_yczkkh.png" alt="This is logo image" />
-                    {close &&
-                        <h3 className="font-bold text-2xl text-secondary select-none">Lifecare</h3>
-                    }
-                </div>
+                <Link to='/'>
+                    <div className='flex items-center gap-2'>
+                        <img className="h-10 w-10 object-cover" src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1693413583/Website-assets/LifeCare/lifecare_logo_ktasdt_yczkkh.png" alt="This is logo image" />
+                        {close &&
+                            <h3 className="font-bold text-2xl text-secondary select-none">Lifecare</h3>
+                        }
+                    </div>
+                </Link>
                 {
                     close ?
                         <RiMenuFoldLine onClick={handleClose} className="text-2xl text-primary/90 hover:text-primary cursor-pointer" /> :

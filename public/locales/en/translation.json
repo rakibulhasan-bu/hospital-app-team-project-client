@@ -1,0 +1,27 @@
+{
+  "home": {
+    "banner": {
+      "slogan": "Every Beat, Every Moment",
+      "care": "Preventive Care",
+      "for": "Is Essential For",
+      "heart": "Healthy Heart",
+      "paragraph": "We can guide you through issues like Cardiac arrest, Heart Failure, Peripheral Artery Disease, Arrhythmia, Atrial Fibrillation, Cholesterol, and High BP."
+    },
+    "popular-doctor": {},
+    "gallery": {},
+    "specialties": {},
+    "about-us": {},
+    "pharmacy": {},
+    "testimonials": {},
+    "blogs": {},
+    "faq": {},
+    "footer": {}
+  },
+  "about-us": {},
+  "services": {},
+  "doctors": {},
+  "gallery": {},
+  "branches": {},
+  "pharmacy": {},
+  "news-and-blog": {}
+}
