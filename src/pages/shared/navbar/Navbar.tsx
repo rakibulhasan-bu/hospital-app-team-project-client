@@ -5,6 +5,7 @@ import { BiMenuAltRight } from "react-icons/bi";
 import { GrClose } from "react-icons/gr";
 import MobileMenu from "./MobileMenu";
 import DarkToggle from "./DarkToggle";
+import LanguageNav from "./LanguageNav";
 
 interface NavLink {
   path: string;
@@ -93,15 +94,15 @@ const Navbar: React.FC = () => {
           )}
         </div>
         <div
-          className={` absolute duration-300 ease-out ${
-            open
+          className={` absolute duration-300 ease-out ${open
               ? "left-0 top-[56px] md:-left-[30px]"
               : "-left-[220px] top-[56px] bottom-0 md:-left-[220px]"
-          }`}
+            }`}
         >
           <MobileMenu />
         </div>
         <DarkToggle />
+        <LanguageNav />
       </nav>
     </header>
   );
