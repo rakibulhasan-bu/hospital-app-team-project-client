@@ -2,7 +2,10 @@ import { IoMdHeartEmpty } from 'react-icons/io';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { FaRegMessage } from 'react-icons/fa6';
 import { LuCalendarClock } from 'react-icons/lu';
+import { useTranslation } from 'react-i18next';
+
 const SingleNews = () => {
+    const { t } = useTranslation();
     return (
         <div className='myBorder hover:shadow-xl'>
             <div className='h-64  cursor-pointer'>
@@ -10,7 +13,7 @@ const SingleNews = () => {
             </div>
             {/* this is heading and date div  */}
             <div className='pt-2 pb-4 px-4'>
-                <h2 className='text-secondary font-medium cursor-pointer'>Diagnostic radiology</h2>
+                <h2 className='text-secondary font-medium cursor-pointer'>Diagnostic radiology {t('title')}</h2>
                 <h3 className='text-textBlack font-medium'>Study reveals fiber we should eat to prevent disease</h3>
                 <div className='flex items-center pt-1 gap-1 text-sm text-textGray'>
                     <LuCalendarClock />
