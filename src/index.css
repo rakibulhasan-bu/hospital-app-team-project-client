@@ -113,6 +113,33 @@ body.dark {
   background-color: #0c192b;
 }
 
+.loading-dot {
+  width: 14px;
+  height: 14px;
+  margin: 0 6px;
+  background-color: #0e82fd;
+  border-radius: 50%;
+  animation: bounce 2s infinite alternate;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  75% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 /* for card button  */
 
 .bttn {
