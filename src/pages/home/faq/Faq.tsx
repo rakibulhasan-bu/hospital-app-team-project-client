@@ -1,14 +1,27 @@
+import { FaCircle } from "react-icons/fa";
 import faq from "../../../assets/faq2.png";
-import SectionHeading from "../../../components/sharedTitle/SectionHeading";
 import Accordion from "./Accordion";
 const Faq = () => {
   return (
     <div className="w-full py-10 text-white min-h-100vh bg-primary">
-      <SectionHeading
+      {/* <SectionHeading
         semiSubTitle="Find Answers to Frequently asked Questions"
         title="Common Queries"
         subTitle="Let us help you find the answers you seek and provide you with the peace of mind you deserve."
-      />
+      /> */}
+      <div className="max-w-2xl px-4 mx-auto text-center lg:px-0">
+        <h3 className="font-medium text-accent">Find Answers to Frequently asked Questions</h3>
+        <h1 className="flex items-center justify-center gap-1 my-3 text-2xl font-semibold text-white">
+          <FaCircle className="text-xs text-accent" />
+          <FaCircle className="text-xl" />
+          <FaCircle className="text-xs text-accent" />
+          <span className="mx-1 text-4xl ">Common Queries</span>
+          <FaCircle className="text-xs text-accent" />
+          <FaCircle className="text-xl" />
+          <FaCircle className="text-xs text-accent" />
+        </h1>
+        <h4 className="text-sm text-center text-accent">Let us help you find the answers you seek and provide you with the peace of mind you deserve.</h4>
+      </div>
       <div className="grid items-center grid-cols-1 p-5 rounded-lg md:grid-cols-2">
         <img src={faq} alt="" />
         <div>

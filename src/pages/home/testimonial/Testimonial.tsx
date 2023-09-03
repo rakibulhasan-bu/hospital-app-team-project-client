@@ -16,13 +16,6 @@ import SectionHeading from "../../../components/sharedTitle/SectionHeading";
 const Testimonial = () => {
   return (
     <div className="container px-2 mx-auto my-10 text-xl lg:min-h-screen lg:px-0">
-      {/* <SharedTitle
-        key={"testimonial"}
-        title="What out patients says about us"
-        largeTitle="Happy"
-        coloredTitle="Clients"
-        subTitle="Patient Voices : A Glimpse into LifeCare Hospital Through the Eyes of Those We've Cared For."
-      /> */}
       <SectionHeading
       semiSubTitle="What out patients says about us"
       title="Happy Clients"

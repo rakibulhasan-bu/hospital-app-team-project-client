@@ -1,8 +1,10 @@
+import { Tooltip } from 'react-tooltip'
+
 const Branches = () => {
     return (
-        <div className=''>
-            Branches
-        </div>
+        <>
+        <h1>branches</h1>
+      </>
     );
 };
 
