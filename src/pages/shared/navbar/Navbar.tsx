@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
       "Moulvibazar",
       "Habiganj",
       "Sunamganj",
-      "Sylhet (Sylhet district has two parts)",
+      "Sylhet",
     ],
     "Rangpur ": [
       "Rangpur",
