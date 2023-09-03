@@ -6,6 +6,8 @@ import { GrClose } from "react-icons/gr";
 import MobileMenu from "./MobileMenu";
 import DarkToggle from "./DarkToggle";
 import LanguageNav from "./LanguageNav";
+import { Tooltip } from "react-tooltip";
+import DivisionList from "../../../components/Banches/DivisionList";
 
 interface NavLink {
   path: string;
@@ -54,6 +56,34 @@ const Navbar: React.FC = () => {
       title: "Contact Us",
     },
   ];
+  const jsonData = {
+    Dhaka: ["Dhaka", "Gazipur", "Narayanganj", "Tangail", "Manikganj"],
+    Chittagong: ["Chattogram", "Cox's Bazar", "Feni", "Comilla", "Noakhali"],
+    Rajshahi: ["Rajshahi", "Bogura", "Pabna", "Naogaon", "Chapainawabganj"],
+    Khulna: ["Khulna", "Jessore", "Satkhira", "Bagerhat", "Magura"],
+    Barisal: ["Barisal", "Bhola", "Patuakhali", "Pirojpur", "Jhalokati"],
+    Sylhet: [
+      "Sylhet",
+      "Moulvibazar",
+      "Habiganj",
+      "Sunamganj",
+      "Sylhet (Sylhet district has two parts)",
+    ],
+    "Rangpur ": [
+      "Rangpur",
+      "Dinajpur",
+      "Kurigram",
+      "Lalmonirhat",
+      "Thakurgaon",
+    ],
+    "Mymensingh ": [
+      "Mymensingh",
+      "Jamalpur",
+      "Netrokona",
+      "Sherpur",
+      "Kishoreganj",
+    ],
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-white ">
@@ -71,7 +101,21 @@ const Navbar: React.FC = () => {
                   className="font-bold duration-500 text-textBlack hover:font-bold hover:text-secondary nav-link"
                   to={link.path}
                 >
-                  {link.title}
+                  {link.title === "Branches" ? (
+                    <h1 data-tooltip-id="my-tooltip-2">{link.title}</h1>
+                  ) : (
+                    <h1>{link.title}</h1>
+                  )}
+                  <Tooltip
+                    id="my-tooltip-2"
+                    place="bottom"
+                    variant="light"
+                    content={
+                      <div className="container px-3 py-5 mx-auto">
+                        <DivisionList data={jsonData} />
+                      </div>
+                    }
+                  />
                 </NavLink>
               </li>
             ))}
@@ -94,10 +138,11 @@ const Navbar: React.FC = () => {
           )}
         </div>
         <div
-          className={` absolute duration-300 ease-out ${open
+          className={` absolute duration-300 ease-out ${
+            open
               ? "left-0 top-[56px] md:-left-[30px]"
               : "-left-[220px] top-[56px] bottom-0 md:-left-[220px]"
-            }`}
+          }`}
         >
           <MobileMenu />
         </div>
