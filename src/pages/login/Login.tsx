@@ -46,11 +46,6 @@ const Login = () => {
               Register here
             </Link>
           </p>
-          <div>
-            <button>
-              <FaGoogle />
-            </button>
-          </div>
         </div>
       </div>
     </section>
