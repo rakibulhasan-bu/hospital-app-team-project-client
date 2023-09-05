@@ -112,9 +112,37 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
         </div>
 
       </section>
-      <section className='px-14 '>
+      <section className='px-14 pb-10'>
         <div className='border-solid border-2 border-indigo-600 rounded-lg p-3'>
-        <h1>hello</h1>
+          <h3 className='text-center text-xl text-secondary font-bold mb-5'>Appointment Information</h3>
+          <div className='grid lg:grid-cols-3 gap-4'>
+
+          <div className='bg-sky-100 p-3  text-xl rounded-lg'>
+            <p className='font-bold'>Appointment type:</p>
+            <p>Mr. Rahman </p>
+          </div>
+
+          <div className='bg-sky-100 p-3  text-xl rounded-lg'>
+          <p className='text-center font-semibold mb-2'>Appointment Time</p>
+          <div className="inline-block relative w-full">
+            
+  <select className="block appearance-none w-full bg-sky-50 border border-blue-400 hover:border-blue-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+    <option>Option 1</option>
+    <option>Option 2</option>
+    <option>Option 3</option>
+  </select>
+  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+  </div>
+</div>
+          </div>
+
+          <div className='bg-sky-100 p-3  text-xl rounded-lg'>
+            <p className='font-bold'>Patient Name:</p>
+            <p>Mr. Rahman </p>
+          </div>
+
+          </div>
         </div>
         
       </section>
