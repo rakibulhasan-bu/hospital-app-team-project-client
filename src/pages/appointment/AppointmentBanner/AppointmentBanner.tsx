@@ -11,6 +11,7 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
 
   return (
     <header className='my-6' style={{ backgroundImage: `url(https://i.ibb.co/BsfJ7qD/bg.png)`, backgroundSize: 'cover' }}>
+      <section>
       <div className="">
         <div className="grid lg:grid-cols-2 items-center justify-items-center gap-4">
           
@@ -26,6 +27,10 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
         </div>
         <p className='text-center text-xl my-8 text-secondary font-semibold'>Available Appointments on: <span className='font-bold'>{format(selectedDate,'PP')}</span></p> 
       </div>
+      </section>
+      <section>
+        
+      </section>
     </header>
   );
 };
