@@ -11,7 +11,7 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
   return (
     <header className='my-6' style={{ backgroundImage: `url(https://i.ibb.co/BsfJ7qD/bg.png)`, backgroundSize: 'cover' }}>
       <div className="hero">
-        <div className="grid grid-cols-2 items-center justify-items-center gap-4">
+        <div className="grid lg:grid-cols-2 items-center justify-items-center gap-4">
           
           <div className='text-blue-600'>
             <DayPicker
@@ -21,7 +21,7 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
               
             />
           </div>
-          <img src='https://i.ibb.co/bsgw4Y9/chair.png' className=" rounded-lg shadow-2xl" alt='' />
+          <img src='https://i.ibb.co/bsgw4Y9/chair.png' className=" rounded-lg lg:block hidden shadow-2xl" alt='' />
         </div>
         
       </div>
