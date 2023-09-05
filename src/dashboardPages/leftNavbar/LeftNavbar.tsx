@@ -1,18 +1,18 @@
 import { useContext } from "react";
-import { BiSolidDashboard } from "react-icons/bi";
+import { BiAddToQueue, BiSolidDashboard } from "react-icons/bi";
 import { IoIosArrowForward, IoMdLogOut, IoMdSettings } from "react-icons/io";
 import { HiHome, HiOutlineNewspaper } from "react-icons/hi";
 import { LuCalendarDays } from "react-icons/lu";
 import { NavLink, useLocation } from "react-router-dom";
 import { DashboardContext } from "../dashboardContext/DashboardContext";
 import { FaUserDoctor } from "react-icons/fa6";
-import { BsPeopleFill } from "react-icons/bs";
+import { BsPeopleFill, BsPersonFillAdd } from "react-icons/bs";
 import { FaListUl } from "react-icons/fa";
-import { TbNewSection } from "react-icons/tb";
+import { TbNewSection, TbReplaceFilled } from "react-icons/tb";
 import { SiGooglenews } from "react-icons/si";
 
 const LeftNavbar = () => {
-    const { close, setClose, newsOpen, handleNews, appointmentOpen, handleAppointment } = useContext(DashboardContext);
+    const { close, setClose, branchOpen, handleBranch, doctorOpen, handleDoctor, newsOpen, handleNews, appointmentOpen, handleAppointment } = useContext(DashboardContext);
 
     const location = useLocation();
     const isActive = (path: string) => {
@@ -33,8 +33,39 @@ const LeftNavbar = () => {
         },
         {
             label: "Doctors",
-            link: "/dashboard/doctors-list",
-            icon: <FaUserDoctor className={`text-lg cursor-pointer group-hover:text-primary ${isActive("/dashboard/doctors-list") ? 'text-primary' : 'text-primary/60'}`} />,
+            state: doctorOpen,
+            handler: handleDoctor,
+            icon: <FaUserDoctor className="text-lg text-primary/60 cursor-pointer group-hover:text-primary" />,
+            children: [
+                {
+                    label: "Doctors List",
+                    link: "/dashboard/doctors-list",
+                    icon: <FaListUl className={`cursor-pointer group-hover:text-primary ${isActive("/dashboard/doctors-list") ? 'text-primary' : 'text-primary/60'}`} />,
+                },
+                {
+                    label: "Add Doctor",
+                    link: "/dashboard/add-doctor",
+                    icon: <BsPersonFillAdd className={`cursor-pointer group-hover:text-primary ${isActive("/dashboard/add-doctor") ? 'text-primary' : 'text-primary/60'}`} />,
+                },
+            ]
+        },
+        {
+            label: "Branches",
+            state: branchOpen,
+            handler: handleBranch,
+            icon: <TbReplaceFilled className="text-lg text-primary/60 cursor-pointer group-hover:text-primary" />,
+            children: [
+                {
+                    label: "Branches List",
+                    link: "/dashboard/branches-list",
+                    icon: <FaListUl className={`cursor-pointer group-hover:text-primary ${isActive("/dashboard/branches-list") ? 'text-primary' : 'text-primary/60'}`} />,
+                },
+                {
+                    label: "Add branch",
+                    link: "/dashboard/add-branch",
+                    icon: <BiAddToQueue className={`cursor-pointer group-hover:text-primary ${isActive("/dashboard/add-branch") ? 'text-primary' : 'text-primary/60'}`} />,
+                },
+            ]
         },
         {
             label: "Patients",

@@ -25,6 +25,9 @@ import DoctorsList from "../dashboardPages/doctorsDashboard/DoctorsList";
 import PatientList from "../dashboardPages/patiendDashboard/PatientList";
 import AppointmentsList from "../dashboardPages/appointmentsList/AppointmentsList";
 import DashboardNewsList from "../dashboardPages/dashboradNewsAll/DashboardNewsList";
+import AddDoctor from "../dashboardPages/doctorsDashboard/addDoctor/AddDoctor";
+import AddBranch from "../dashboardPages/dashboardBrances/addBranch/AddBranch";
+import BranchList from "../dashboardPages/dashboardBrances/branchList/BranchList";
 
 export const router = createBrowserRouter([
   {
@@ -112,6 +115,10 @@ export const router = createBrowserRouter([
         element: <DoctorsList />
       },
       {
+        path: "/dashboard/add-doctor",
+        element: <AddDoctor />
+      },
+      {
         path: "/dashboard/patients-list",
         element: <PatientList />
       },
@@ -130,6 +137,14 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/add-news-category",
         element: <AddNewsCategory />
+      },
+      {
+        path: "/dashboard/add-branch",
+        element: <AddBranch />
+      },
+      {
+        path: "/dashboard/branches-list",
+        element: <BranchList />
       },
     ]
   },
