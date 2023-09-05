@@ -36,19 +36,27 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
           <div>
             <img className='w-40 rounded-2xl' src="https://i.ibb.co/Mn5mhwG/patient.png" alt="Patient img" />
           </div>
-          <div className='bg-sky-100 p-3 text-xl rounded-lg'>
+          <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
             <p className='font-bold'>Patient Name:</p>
             <p>Mr. Rahman </p>
+          </div>
+          <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
+            <p className='font-bold'>Patient Email:</p>
+            <p>rahman@gmail.com </p>
           </div>
         </div>
         {/* Doctor */}
         <div className=''>
           <div>
-            <img className='w-28 mb-4 rounded-2xl' src="https://i.ibb.co/3TzjbHY/images.jpg" alt="Doctor img" />
+            <img className='w-28  mb-4 rounded-2xl' src="https://i.ibb.co/3TzjbHY/images.jpg" alt="Doctor img" />
           </div>
-        <div className='bg-sky-100 p-3 text-xl rounded-lg'>
+        <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
             <p className='font-bold'>Doctor Name:</p>
             <p>Mr. Rahman </p>
+          </div>
+        <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
+            <p className='font-bold'>Doctor Email:</p>
+            <p>rahman@gmail.com  </p>
           </div>
 
         </div>
