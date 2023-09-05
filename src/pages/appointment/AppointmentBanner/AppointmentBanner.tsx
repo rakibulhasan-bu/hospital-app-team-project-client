@@ -8,7 +8,10 @@ interface AppointmentBannerProps {
   setSelectedDate: (date: Date) => void; 
 }
 
+
+
 const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, setSelectedDate }) => {
+
   
 
   return (
@@ -108,6 +111,12 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
 
         </div>
 
+      </section>
+      <section className='px-14 '>
+        <div className='border-solid border-2 border-indigo-600 rounded-lg p-3'>
+        <h1>hello</h1>
+        </div>
+        
       </section>
     </div>
   );
