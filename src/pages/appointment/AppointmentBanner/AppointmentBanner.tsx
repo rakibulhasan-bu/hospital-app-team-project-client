@@ -10,6 +10,7 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
   
 
   return (
+    <div>
     <header className='my-6' style={{ backgroundImage: `url(https://i.ibb.co/BsfJ7qD/bg.png)`, backgroundSize: 'cover' }}>
       <section>
       <div className="">
@@ -28,10 +29,32 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
         <p className='text-center text-xl my-8 text-secondary font-semibold'>Available Appointments on: <span className='font-bold'>{format(selectedDate,'PP')}</span></p> 
       </div>
       </section>
-      <section>
-        
+      </header>
+      <section className='grid grid-cols-2 gap-6 container px-2 mx-auto justify-around'>
+      {/* patient */}
+        <div> 
+          <div>
+            <img className='w-40' src="https://i.ibb.co/Mn5mhwG/patient.png" alt="Patient img" />
+          </div>
+          <div className='bg-sky-100 p-3 text-xl'>
+            <p className='font-bold'>Patient Name:</p>
+            <p>Mr. Rahman </p>
+          </div>
+        </div>
+        {/* Doctor */}
+        <div className=''>
+          <div>
+            <img className='w-28 mb-4' src="https://i.ibb.co/3TzjbHY/images.jpg" alt="Doctor img" />
+          </div>
+        <div className='bg-sky-100 p-3 text-xl'>
+            <p className='font-bold'>Doctor Name:</p>
+            <p>Mr. Rahman </p>
+          </div>
+
+        </div>
+
       </section>
-    </header>
+    </div>
   );
 };
 
