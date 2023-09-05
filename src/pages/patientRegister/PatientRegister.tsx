@@ -65,11 +65,22 @@ const PatientRegister = () => {
               LogIn
             </Link>
           </p>
-          <div>
-            <button>
+          <div className=" flex items-center gap-3 bg-secondary text-white p-1 group w-1/2 relative rounded">
+            <span className=" bg-white p-2 text-red-500 group-hover:w-full duration-300">
               <FaGoogle />
-            </button>
+            </span>
+            <span className=" absolute group-hover:text-primary lg:top-[7px] lg:right-[7px]">
+              Sign in with Google
+            </span>
           </div>
+          {/* <div className="relative group w-1/2 rounded overflow-hidden">
+            <span className="flex items-center justify-center gap-2 bg-secondary text-white p-1 transition-all duration-300 transform translate-x-0 group-hover:translate-x-full">
+              <FaGoogle className="text-red-500" />
+              <span className="group-hover:text-primary">
+                Sign in with Google
+              </span>
+            </span>
+          </div> */}
         </div>
       </div>
     </section>
