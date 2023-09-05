@@ -90,11 +90,11 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
             <p>Dr. Jonathan Behar </p>
           </div>
         <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
-            <p className='font-bold'>Doctor qualification:</p>
+            <p className='font-bold'>Qualification:</p>
             <p>MBBS, FCPS</p>
           </div>
         <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
-            <p className='font-bold'>Doctor specialty:</p>
+            <p className='font-bold'>Specialty:</p>
             <p>Cardiologist  </p>
           </div>
         <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
