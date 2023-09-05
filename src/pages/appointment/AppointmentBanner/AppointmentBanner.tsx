@@ -94,8 +94,8 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
             <p>MBBS, FCPS</p>
           </div>
         <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
-            <p className='font-bold'>Doctor Email:</p>
-            <p>jonathan@gmail.com  </p>
+            <p className='font-bold'>Doctor specialty:</p>
+            <p>Cardiologist  </p>
           </div>
         <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
             <p className='font-bold'>Doctor Email:</p>
