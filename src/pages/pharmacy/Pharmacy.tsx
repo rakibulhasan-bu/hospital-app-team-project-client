@@ -64,6 +64,8 @@ const Pharmacy = () => {
   </div>
 </div>
 
+
+// test 
     </div>
   );
 };
