@@ -12,7 +12,11 @@
     "specialties": {},
     "about-us": {},
     "pharmacy": {},
-    "testimonials": {},
+    "testimonials": {
+      "review": "I recently had a minor surgery at LifeCare Hospital. The surgical team,led by Dr. Martinez, was highly skilled and made me feel at ease throughout the process. However, I did experience some delays in schduling, and the communication between the nursing staff and the administrative team, managed by Ms.",
+      "name": "Robert Lewis",
+      "address": "Texus, USA"
+    },
     "blogs": {},
     "faq": {},
     "footer": {}

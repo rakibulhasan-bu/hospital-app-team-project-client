@@ -1,6 +1,7 @@
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
-
+import { useTranslation } from "react-i18next";
 const TestimonialCard = () => {
+  const { t } = useTranslation();
   return (
     <div className="max-w-[80%] p-10 m-3 lg:my-12 bg-accent/50 rounded-2xl text-textBlack/80">
       <h5 className="text-black ">July 03,2023</h5>
@@ -19,15 +20,11 @@ const TestimonialCard = () => {
         />
       </div>
 
-      <p className="my-5">
-        I recently had a minor surgery at LifeCare Hospital. The surgical team,
-        led by Dr. Martinez, was highly skilled and made me feel at ease
-        throughout the process. However, I did experience some delays in
-        scheduling, and the communication between the nursing staff and the
-        administrative team, managed by Ms. 
-      </p>
-      <h2 className="text-2xl font-bold text-black">Robert Lewis</h2>
-      <h5>Texus, USA</h5>
+      <p className="my-5">{t("home.testimonials.review")}</p>
+      <h2 className="text-2xl font-bold text-black">
+        {t("home.testimonials.name")}
+      </h2>
+      <h5>{t("home.testimonials.address")}</h5>
     </div>
   );
 };
