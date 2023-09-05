@@ -30,13 +30,16 @@ const PatientRegister = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<formInputs>();
   const password = watch("password");
 
-  const fileHandle = (e: any) => {
-    const reader = new FileReader()
-    reader.onload = () => {
-      setLoadImage(reader.result)
+  const fileHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setLoadImage(reader.result as string);
+      };
+      reader.readAsDataURL(e.target.files[0]);
     }
-    reader.readAsDataURL(e.target.files[0])
-  }
+  };
+
 
   const onSubmit: SubmitHandler<formInputs> = data => {
     console.log(data);
@@ -91,7 +94,7 @@ const PatientRegister = () => {
                   {...register("password", {
                     required: true,
                     pattern: {
-                      value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8}$/,
+                      value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
                       message: "Password must be at least 8 characters long and include at least one letter and one number."
                     }
                   })}
@@ -134,9 +137,6 @@ const PatientRegister = () => {
               {errors.confirmPassword?.message && <p className="text-sm text-red-500" role="alert">{errors.confirmPassword.message}</p>}
             </div>
 
-
-
-
             <div className='flex gap-4 items-center'>
               <div className="w-12 h-12 rounded-full shadow-lg border border-secondary">
                 {loadImage ?
@@ -160,7 +160,7 @@ const PatientRegister = () => {
             {/* this is hidden div  */}
             <input
               type="text"
-              defaultValue='patient'
+              defaultValue='doctor'
               className="hidden"
               {...register("role", { required: true })}
             />
@@ -175,9 +175,9 @@ const PatientRegister = () => {
                 LogIn
               </Link>
             </p>
-
-            <div className="flex items-center justify-center gap-1 cursor-pointer group border border-secondary px-2 py-1 rounded-lg">
-              <FcGoogle className='text-xl' /> <span className="text-textBlack text-sm group-hover:text-secondary group-hover:font-semibold">Continue with Google</span>
+            <span className="text-textBlack font-semibold">Or</span>
+            <div className="flex items-center justify-center gap-1 cursor-pointer group border border-secondary px-2 py-1 rounded">
+              <FcGoogle className='text-xl' /> <span className="text-textBlack text-sm font-medium group-hover:text-secondary group-hover:font-semibold">Continue with Google</span>
             </div>
 
           </div>
