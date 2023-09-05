@@ -9,6 +9,10 @@ interface ContextInfoProps {
     handleNews: (event: React.MouseEvent<HTMLElement>) => void;
     appointmentOpen: boolean;
     handleAppointment: (event: React.MouseEvent<HTMLElement>) => void;
+    doctorOpen: boolean;
+    handleDoctor: (event: React.MouseEvent<HTMLElement>) => void;
+    branchOpen: boolean;
+    handleBranch: (event: React.MouseEvent<HTMLElement>) => void;
     handleClose: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
@@ -21,6 +25,10 @@ export const DashboardContext = createContext<ContextInfoProps>({
     handleNews: () => { },
     appointmentOpen: false,
     handleAppointment: () => { },
+    doctorOpen: false,
+    handleDoctor: () => { },
+    branchOpen: false,
+    handleBranch: () => { },
     handleClose: () => { },
 });
 
@@ -28,19 +36,41 @@ const DashboardContextProvider = ({ children }: { children: ReactNode }) => {
     const [open, setOpen] = useState<boolean>(false);
     const [close, setClose] = useState<boolean>(true);
     const [newsOpen, setNewsOpen] = useState<boolean>(false);
+    const [doctorOpen, setDoctorOpen] = useState<boolean>(false);
+    const [branchOpen, setBranchOpen] = useState<boolean>(false);
     const [appointmentOpen, setAppointmentOpen] = useState<boolean>(false);
 
 
     const handleNews = () => {
-        setNewsOpen(prev => (!prev))
+        setNewsOpen(prev => (!prev));
+        setAppointmentOpen(false);
+        setDoctorOpen(false);
+        setBranchOpen(false);
     }
     const handleAppointment = () => {
         setAppointmentOpen((prev) => !prev);
+        setNewsOpen(false);
+        setDoctorOpen(false);
+        setBranchOpen(false);
+    };
+    const handleDoctor = () => {
+        setDoctorOpen((prev) => !prev);
+        setNewsOpen(false);
+        setAppointmentOpen(false);
+        setBranchOpen(false);
+    };
+    const handleBranch = () => {
+        setBranchOpen((prev) => !prev);
+        setNewsOpen(false);
+        setAppointmentOpen(false);
+        setDoctorOpen(false);
     };
     const handleClose = () => {
         setClose(false);
         setNewsOpen(false);
         setAppointmentOpen(false);
+        setDoctorOpen(false);
+        setBranchOpen(false);
     };
 
     const contextInfo: ContextInfoProps = {
@@ -49,6 +79,10 @@ const DashboardContextProvider = ({ children }: { children: ReactNode }) => {
         close,
         setClose,
         handleNews,
+        doctorOpen,
+        handleDoctor,
+        branchOpen,
+        handleBranch,
         newsOpen,
         appointmentOpen,
         handleAppointment,
