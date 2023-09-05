@@ -46,7 +46,7 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
             <p className='font-bold'>Patient Email:</p>
             <p>rahman@gmail.com </p>
           </div>
-          <div className='bg-sky-100 p-3 px-3 mb-6 text-xl rounded-lg'>
+          <div className='bg-sky-100 py-5 px-3 mb-6 text-xl rounded-lg'>
           <div className="  relative h-11 w-full min-w-[200px]">
     <input
       className="peer h-full w-full border-b border-black bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-600 focus:border-slate-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
@@ -57,7 +57,7 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
     </label>
           </div>
           </div>
-          <div className='bg-sky-100 p-3 px-3 mb-6 text-xl rounded-lg'>
+          <div className='bg-sky-100 py-5 px-3 mb-6 text-xl rounded-lg'>
           <div className="  relative h-11 w-full min-w-[200px]">
     <input
       className="peer h-full w-full border-b border-black bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-600 focus:border-slate-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
@@ -68,7 +68,7 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
     </label>
           </div>
           </div>
-          <div className='bg-sky-100 p-3 px-3 mb-6 text-xl rounded-lg'>
+          <div className='bg-sky-100 py-4 px-3 mb-6 text-xl rounded-lg'>
           <div className="  relative h-11 w-full min-w-[200px]">
     <input
       className="peer h-full w-full border-b border-black bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-600 focus:border-slate-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
@@ -88,6 +88,18 @@ const AppointmentBanner: React.FC<AppointmentBannerProps> = ({ selectedDate, set
         <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
             <p className='font-bold'>Doctor Name:</p>
             <p>Dr. Jonathan Behar </p>
+          </div>
+        <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
+            <p className='font-bold'>Doctor qualification:</p>
+            <p>MBBS, FCPS</p>
+          </div>
+        <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
+            <p className='font-bold'>Doctor Email:</p>
+            <p>jonathan@gmail.com  </p>
+          </div>
+        <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
+            <p className='font-bold'>Doctor Email:</p>
+            <p>jonathan@gmail.com  </p>
           </div>
         <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
             <p className='font-bold'>Doctor Email:</p>
