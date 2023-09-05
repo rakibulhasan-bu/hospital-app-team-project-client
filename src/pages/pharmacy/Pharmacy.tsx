@@ -1,6 +1,7 @@
 
 import { FaMedkit, FaHospital, FaVideo, FaVial, FaArrowRight } from 'react-icons/fa';
 import ProductSlider from './slider/ProductSlider';
+import AdSlider from './adSlider/AdSlider';
 
 const Pharmacy = () => {
   return (
@@ -66,6 +67,9 @@ const Pharmacy = () => {
       </div>
 
       <ProductSlider></ProductSlider>
+      <ProductSlider></ProductSlider>
+      
+      <AdSlider></AdSlider>
     </div>
     
   );

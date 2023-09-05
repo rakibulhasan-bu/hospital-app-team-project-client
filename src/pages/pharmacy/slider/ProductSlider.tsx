@@ -1,10 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";  // Import Swiper styles for navigation
+import "swiper/css/navigation";  
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import ProductCard from "./ProductCard";
 import { Autoplay, Navigation } from "swiper/modules";
+import '../style.css';
 
 
 const ProductSlider: React.FC = () => {
@@ -70,6 +71,7 @@ const ProductSlider: React.FC = () => {
     ];
 
     return (
+      <>
         <div className="container px-4 py-10 mx-auto">
             <div className="swiper-container" style={{ position: "relative" }}>
                 <Swiper
@@ -121,6 +123,7 @@ const ProductSlider: React.FC = () => {
                 }}></div>
             </div>
         </div>
+      </>
     );
 };
 
