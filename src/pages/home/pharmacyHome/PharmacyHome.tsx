@@ -82,7 +82,7 @@ const PharmacyHome: React.FC = () => {
             clickable: true,
           }}
           autoplay={{
-            delay: 28000,
+            delay: 8000,
             disableOnInteraction: false,
           }}
           modules={[Autoplay, Navigation, Pagination]}
