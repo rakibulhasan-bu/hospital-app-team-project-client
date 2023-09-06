@@ -106,7 +106,7 @@ const Appointment = () => {
           </div>
 
           <div className='bg-sky-100 p-3  text-xl rounded-lg'>
-          <p className='text-center font-semibold mb-2'>Appointment Time</p>
+          <p className=' font-semibold mb-2'>Appointment Time</p>
           <div className="inline-block relative w-full">
             
   <select className="block appearance-none w-full bg-sky-50 border border-blue-400 hover:border-blue-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
@@ -121,7 +121,7 @@ const Appointment = () => {
           </div>
 
           <div className='bg-sky-100 p-3  text-xl rounded-lg'>
-            <p className='font-bold'>Patient Name:</p>
+            <p className='font-bold'>Patient Phone Number:</p>
             <p>Mr. Rahman </p>
           </div>
 
