@@ -142,7 +142,7 @@ const Appointment = () => {
       {/* button  */}
       <section className='flex justify-between mx-14 pb-10'>
       <div>
-      <Link to={`/appointment`} className="btn plan-btn ">Cancel</Link>
+      <Link to={`/doctors`} className="btn plan-btn ">Cancel</Link>
       </div>
       <div>
         <button className='bttn common-btn py-3 text-lg'>Submit</button>
