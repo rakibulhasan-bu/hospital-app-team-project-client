@@ -48,7 +48,7 @@ const DoctorCard: React.FC<DoctorCardProps> = ({ card }) => {
           <FaDollarSign />
           <span>$ 1500</span>
         </div>
-        <Link to={`/appointment`} className="bttn common-btn">Book Appoinment</Link>
+        <Link to={`/appointment`} className="bttn common-btn">Book Appointment</Link>
         <Link to={`/appointment`} className="btn plan-btn text-sm">
           Book Online Consultation
         </Link>

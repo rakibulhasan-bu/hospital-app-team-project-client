@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import AppointmentBanner from '../AppointmentBanner/AppointmentBanner';
 import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
 
 
 const Appointment = () => {
@@ -91,6 +92,7 @@ const Appointment = () => {
         </div>
 
       </section>
+      {/* Appointment Information */}
       <section className='px-14 pb-10'>
         <div className='border-solid border-2 border-indigo-600 rounded-lg p-3'>
           <h3 className='text-center text-xl text-secondary font-bold mb-5'>Appointment Information</h3>
@@ -136,6 +138,15 @@ const Appointment = () => {
           </div>
         </div>
         
+      </section>
+      {/* button  */}
+      <section className='flex'>
+      <div>
+      <Link to={`/appointment`} className="btn plan-btn ">Cancel</Link>
+      </div>
+      <div>
+        <button className='bttn common-btn py-3 text-lg'>Submit</button>
+      </div>
       </section>
         </div>
     );
