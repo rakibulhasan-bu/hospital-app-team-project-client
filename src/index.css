@@ -18,7 +18,7 @@
     @apply border rounded border-grey;
   }
   .myInput {
-    @apply rounded border border-grey px-2 py-0.5 text-base placeholder:text-sm lg:px-3  lg:py-1 lg:placeholder:text-base 2xl:py-2;
+    @apply border w-full border-gray-200 rounded outline-secondary px-2 py-0.5 text-base placeholder:text-sm lg:px-3  lg:py-1.5 lg:placeholder:text-base 2xl:py-2;
   }
   .myBtn {
     @apply cursor-pointer select-none rounded border border-primary bg-primary px-4 py-1 text-center text-sm font-medium text-white hover:shadow-md 2xl:border-2 2xl:py-1.5 2xl:text-base;

@@ -1,86 +1,186 @@
 import { Link } from "react-router-dom";
 import design from "../../assets/login-02.png";
-import logo from "../../assets/logo.png";
-import { FaGoogle } from "react-icons/fa";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useState } from "react";
+
+interface formInputs {
+  name: string;
+  email: string;
+  password: unknown;
+  confirmPassword: unknown;
+  image: File;
+  role: string;
+}
+
 const PatientRegister = () => {
+  const [loadImage, setLoadImage] = useState('')
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<formInputs>();
+  const password = watch("password");
+
+  const fileHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setLoadImage(reader.result as string);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+
+
+  const onSubmit: SubmitHandler<formInputs> = data => {
+    console.log(data);
+  };
   return (
-    <section className=" bg-[#edf0ff] w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-2 lg:gap-20 2xl:pr-20 lg:pr-20 min-h-[70vh]">
-      <div className=" bg-secondary rounded-r-[50px] hidden lg:block 2xl:block">
-        <img src={design} alt="" />
+    <section className="bg-background w-full flex items-center justify-between">
+      {/* these is left image section  */}
+      <div className="w-1/2  hidden lg:flex items-center justify-center bg-secondary rounded-r-[50px]">
+        <img className="object-cover w-[78%] 2xl:w-full" src={design} alt="" />
       </div>
-      <div className=" self-center bg-white rounded-3xl p-10 space-y-5">
-        <img className=" h-16 hidden lg:block" src={logo} alt="" />
-        <h2 className=" title text-2xl">Getting Started</h2>
-        <form className=" space-y-5">
-          <div className="flex flex-col">
-            <label>
-              <span className="text">Name</span>
-            </label>
+      {/* these is right image section  */}
+      <div className='w-full lg:w-1/2 px-2 lg:px-16 2xl:px-20'>
+        <div className=" bg-white rounded-3xl p-4 lg:px-10 lg:py-8 2xl:p-10" >
+          <h2 className="title text-center pb-2 2xl:pb-4 text-xl lg:text-3xl text-secondary">Patient Registration</h2>
+
+          <form className="space-y-3 2xl:space-y-4" onSubmit={handleSubmit(onSubmit)}>
+            <div className="flex flex-col">
+              <label>
+                <span className="text">Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Name"
+                className="myInput"
+                {...register("name", { required: true, maxLength: 20 })}
+              />
+              {errors.name?.type === 'required' && <p className="text-sm text-red-500" role="alert">Name is required</p>}
+            </div>
+
+            <div className=" flex-col flex">
+              <label>
+                <span className="text">Email</span>
+              </label>
+              <input
+                type="email"
+                placeholder="email"
+                className="myInput"
+                {...register("email", { required: true })}
+              />
+              {errors.email?.type === 'required' && <p className="text-sm text-red-500" role="alert">Email is required</p>}
+            </div>
+
+            <div className="flex flex-col">
+              <label>
+                <span className="text">Password</span>
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Type password"
+                  className="myInput"
+                  {...register("password", {
+                    required: true,
+                    pattern: {
+                      value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+                      message: "Password must be at least 8 characters long and include at least one letter and one number."
+                    }
+                  })}
+                />
+                <button
+                  type="button"
+                  className="absolute top-1/2 right-2 transform -translate-y-1/2"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <AiOutlineEyeInvisible className="text-xl" /> : <AiOutlineEye className="text-xl" />}
+                </button>
+              </div>
+              {errors.password?.type === 'required' && <p className="text-sm text-red-500" role="alert">Password is required</p>}
+              {errors.password?.type === 'pattern' && <p className="text-sm text-red-500" role="alert">{errors.password.message}</p>}
+            </div>
+
+            <div className="flex flex-col">
+              <label>
+                <span className="text">Confirm password</span>
+              </label>
+              <div className="relative">
+                <input
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  placeholder="Confirm password"
+                  className="myInput"
+                  {...register("confirmPassword", {
+                    required: true,
+                    validate: (value) => value === password || "Passwords do not match",
+                  })}
+                />
+                <button
+                  type="button"
+                  className="absolute top-1/2 right-2 transform -translate-y-1/2"
+                  onClick={toggleConfirmPasswordVisibility}
+                >
+                  {showConfirmPassword ? <AiOutlineEyeInvisible className="text-xl" /> : <AiOutlineEye className="text-xl" />}
+                </button>
+              </div>
+              {errors.confirmPassword?.type === 'required' && <p className="text-sm text-red-500" role="alert">Confirm Password is required</p>}
+              {errors.confirmPassword?.message && <p className="text-sm text-red-500" role="alert">{errors.confirmPassword.message}</p>}
+            </div>
+
+            <div className='flex gap-4 items-center'>
+              <div className="w-12 h-12 rounded-full shadow-lg border border-secondary">
+                {loadImage ?
+                  <img className="h-full w-full object-cover rounded-full" src={loadImage} alt="" />
+                  : ""}
+              </div>
+              <div className=''>
+                <label htmlFor="image" className="bg-blue-100 text-textBlack px-4 py-1 rounded-full cursor-pointer">Select Profile Picture</label>
+                <input
+                  type="file"
+                  id="image"
+                  className="hidden"
+                  {...register('image', { required: true })}
+                  onChange={fileHandle}
+                />
+              </div>
+              {(errors.image?.type === 'required' && !loadImage) && (
+                <p className="text-sm text-red-500" role="alert">Profile Picture is required</p>
+              )}
+            </div>
+            {/* this is hidden div  */}
             <input
               type="text"
-              placeholder="Name"
-              className=" border border-gray-200 px-6 py-2 rounded outline-secondary"
+              defaultValue='doctor'
+              className="hidden"
+              {...register("role", { required: true })}
             />
-          </div>
-          <div className=" flex-col flex">
-            <label>
-              <span className="text">Email</span>
-            </label>
-            <input
-              type="email"
-              placeholder="email"
-              className=" border border-gray-200 px-6 py-2 rounded outline-secondary"
-            />
-          </div>
+            <div className="flex items-center justify-between pt-2">
+              <input className="bttn common-btn w-full cursor-pointer" type="submit" value="Register" />
+            </div>
+          </form>
+          <div className=" pt-4 flex items-center justify-between gap-4">
+            <p className=" text-gray-400 font-semibold">
+              Have an account?
+              <Link className=" text-secondary ml-2" to="/login">
+                LogIn
+              </Link>
+            </p>
+            <span className="text-textBlack font-semibold">Or</span>
+            <div className="flex items-center justify-center gap-1 cursor-pointer group border border-secondary px-2 py-1 rounded">
+              <FcGoogle className='text-xl' /> <span className="text-textBlack text-sm font-medium group-hover:text-secondary group-hover:font-semibold">Continue with Google</span>
+            </div>
 
-          <div className="flex flex-col">
-            <label>
-              <span className="text">Password</span>
-            </label>
-            <input
-              type="password"
-              placeholder="Type password"
-              className=" border border-gray-200 px-6 py-2 rounded outline-secondary"
-            />
           </div>
-          <div className=" flex-col flex">
-            <label>
-              <span className="text">Confirm password</span>
-            </label>
-            <input
-              type="password"
-              placeholder="Confirm password"
-              className=" border border-gray-200 px-6 py-2 rounded outline-secondary"
-            />
-          </div>
-
-          <div className="flex items-center justify-between mt-6">
-            <button className=" bttn common-btn w-full">Register</button>
-          </div>
-        </form>
-        <div className=" flex justify-between items-center">
-          <p className=" text-gray-400 font-semibold">
-            Already have an account?
-            <Link className=" text-secondary ml-2" to="/login">
-              LogIn
-            </Link>
-          </p>
-          <div className=" flex items-center gap-3 bg-secondary text-white p-1 group w-1/2 relative rounded">
-            <span className=" bg-white p-2 text-red-500 group-hover:w-full duration-300">
-              <FaGoogle />
-            </span>
-            <span className=" absolute group-hover:text-primary lg:top-[7px] lg:right-[7px]">
-              Sign in with Google
-            </span>
-          </div>
-          {/* <div className="relative group w-1/2 rounded overflow-hidden">
-            <span className="flex items-center justify-center gap-2 bg-secondary text-white p-1 transition-all duration-300 transform translate-x-0 group-hover:translate-x-full">
-              <FaGoogle className="text-red-500" />
-              <span className="group-hover:text-primary">
-                Sign in with Google
-              </span>
-            </span>
-          </div> */}
         </div>
       </div>
     </section>
