@@ -98,7 +98,11 @@ const Appointment = () => {
 
           <div className='bg-sky-100 p-3  text-xl rounded-lg'>
             <p className='font-bold'>Appointment type:</p>
-            <p>Mr. Rahman </p>
+            <div>
+            <input type="radio" value="Online" name="type" /> Online Consultation <br />
+            <input type="radio" value="offline" name="type" />Chamber Appointment
+            
+      </div>
           </div>
 
           <div className='bg-sky-100 p-3  text-xl rounded-lg'>
