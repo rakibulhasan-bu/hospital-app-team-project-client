@@ -85,7 +85,7 @@ const Appointment = () => {
           </div>
         <div className='bg-sky-100 p-3 mb-6 text-xl rounded-lg'>
             <p className='font-bold'>Doctor's fee:</p>
-            <p>$150  </p>
+            <p>$ 150  </p>
           </div>
 
         </div>
