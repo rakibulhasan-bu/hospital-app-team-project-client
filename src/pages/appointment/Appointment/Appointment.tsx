@@ -121,7 +121,7 @@ const Appointment = () => {
           </div>
 
           <div className='bg-sky-100 p-3  text-xl rounded-lg'>
-          <p className=' font-semibold mb-2'>Appointment Time</p>
+          <p className=' font-semibold mb-2'>Patient phone number</p>
           <div className="  relative h-11 w-full min-w-[200px]">
     <input
       className="peer h-full w-full border-b border-black bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-600 focus:border-slate-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
