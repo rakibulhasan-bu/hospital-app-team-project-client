@@ -18,12 +18,14 @@
     @apply border rounded border-grey;
   }
   .myInput {
-    @apply border w-full border-gray-200 rounded outline-secondary px-2 py-0.5 text-base placeholder:text-sm lg:px-3  lg:py-1.5 lg:placeholder:text-base 2xl:py-2;
+    @apply border-gray-200 text-gray-700 placeholder-shown:border-gray-200 placeholder-shown:border-t-gray-200 disabled:bg-gray-50  h-full w-full rounded-[7px] border border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal outline outline-0 transition-all placeholder-shown:border focus:border-2 focus:border-indigo-500 focus:border-t-transparent focus:outline-0 disabled:border-0;
   }
+
   .myBtn {
     @apply cursor-pointer select-none rounded border border-primary bg-primary px-4 py-1 text-center text-sm font-medium text-white hover:shadow-md 2xl:border-2 2xl:py-1.5 2xl:text-base;
   }
 }
+
 body {
   font-family: "Poppins", sans-serif;
 }

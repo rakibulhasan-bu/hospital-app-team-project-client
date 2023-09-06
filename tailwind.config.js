@@ -11,7 +11,7 @@ export default {
         textDarkBlack: "#272B41",
         textGray: "#757575",
         grey: "#F0F0F0",
-        background: "#edf0ff"
+        background: "#edf0ff",
       },
     },
   },
