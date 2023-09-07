@@ -10,10 +10,10 @@ import { store } from './redux/store';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <Suspense fallback={<Loading />}>
+    <Suspense fallback={<Loading />}>
+      <Provider store={store}>
         <RouterProvider router={router} />
-      </Suspense>
-    </Provider>
+      </Provider>
+    </Suspense>
   </React.StrictMode>,
 )
