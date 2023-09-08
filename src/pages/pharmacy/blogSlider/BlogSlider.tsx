@@ -5,10 +5,10 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { Autoplay, Navigation } from "swiper/modules";
 import '../style.css';
-import BlogCard from "./BlogCard"; // Importing BlogCard instead of AdCard
+import BlogCard from "./BlogCard"; 
 
 const BlogSlider: React.FC = () => {
-    const blogData = [ // Renamed productData to blogData for clarity
+    const blogData = [ 
         {
             img: 'https://i.ibb.co/TKBvrkT/dr-morepen-deals.webp',
             description: 'Sample Blog Description 1'
@@ -52,8 +52,8 @@ const BlogSlider: React.FC = () => {
                     spaceBetween={10}
                     autoplay={{ delay: 8000, disableOnInteraction: false }}
                     navigation={{
-                        nextEl: '.blog-swiper-button-next', // Updated class name for clarity
-                        prevEl: '.blog-swiper-button-prev', // Updated class name for clarity
+                        nextEl: '.blog-swiper-button-next',
+                        prevEl: '.blog-swiper-button-prev', 
                     }}
                     modules={[Autoplay, Navigation]}
                     className="mySwiper"
@@ -67,12 +67,12 @@ const BlogSlider: React.FC = () => {
                         <SwiperSlide key={index}>
                             <BlogCard
                                 img={blog.img}
-                                description={blog.description} // Passing the description prop to BlogCard
+                                description={blog.description} 
                             />
                         </SwiperSlide>
                     ))}
                 </Swiper>
-                <div className="blog-swiper-button-next swiper-button-custom" style={{
+                <div className="next swiper-button-custom" style={{
                     position: "absolute",
                     top: "50%",
                     right: "0px",
@@ -81,7 +81,7 @@ const BlogSlider: React.FC = () => {
                     height: "50px",
                     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
                 }}></div>
-                <div className="blog-swiper-button-prev swiper-button-custom" style={{
+                <div className="prev swiper-button-custom" style={{
                     position: "absolute",
                     top: "50%",
                     left: "0px",

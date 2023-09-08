@@ -67,7 +67,7 @@ const AdSlider: React.FC = () => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-                <div className="ad-swiper-button-next swiper-button-custom" style={{
+                <div className="next swiper-button-custom" style={{
                     position: "absolute",
                     top: "50%",
                     right: "0px",
@@ -76,7 +76,7 @@ const AdSlider: React.FC = () => {
                     height: "50px",
                     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
                 }}></div>
-                <div className="ad-swiper-button-prev swiper-button-custom" style={{
+                <div className="prev swiper-button-custom" style={{
                     position: "absolute",
                     top: "50%",
                     left: "0px",
