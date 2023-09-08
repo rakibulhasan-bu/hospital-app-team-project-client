@@ -4,6 +4,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createUser } from "../../redux/features/user/userSlice";
 
 interface formInputs {
   name: string;
@@ -15,6 +17,7 @@ interface formInputs {
 }
 
 const PatientRegister = () => {
+  const dispatch = useDispatch();
   const [loadImage, setLoadImage] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -42,6 +45,8 @@ const PatientRegister = () => {
 
 
   const onSubmit: SubmitHandler<formInputs> = data => {
+    const { name, email, confirmPassword, image, password, role } = data;
+    dispatch(createUser({ name, email, password }))
     console.log(data);
   };
   return (

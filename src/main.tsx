@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react'
+import { Toaster } from 'react-hot-toast';
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from "react-router-dom";
 import './index.css'
@@ -12,6 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Suspense fallback={<Loading />}>
       <Provider store={store}>
+        <Toaster position="top-right" />
         <RouterProvider router={router} />
       </Provider>
     </Suspense>
