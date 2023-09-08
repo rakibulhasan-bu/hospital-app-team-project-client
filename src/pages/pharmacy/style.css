@@ -1,12 +1,11 @@
-/* Custom styles for swiper buttons */
-.swiper-button-next::after, .swiper-button-prev::after {
-    font-size: 16px; 
-  }
-  
-  .swiper-button-next, .swiper-button-prev {
-    border-radius: 50%; 
-    width: 30px !important; 
-    height: 30px !important; 
-    line-height: 30px !important; 
-  }
-  
+/* Custom styles for swiper buttons within AdSlider */
+.swiper-button-custom::after {
+  font-size: 16px;
+}
+
+.swiper-button-custom {
+  border-radius: 50%;
+  width: 30px !important;
+  height: 30px !important;
+  line-height: 30px !important;
+}
