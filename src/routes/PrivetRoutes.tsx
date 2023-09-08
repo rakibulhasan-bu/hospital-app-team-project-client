@@ -10,7 +10,7 @@ import { setUser, toggleLoading } from '../redux/features/user/userSlice';
 const PrivateRoute = ({ children }) => {
     const dispatch = useDispatch()
     const { pathname } = useLocation();
-
+    console.log(pathname);
     const { email, isLoading } = useSelector((state: RootState) => state.userState)
 
     useEffect(() => {

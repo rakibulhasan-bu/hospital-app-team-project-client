@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import design from "../../assets/login-02.png";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { createUser } from "../../redux/features/user/userSlice";
+import toast from "react-hot-toast";
 
 interface formInputs {
   name: string;
@@ -15,6 +19,9 @@ interface formInputs {
 }
 
 const DoctorRegister = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const { name, error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
   const [loadImage, setLoadImage] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -42,8 +49,18 @@ const DoctorRegister = () => {
 
 
   const onSubmit: SubmitHandler<formInputs> = data => {
-    console.log(data);
+    const { name, email, confirmPassword, image, password, role } = data;
+    dispatch(createUser({ name, email, password }))
   };
+  useEffect(() => {
+    if (!isLoading && email) {
+      navigate('/')
+      toast.success(`${name}, welcome to Lifecare`)
+    }
+    if (isError) {
+      toast.error(error)
+    }
+  }, [email, error, isError, isLoading, name, navigate])
   return (
     <section className="bg-background w-full flex items-center justify-between">
       {/* these is left image section  */}

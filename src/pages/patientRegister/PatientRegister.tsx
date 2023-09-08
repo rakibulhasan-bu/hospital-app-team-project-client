@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import design from "../../assets/login-02.png";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
@@ -20,7 +20,8 @@ interface formInputs {
 
 const PatientRegister = () => {
   const dispatch = useDispatch();
-  const { name, error, isError, email } = useSelector((state: RootState) => state.userState)
+  const navigate = useNavigate()
+  const { name, error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
   const [loadImage, setLoadImage] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -50,16 +51,18 @@ const PatientRegister = () => {
   const onSubmit: SubmitHandler<formInputs> = data => {
     const { name, email, confirmPassword, image, password, role } = data;
     dispatch(createUser({ name, email, password }))
-    console.log(data);
   };
+
   useEffect(() => {
-    if (email) {
-      toast.success(`${name}welcome to Lifecare`)
+    if (!isLoading && email) {
+      navigate('/')
+      toast.success(`${name}, welcome to Lifecare`)
     }
     if (isError) {
       toast.error(error)
     }
-  }, [email, error, isError, name])
+  }, [email, error, isError, isLoading, name, navigate])
+
   return (
     <section className="bg-background w-full flex items-center justify-between">
       {/* these is left image section  */}
