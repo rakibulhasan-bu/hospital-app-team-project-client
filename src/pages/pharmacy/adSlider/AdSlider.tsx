@@ -42,6 +42,10 @@ const AdSlider: React.FC = () => {
     return (
       <>
         <div className="container px-4 py-10 mx-auto">
+        <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl text-primary font-bold">Products</h2>
+                <button className=" text-secondary px-4 rounded hover:bg-blue-100">View All</button>
+            </div>
             <div className="swiper-container" style={{ position: "relative" }}>
                 <Swiper
                     slidesPerView={1}
