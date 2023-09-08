@@ -10,9 +10,8 @@ import { RootState } from "../../redux/store";
 
 const AdminNavbar = () => {
     const { open, setOpen, close, setClose, handleClose } = useContext(DashboardContext);
-    const { user } = useSelector((state: RootState) => state.userState)
+    const { name, role } = useSelector((state: RootState) => state.userState)
 
-    console.log(user);
     return (
         <div className='bg-white py-2 px-4 w-full flex items-center justify-between myShadow'>
             <div className={`flex items-center ${close ? "gap-10" : "gap-4"}`}>
