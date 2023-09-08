@@ -42,6 +42,10 @@ const AdSlider: React.FC = () => {
     return (
       <>
         <div className="container px-4 py-10 mx-auto">
+        <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl text-primary font-bold">Products</h2>
+                <button className=" text-secondary px-4 rounded hover:bg-blue-100">View All</button>
+            </div>
             <div className="swiper-container" style={{ position: "relative" }}>
                 <Swiper
                     slidesPerView={1}
@@ -67,7 +71,7 @@ const AdSlider: React.FC = () => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-                <div className="ad-swiper-button-next swiper-button-custom" style={{
+                <div className="next swiper-button-custom" style={{
                     position: "absolute",
                     top: "50%",
                     right: "0px",
@@ -76,7 +80,7 @@ const AdSlider: React.FC = () => {
                     height: "50px",
                     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
                 }}></div>
-                <div className="ad-swiper-button-prev swiper-button-custom" style={{
+                <div className="prev swiper-button-custom" style={{
                     position: "absolute",
                     top: "50%",
                     left: "0px",
