@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import design from "../../assets/login-02.png";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createUser } from "../../redux/features/user/userSlice";
+import { RootState } from "../../redux/store";
+import toast from "react-hot-toast";
 
 interface formInputs {
   name: string;
@@ -15,6 +19,9 @@ interface formInputs {
 }
 
 const PatientRegister = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const { name, error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
   const [loadImage, setLoadImage] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -42,8 +49,20 @@ const PatientRegister = () => {
 
 
   const onSubmit: SubmitHandler<formInputs> = data => {
-    console.log(data);
+    const { name, email, confirmPassword, image, password, role } = data;
+    dispatch(createUser({ name, email, password }))
   };
+
+  useEffect(() => {
+    if (!isLoading && email) {
+      navigate('/')
+      toast.success(`${name}, welcome to Lifecare`)
+    }
+    if (isError) {
+      toast.error(error)
+    }
+  }, [email, error, isError, isLoading, name, navigate])
+
   return (
     <section className="bg-background w-full flex items-center justify-between">
       {/* these is left image section  */}
@@ -56,41 +75,34 @@ const PatientRegister = () => {
           <h2 className="title text-center pb-2 2xl:pb-4 text-xl lg:text-3xl text-secondary">Patient Registration</h2>
 
           <form className="space-y-3 2xl:space-y-4" onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex flex-col">
-              <label>
-                <span className="text">Name</span>
-              </label>
+            <div className="flex flex-col relative w-full min-w-[200px]">
               <input
                 type="text"
-                placeholder="Name"
-                className="myInput"
+                className="myInput peer"
+                placeholder=" "
                 {...register("name", { required: true, maxLength: 20 })}
               />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">Name*</label>
               {errors.name?.type === 'required' && <p className="text-sm text-red-500" role="alert">Name is required</p>}
             </div>
 
-            <div className=" flex-col flex">
-              <label>
-                <span className="text">Email</span>
-              </label>
+            <div className=" flex-col flex relative w-full min-w-[200px]">
               <input
                 type="email"
-                placeholder="email"
-                className="myInput"
+                className="myInput peer"
+                placeholder=" "
                 {...register("email", { required: true })}
               />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">Email*</label>
               {errors.email?.type === 'required' && <p className="text-sm text-red-500" role="alert">Email is required</p>}
             </div>
 
             <div className="flex flex-col">
-              <label>
-                <span className="text">Password</span>
-              </label>
-              <div className="relative">
+              <div className="relative w-full min-w-[200px]">
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  placeholder="Type password"
-                  className="myInput"
+                  className="myInput peer"
+                  placeholder=" "
                   {...register("password", {
                     required: true,
                     pattern: {
@@ -99,6 +111,7 @@ const PatientRegister = () => {
                     }
                   })}
                 />
+                <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">Password*</label>
                 <button
                   type="button"
                   className="absolute top-1/2 right-2 transform -translate-y-1/2"
@@ -107,24 +120,23 @@ const PatientRegister = () => {
                   {showPassword ? <AiOutlineEyeInvisible className="text-xl" /> : <AiOutlineEye className="text-xl" />}
                 </button>
               </div>
+
               {errors.password?.type === 'required' && <p className="text-sm text-red-500" role="alert">Password is required</p>}
               {errors.password?.type === 'pattern' && <p className="text-sm text-red-500" role="alert">{errors.password.message}</p>}
             </div>
 
             <div className="flex flex-col">
-              <label>
-                <span className="text">Confirm password</span>
-              </label>
-              <div className="relative">
+              <div className="relative w-full min-w-[200px]">
                 <input
                   type={showConfirmPassword ? 'text' : 'password'}
-                  placeholder="Confirm password"
-                  className="myInput"
+                  className="myInput peer"
+                  placeholder=" "
                   {...register("confirmPassword", {
                     required: true,
                     validate: (value) => value === password || "Passwords do not match",
                   })}
                 />
+                <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">Confirm Password*</label>
                 <button
                   type="button"
                   className="absolute top-1/2 right-2 transform -translate-y-1/2"

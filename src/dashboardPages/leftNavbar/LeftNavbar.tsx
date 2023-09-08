@@ -10,8 +10,13 @@ import { BsPeopleFill, BsPersonFillAdd } from "react-icons/bs";
 import { FaListUl } from "react-icons/fa";
 import { TbNewSection, TbReplaceFilled } from "react-icons/tb";
 import { SiGooglenews } from "react-icons/si";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/firebase.config";
+import { useDispatch } from "react-redux";
+import { userLogOut } from "../../redux/features/user/userSlice";
 
 const LeftNavbar = () => {
+    const dispatch = useDispatch()
     const { close, setClose, branchOpen, handleBranch, doctorOpen, handleDoctor, newsOpen, handleNews, appointmentOpen, handleAppointment } = useContext(DashboardContext);
 
     const location = useLocation();
@@ -24,6 +29,11 @@ const LeftNavbar = () => {
             setClose(true);
         }
     };
+
+    const handleLogOut = () => {
+        signOut(auth)
+        dispatch(userLogOut())
+    }
 
     const navLinks = [
         {
@@ -121,7 +131,8 @@ const LeftNavbar = () => {
         },
         {
             label: "Logout",
-            link: "/logout",
+            handler: handleLogOut,
+            link: "/login",
             icon: <IoMdLogOut className={`text-lg cursor-pointer group-hover:text-primary ${isActive("/logout") ? 'text-primary' : 'text-primary/60'}`} />,
         },
 

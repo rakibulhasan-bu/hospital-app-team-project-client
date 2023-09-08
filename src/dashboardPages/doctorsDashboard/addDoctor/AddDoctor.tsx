@@ -7,62 +7,65 @@ const AddDoctor = () => {
           Doctor Details
         </h2>
         <form action="">
-          <div className=" grid grid-cols-1 lg:grid-cols-4 gap-5">
-            <div className=" flex-col flex lg:col-start-1 lg:col-end-3">
-              <label className="">
-                <span className="text">First Name</span>
+          <div className=" grid grid-cols-1 lg:grid-cols-6 gap-5">
+            <div className="flex flex-col relative h-10 lg:col-start-1 lg:col-end-3">
+              <input type="text" className="myInput peer" placeholder=" " />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
+                Name*
               </label>
-              <input
-                type="email"
-                placeholder="Your First Name"
-                className="myInput"
-              />
             </div>
-            <div className=" flex-col flex lg:col-start-3 lg:col-end-5">
-              <label className="">
-                <span className="text">Last Name</span>
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-3 lg:col-end-5">
+              <input type="email" className="myInput peer" placeholder=" " />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
+                Email*
               </label>
-              <input
-                type="email"
-                placeholder="Your Last Name"
-                className="myInput"
-              />
             </div>
-            <div className=" flex-col flex">
-              <label className="">
-                <span className="text">Phone</span>
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-5 lg:col-end-7">
+              <input type="email" className="myInput peer" placeholder=" " />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
+                Mobile*
               </label>
-              <input
-                type="number"
-                placeholder="Your Phone Number"
-                className="myInput"
-              />
             </div>
-            <div className=" flex-col flex">
-              <label className="">
-                <span className="text">Email</span>
+
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-4">
+              <input type="email" className="myInput peer" placeholder=" " />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
+                Password*
               </label>
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="myInput"
-              />
             </div>
-            <div className=" flex-col flex">
-              <label className="">
-                <span className="text">Designation</span>
+            <div className=" flex-col flex relative w-full h-10 lg:col-end-7 lg:col-start-4">
+              <input type="email" className="myInput peer" placeholder=" " />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
+                Confirm Password*
               </label>
-              <input
-                type="text"
-                placeholder="Your Designation"
-                className="myInput"
-              />
             </div>
-            <div className=" flex-col flex">
-              <label className="">
-                <span className="text">Department</span>
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-4">
+              <input type="email" className="myInput peer" placeholder=" " />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
+                Date Of Birth*
               </label>
-              <select className="myInput text bg-white">
+            </div>
+            <div className=" flex relative w-full h-10 text-left items-center lg:col-end-7 lg:col-start-4">
+              <label className="">Gender*</label>
+              <div className=" flex gap-5 ">
+                <input type="radio" name="radio-2" className="" checked />
+                <input type="radio" name="radio-2" className="" />
+              </div>
+            </div>
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3">
+              <input type="email" className="myInput peer" placeholder=" " />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
+                Education*
+              </label>
+            </div>
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-3 lg:col-end-5">
+              <input type="email" className="myInput peer" placeholder=" " />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
+                Designation*
+              </label>
+            </div>
+            <div className=" flex-col flex lg:col-start-5 lg:col-end-7">
+              <select className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400">
                 <option disabled selected>
                   Select Department
                 </option>
@@ -71,22 +74,36 @@ const AddDoctor = () => {
                 <option>Dentist</option>
               </select>
             </div>
-            <div className="flex-col flex">
-              <label className="">
-                <span className="text">Avatar</span>
-              </label>
-              <input type="file" className="myInput text bg-white" />
-            </div>
-            <div className="relative h-10 w-full min-w-[200px]">
-              <input className="myInput peer" placeholder=" " />
-              <label className="before:content[' '] after:content[' '] text-blue-gray-400 before:border-blue-gray-200 after:border-blue-gray-200 peer-placeholder-shown:text-blue-gray-500 peer-disabled:peer-placeholder-shown:text-blue-gray-500 pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none text-[11px] font-normal leading-tight transition-all before:pointer-events-none before:mr-1 before:mt-[6.5px] before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-l before:border-t before:transition-all after:pointer-events-none after:ml-1 after:mt-[6.5px] after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-r after:border-t after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-indigo-500 peer-focus:before:border-l-2 peer-focus:before:border-t-2 peer-focus:before:border-indigo-500 peer-focus:after:border-r-2 peer-focus:after:border-t-2 peer-focus:after:border-indigo-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent">
-                {" "}
-                Input Indigo{" "}
+            <div className=" flex-col flex relative w-full h-20 lg:col-start-1 lg:col-end-7">
+              <input type="email" className="myInput peer" placeholder=" " />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
+                Address*
               </label>
             </div>
-            <div className=" flex justify-between items-center">
-              <button>Submit</button>
-              <button className="">Cancel</button>
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3">
+              <input type="email" className="myInput peer" placeholder=" " />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
+                Division*
+              </label>
+            </div>
+            <div className="flex gap-4 items-center lg:col-start-3 lg:col-end-5">
+              <div className="w-12 h-12 rounded-full shadow-lg border border-secondary">
+                <img src="" alt="" />
+              </div>
+              <div className="">
+                <label
+                  htmlFor="image"
+                  className="shadow-sm border text-textBlack px-4 py-2 rounded-lg cursor-pointer"
+                >
+                  Select Profile Picture
+                </label>
+                <input type="file" id="image" className="hidden" />
+              </div>
+            </div>
+
+            <div className=" flex justify-end gap-5 items-center lg:col-start-5 lg:col-end-7">
+              <button className=" bttn common-btn">Submit</button>
+              <button className="btn plan-btn">Cancel</button>
             </div>
           </div>
         </form>

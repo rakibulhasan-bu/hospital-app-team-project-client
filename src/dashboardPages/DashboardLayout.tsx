@@ -5,7 +5,7 @@ import DashboardMain from "./dashboardMain/DashboardMain";
 const DashboardLayout = () => {
     return (
         <DashboardContextProvider>
-            <div className='w-screen h-screen overscroll-auto dashboard-bg'>
+            <div className='w-screen  h-screen overscroll-auto dashboard-bg'>
                 <AdminNavbar />
                 <DashboardMain />
             </div>
