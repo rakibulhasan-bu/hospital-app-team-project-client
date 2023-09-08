@@ -4,21 +4,30 @@ import GalleryImage from './GalleryImage';
 const Tabs: React.FC = () => {
     const [activeTab, setActiveTab] = useState('TAB1');
 
-    // Sample images for demonstration
     const images = [
-        'path_to_image1.jpg',
-        'path_to_image2.jpg',
-        'path_to_image3.jpg',
-        // ... add more image paths
+        "https://picsum.photos/400/300",
+        "https://picsum.photos/210/350",
+        "https://picsum.photos/200/310",
+        "https://picsum.photos/230/330",
+        "https://picsum.photos/240/340",
+        "https://picsum.photos/250/350",
+        "https://picsum.photos/260/360",
+        "https://picsum.photos/270/370",
+        "https://picsum.photos/280/380",
     ];
 
     return (
         <div className="container mx-auto p-6">
-            <div className="flex gap-4 mb-6">
+            <div className="text-center mb-6">
+                <h1 className="text-2xl font-bold">Gallery Section</h1>
+                <p className="text-gray-600">Browse through our collection</p>
+            </div>
+
+            <div className="flex justify-center gap-4 mb-6">
                 {['TAB1', 'TAB2', 'TAB3', 'TAB4', 'TAB5'].map(tab => (
                     <button
                         key={tab}
-                        className={`py-2 px-4 ${activeTab === tab ? 'bg-blue-500 text-white' : 'bg-gray-200'} hover:bg-gray-300 focus:outline-none`}
+                        className={`bttn common-btn py-2 px-4 ${activeTab === tab ? 'bg-blue-500 text-white' : 'bg-gray-200'} hover:bg-gray-300 focus:outline-none`}
                         onClick={() => setActiveTab(tab)}
                     >
                         {tab}
