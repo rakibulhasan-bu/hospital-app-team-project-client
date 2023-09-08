@@ -38,7 +38,7 @@ const AdminNavbar = () => {
                 </div>
                 <div className='flex items-center gap-2'>
                     <div className=''>
-                        <h3 className="text-primary font-semibold">{user?.name}</h3>
+                        <h3 className="text-primary font-semibold">{name}</h3>
                         <p className="text-primary/50 text-sm">Admin</p>
                     </div>
                     <img className="w-10 h-10 object-cover rounded-lg" src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1693057174/Website-assets/LifeCare/pexels-polina-tankilevitch-3873191_sobg4q.jpg" alt="" />

@@ -3,9 +3,11 @@ import design from "../../assets/login-02.png";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../redux/features/user/userSlice";
+import { RootState } from "../../redux/store";
+import toast from "react-hot-toast";
 
 interface formInputs {
   name: string;
@@ -18,6 +20,7 @@ interface formInputs {
 
 const PatientRegister = () => {
   const dispatch = useDispatch();
+  const { name, error, isError, email } = useSelector((state: RootState) => state.userState)
   const [loadImage, setLoadImage] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -49,6 +52,14 @@ const PatientRegister = () => {
     dispatch(createUser({ name, email, password }))
     console.log(data);
   };
+  useEffect(() => {
+    if (email) {
+      toast.success(`${name}welcome to Lifecare`)
+    }
+    if (isError) {
+      toast.error(error)
+    }
+  }, [email, error, isError, name])
   return (
     <section className="bg-background w-full flex items-center justify-between">
       {/* these is left image section  */}

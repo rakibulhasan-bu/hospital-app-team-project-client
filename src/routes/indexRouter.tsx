@@ -29,6 +29,7 @@ import Appointment from "../pages/appointment/Appointment/Appointment";
 import AddDoctor from "../dashboardPages/doctorsDashboard/addDoctor/AddDoctor";
 import AddBranch from "../dashboardPages/dashboardBrances/addBranch/AddBranch";
 import BranchList from "../dashboardPages/dashboardBrances/branchList/BranchList";
+import PrivateRoute from "./PrivetRoutes";
 
 
 export const router = createBrowserRouter([
@@ -97,7 +98,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: <PrivateRoute> <DashboardLayout /></PrivateRoute>,
     errorElement: <ErrorPage />,
     children: [
       {
