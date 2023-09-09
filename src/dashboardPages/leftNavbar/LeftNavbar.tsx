@@ -14,10 +14,11 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase.config";
 import { useDispatch } from "react-redux";
 import { userLogOut } from "../../redux/features/user/userSlice";
+import { MdAddShoppingCart, MdProductionQuantityLimits } from "react-icons/md";
 
 const LeftNavbar = () => {
     const dispatch = useDispatch()
-    const { close, setClose, branchOpen, handleBranch, doctorOpen, handleDoctor, newsOpen, handleNews, appointmentOpen, handleAppointment } = useContext(DashboardContext);
+    const { close, setClose, branchOpen, handleBranch, pharmacyOpen, handlePharmacy, doctorOpen, handleDoctor, newsOpen, handleNews, appointmentOpen, handleAppointment } = useContext(DashboardContext);
 
     const location = useLocation();
     const isActive = (path: string) => {
@@ -74,6 +75,24 @@ const LeftNavbar = () => {
                     label: "Add branch",
                     link: "/dashboard/add-branch",
                     icon: <BiAddToQueue className={`cursor-pointer group-hover:text-primary ${isActive("/dashboard/add-branch") ? 'text-primary' : 'text-primary/60'}`} />,
+                },
+            ]
+        },
+        {
+            label: "Pharmacy",
+            state: pharmacyOpen,
+            handler: handlePharmacy,
+            icon: <MdProductionQuantityLimits className="text-lg text-primary/60 cursor-pointer group-hover:text-primary" />,
+            children: [
+                {
+                    label: "Product List",
+                    link: "/dashboard/product-list",
+                    icon: <FaListUl className={`cursor-pointer group-hover:text-primary ${isActive("/dashboard/product-list") ? 'text-primary' : 'text-primary/60'}`} />,
+                },
+                {
+                    label: "Add Product",
+                    link: "/dashboard/add-product",
+                    icon: <MdAddShoppingCart className={`cursor-pointer group-hover:text-primary ${isActive("/dashboard/add-product") ? 'text-primary' : 'text-primary/60'}`} />,
                 },
             ]
         },
