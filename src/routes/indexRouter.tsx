@@ -30,6 +30,8 @@ import AddDoctor from "../dashboardPages/doctorsDashboard/addDoctor/AddDoctor";
 import AddBranch from "../dashboardPages/dashboardBrances/addBranch/AddBranch";
 import BranchList from "../dashboardPages/dashboardBrances/branchList/BranchList";
 import PrivateRoute from "./PrivetRoutes";
+import DashboardProductList from "../dashboardPages/dashboardPharmacy/DashboardProductList";
+import AddProduct from "../dashboardPages/dashboardPharmacy/addProduct/AddProduct";
 
 
 export const router = createBrowserRouter([
@@ -140,6 +142,14 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/add-news",
         element: <AddNews />
+      },
+      {
+        path: "/dashboard/product-list",
+        element: <DashboardProductList />
+      },
+      {
+        path: "/dashboard/add-product",
+        element: <AddProduct />
       },
       {
         path: "/dashboard/add-news-category",
