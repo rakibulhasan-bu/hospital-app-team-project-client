@@ -1,0 +1,27 @@
+
+.swiper-button-custom::after {
+  font-size: 20px;
+  color: skyblue;
+  text-align: center; 
+  vertical-align: middle; 
+  line-height: 30px; 
+}
+
+.swiper-button-custom {
+  border-radius: 50%;
+  width: 30px !important;
+  height: 30px !important;
+  line-height: 30px !important;
+  background-color: white;
+  display: flex; 
+  align-items: center;
+  justify-content: center; 
+}
+
+.next.swiper-button-custom::after {
+  content: '>'; 
+}
+
+.prev.swiper-button-custom::after {
+  content: '<'; 
+}
