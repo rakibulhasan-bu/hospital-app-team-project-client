@@ -4,8 +4,8 @@ import { FaLocationDot, FaRegPaperPlane } from "react-icons/fa6";
 
 const BranchesCard = () => {
   return (
-    <div className="h-40 mx-auto overflow-hidden border border-textBlack/50 w-max">
-      <div className="flex items-center font-semibold text-textBlack/70">
+    <div className="h-32 mx-auto overflow-hidden border rounded-lg border-accent w-max">
+      <div className="flex items-center text-xs font-semibold text-accent">
         <div className="m-3">
           <a href="#">
             <FaLocationDot className="inline text-secondary" /> Sadar, Gazipur
@@ -25,7 +25,7 @@ const BranchesCard = () => {
         <img
           src="https://res.cloudinary.com/dth0nno0p/image/upload/v1693534293/hospital_kisskz.jpg"
           alt=""
-          className="w-40 h-40"
+          className="h-32 w-36"
         />
       </div>
     </div>
