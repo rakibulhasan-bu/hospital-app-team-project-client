@@ -31,12 +31,12 @@ const BranchesHome = () => {
             <span className="text-secondary">Your Health </span>
           </h1>
         </div>
-        <BranchesCard />
-        <div className="flex gap-4 my-4 rounded-lg">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="md:col-span-2"><BranchesCard /></div>
           <BranchesCard />
           <BranchesCard />
+          <div className="md:col-span-2"><BranchesCard /></div>
         </div>
-        <BranchesCard />
 
         <div className="flex flex-wrap justify-center gap-3 my-5">
           <button className=" btn plan-btn">Show all Branches</button>

@@ -4,7 +4,7 @@ import { FaLocationDot, FaRegPaperPlane } from "react-icons/fa6";
 
 const BranchesCard = () => {
   return (
-    <div className="h-32 mx-auto overflow-hidden border rounded-lg border-accent w-max">
+    <div className="h-32 mx-auto overflow-hidden border rounded-lg branches-card border-accent w-max hover:shadow-lg bg-[#112b4ed8] md:bg-transparent">
       <div className="flex items-center text-xs font-semibold text-accent">
         <div className="m-3">
           <a href="#">
