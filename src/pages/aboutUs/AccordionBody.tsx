@@ -35,9 +35,8 @@ const AccordionBody = () => {
   };
 
   return (
-    <div className="container py-10">
-      <div className="grid items-center grid-cols-1 p-5 rounded-lg md:grid-cols-2">
-        <img src={imageUrl} alt="Your Alt Text" className="h-3/6 rounded-lg " />
+      <div className="grid items-center grid-cols-1 my-10 p-5 rounded-lg md:grid-cols-2">
+        <img src={imageUrl} alt="Your Alt Text" className="h-80 mx-auto w-60 rounded-lg " />
         <div>
           {accordionData.map((item, index) => (
             <Accordion
@@ -50,7 +49,6 @@ const AccordionBody = () => {
           ))}
         </div>
       </div>
-    </div>
   );
 };
 

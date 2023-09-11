@@ -10,7 +10,7 @@ interface AccordionProps {
 
 const Accordion: React.FC<AccordionProps> = ({ title, details, isOpen, onToggle }) => {
   return (
-    <div className="mt-3 border rounded shadow">
+    <div className="border rounded shadow">
       <div
         className="flex items-center justify-between p-4 cursor-pointer"
         onClick={onToggle} // Use the provided callback to toggle the accordion
