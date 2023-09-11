@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AccordionBody from './AccordionBody';
+import Timeline from './Timeline';
 
 
 const AboutUs: React.FC = () => {
@@ -12,7 +13,7 @@ const AboutUs: React.FC = () => {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [words.length]);
 
   return (
     <>
@@ -57,6 +58,7 @@ const AboutUs: React.FC = () => {
     </section>
 
     <AccordionBody></AccordionBody>
+    <Timeline></Timeline>
     </>
   );
 }
