@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AccordionBody from './AccordionBody';
+import Timeline from './Timeline';
 
 
 const AboutUs: React.FC = () => {
@@ -12,11 +13,11 @@ const AboutUs: React.FC = () => {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [words.length]);
 
   return (
     <>
-    <div className="container mx-auto p-10 h- flex flex-col">
+    <div className="container mx-auto p-10 my-8 flex flex-col">
       <h1 className="text-4xl font-bold mb-4 text-start">
         The New Way to{' '}
         <span
@@ -34,7 +35,30 @@ const AboutUs: React.FC = () => {
         </button>
       </div>
     </div>
+    <section id="about-us" className="bg-blue-100 py-10">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-wrap items-center">
+          <div className="w-full lg:w-1/2 lg:pr-10">
+            <h2 className="text-3xl font-semibold text-gray-800 mb-4">
+              Who We Are
+            </h2>
+            <p className="text-gray-600">
+              LifeCare Hospital is a leading healthcare institution dedicated to providing exceptional medical services and compassionate care. Established in 2020, LifeCare Hospital has been at the forefront of delivering high-quality healthcare solutions to the community. Our commitment to excellence in patient care is unwavering, making us a trusted name in the healthcare industry.
+            </p>
+          </div>
+          <div className="w-full lg:w-1/2 mt-6 lg:mt-0">
+            <img
+              src="https://i.ibb.co/NNZRTWp/hospital-building-modern-parking-lot-59693686.jpg"
+              alt="LifeCare Hospital"
+              className="rounded-lg shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
     <AccordionBody></AccordionBody>
+    <Timeline></Timeline>
     </>
   );
 }
