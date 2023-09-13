@@ -22,6 +22,7 @@ export const createUser = createAsyncThunk(
     await updateProfile(auth.currentUser, {
       displayName: name,
     });
+
     console.log(data);
     return {
       name: data.user.displayName,
@@ -48,7 +49,7 @@ export const signInUser = createAsyncThunk(
       };
     } catch (error) {
       console.error("Error signing in:", error);
-      throw error; // Rethrow the error so that you can handle it in your component.
+      throw error;
     }
   }
 );
