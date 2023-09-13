@@ -5,6 +5,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
+import { useInsertUsersMutation } from "./userApi";
 
 const initialState = {
   name: "",
@@ -22,7 +23,13 @@ export const createUser = createAsyncThunk(
     await updateProfile(auth.currentUser, {
       displayName: name,
     });
+    const [insertUser, { isError, isLoading, isSuccess }] =
+      useInsertUsersMutation();
+    insertUser({ email, userName: name });
     console.log(data);
+    console.log("isError :>> ", isError);
+    console.log("isLoading :>> ", isLoading);
+    console.log("isSuccess :>> ", isSuccess);
     return {
       name: data.user.displayName,
       email: data.user.email,
@@ -48,7 +55,7 @@ export const signInUser = createAsyncThunk(
       };
     } catch (error) {
       console.error("Error signing in:", error);
-      throw error; // Rethrow the error so that you can handle it in your component.
+      throw error;
     }
   }
 );

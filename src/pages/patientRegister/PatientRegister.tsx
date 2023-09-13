@@ -47,7 +47,6 @@ const PatientRegister = () => {
     }
   };
 
-
   const onSubmit: SubmitHandler<formInputs> = data => {
     const { name, email, confirmPassword, image, password, role } = data;
     dispatch(createUser({ name, email, password }))
