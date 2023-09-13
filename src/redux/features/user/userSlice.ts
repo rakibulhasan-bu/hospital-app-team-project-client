@@ -5,6 +5,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
+import { useInsertUsersMutation } from "./userApi";
 
 const initialState = {
   name: "",
@@ -22,7 +23,9 @@ export const createUser = createAsyncThunk(
     await updateProfile(auth.currentUser, {
       displayName: name,
     });
-
+    const [insertUser, { isError, isLoading, isSuccess }] =
+      useInsertUsersMutation();
+    insertUser({ email, userName: name });
     console.log(data);
     return {
       name: data.user.displayName,

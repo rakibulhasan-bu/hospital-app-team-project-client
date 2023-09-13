@@ -7,7 +7,9 @@ const DashboardUsers = () => {
         <div className=''>
             DashboardUsers
             <br />
-            {users?.data[0]?.email}
+            {users?.data.map(user => (
+                <p>{user?.email}</p>
+            ))}
         </div>
     );
 };
