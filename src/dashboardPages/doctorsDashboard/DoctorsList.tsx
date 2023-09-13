@@ -7,7 +7,7 @@ const DoctorsList = () => {
 
   return (
     <section className="container mx-auto">
-      <p>Doctors | Doctor list </p>
+      <p className=" py-6 text-primary font-medium">Doctors | Doctor list </p>
       <div className=" bg-white p-5 rounded-2xl">
         <h2 className=" mb-5 text-xl font-semibold text-primary">
           Doctor List
