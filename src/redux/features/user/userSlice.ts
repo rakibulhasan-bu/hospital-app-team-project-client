@@ -27,6 +27,9 @@ export const createUser = createAsyncThunk(
       useInsertUsersMutation();
     insertUser({ email, userName: name });
     console.log(data);
+    console.log("isError :>> ", isError);
+    console.log("isLoading :>> ", isLoading);
+    console.log("isSuccess :>> ", isSuccess);
     return {
       name: data.user.displayName,
       email: data.user.email,
