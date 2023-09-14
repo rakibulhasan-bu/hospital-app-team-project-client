@@ -44,8 +44,10 @@ const Doctors: React.FC = () => {
   ];
   return (
     <section className="px-5">
-      <div className=" container mx-auto">
-        <h1 className=" text-center text-5xl font-bold">Search Doctors</h1>
+      <div className=" container mx-auto my-10">
+        <h1 className=" text-center text-5xl font-semibold  text-primary dark:text-slate-400">
+          Search Doctors
+        </h1>
         <p className=" text-center">
           <Link to="/">Home</Link> | <span>Search doctor</span>
         </p>

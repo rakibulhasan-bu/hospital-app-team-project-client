@@ -10,9 +10,15 @@ import { BsPeopleFill, BsPersonFillAdd } from "react-icons/bs";
 import { FaListUl } from "react-icons/fa";
 import { TbNewSection, TbReplaceFilled } from "react-icons/tb";
 import { SiGooglenews } from "react-icons/si";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/firebase.config";
+import { useDispatch } from "react-redux";
+import { userLogOut } from "../../redux/features/user/userSlice";
+import { MdAddShoppingCart, MdProductionQuantityLimits } from "react-icons/md";
 
 const LeftNavbar = () => {
-    const { close, setClose, branchOpen, handleBranch, doctorOpen, handleDoctor, newsOpen, handleNews, appointmentOpen, handleAppointment } = useContext(DashboardContext);
+    const dispatch = useDispatch()
+    const { close, setClose, branchOpen, handleBranch, pharmacyOpen, handlePharmacy, doctorOpen, handleDoctor, newsOpen, handleNews, appointmentOpen, handleAppointment } = useContext(DashboardContext);
 
     const location = useLocation();
     const isActive = (path: string) => {
@@ -24,6 +30,11 @@ const LeftNavbar = () => {
             setClose(true);
         }
     };
+
+    const handleLogOut = () => {
+        signOut(auth)
+        dispatch(userLogOut())
+    }
 
     const navLinks = [
         {
@@ -68,9 +79,27 @@ const LeftNavbar = () => {
             ]
         },
         {
-            label: "Patients",
-            link: "/dashboard/patients-list",
-            icon: <BsPeopleFill className={`text-lg cursor-pointer group-hover:text-primary ${isActive("/dashboard/patients-list") ? 'text-primary' : 'text-primary/60'}`} />,
+            label: "Pharmacy",
+            state: pharmacyOpen,
+            handler: handlePharmacy,
+            icon: <MdProductionQuantityLimits className="text-lg text-primary/60 cursor-pointer group-hover:text-primary" />,
+            children: [
+                {
+                    label: "Product List",
+                    link: "/dashboard/product-list",
+                    icon: <FaListUl className={`cursor-pointer group-hover:text-primary ${isActive("/dashboard/product-list") ? 'text-primary' : 'text-primary/60'}`} />,
+                },
+                {
+                    label: "Add Product",
+                    link: "/dashboard/add-product",
+                    icon: <MdAddShoppingCart className={`cursor-pointer group-hover:text-primary ${isActive("/dashboard/add-product") ? 'text-primary' : 'text-primary/60'}`} />,
+                },
+            ]
+        },
+        {
+            label: "Users",
+            link: "/dashboard/users",
+            icon: <BsPeopleFill className={`text-lg cursor-pointer group-hover:text-primary ${isActive("/dashboard/users") ? 'text-primary' : 'text-primary/60'}`} />,
         },
         {
             label: "Appointments",
@@ -121,7 +150,8 @@ const LeftNavbar = () => {
         },
         {
             label: "Logout",
-            link: "/logout",
+            handler: handleLogOut,
+            link: "/login",
             icon: <IoMdLogOut className={`text-lg cursor-pointer group-hover:text-primary ${isActive("/logout") ? 'text-primary' : 'text-primary/60'}`} />,
         },
 

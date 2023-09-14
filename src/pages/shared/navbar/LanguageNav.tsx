@@ -3,10 +3,10 @@ import { BiGlobe } from 'react-icons/bi';
 import { useTranslation } from 'react-i18next';
 
 const LanguageNav: React.FC = () => {
-    const [open, setOpen] = useState<boolean>(false);
-    const [selectedLanguage, setSelectedLanguage] = useState('en');
-
     const { i18n } = useTranslation();
+    const [open, setOpen] = useState<boolean>(false);
+    const [selectedLanguage, setSelectedLanguage] = useState(i18n.language || 'en');
+
 
     const handleLanguageChangeBangla = () => {
         setSelectedLanguage('bn')

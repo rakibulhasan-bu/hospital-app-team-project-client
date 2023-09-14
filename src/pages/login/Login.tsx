@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import design from "../../assets/login-02.png";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signInUser } from "../../redux/features/user/userSlice";
+import { RootState } from "../../redux/store";
+import toast from "react-hot-toast";
 
 interface formInputs {
   email: string;
@@ -12,6 +16,11 @@ interface formInputs {
 }
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.path || "/";
+  const { name, error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -20,8 +29,20 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<formInputs>();
 
   const onSubmit: SubmitHandler<formInputs> = data => {
-    console.log(data);
+    const { email, password } = data;
+    dispatch(signInUser({ email, password }))
   };
+
+  useEffect(() => {
+    if (!isLoading && email) {
+      navigate(from, { replace: true });
+      toast.success(`${name}, Lifecare login successful`)
+    }
+    if (isError) {
+      toast.error(error)
+    }
+  }, [email, error, from, isError, isLoading, name, navigate])
+
   return (
     <section className="bg-background w-full flex items-center justify-between">
       {/* these is left image section  */}

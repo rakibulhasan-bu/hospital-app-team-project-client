@@ -5,9 +5,12 @@ import { RiMenuFoldLine, RiMenuUnfoldLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import Notifications from "../notifications/Notifications";
 import { DashboardContext } from "../dashboardContext/DashboardContext";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const AdminNavbar = () => {
     const { open, setOpen, close, setClose, handleClose } = useContext(DashboardContext);
+    const { name, role, imageUrl } = useSelector((state: RootState) => state.userState)
 
     return (
         <div className='bg-white py-2 px-4 w-full flex items-center justify-between myShadow'>
@@ -35,10 +38,10 @@ const AdminNavbar = () => {
                 </div>
                 <div className='flex items-center gap-2'>
                     <div className=''>
-                        <h3 className="text-primary font-semibold">Rakibul Hasan</h3>
-                        <p className="text-primary/50 text-sm">Admin</p>
+                        <h3 className="text-primary font-semibold">{name}</h3>
+                        <p className="text-primary/50 text-sm">{role}</p>
                     </div>
-                    <img className="w-10 h-10 object-cover rounded-lg" src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1693057174/Website-assets/LifeCare/pexels-polina-tankilevitch-3873191_sobg4q.jpg" alt="" />
+                    <img className="w-10 h-10 object-cover rounded-lg" src={imageUrl} alt="" />
                 </div>
                 <Link to="/dashboard/dashboard-setting">
                     <IoMdSettings className="text-3xl text-primary/60 cursor-pointer hover:text-primary" />

@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
+const { nextui } = require("@nextui-org/react");
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",],
   theme: {
     extend: {
+      fontFamily: {
+        'handwriting': ['Dancing Script', 'cursive']
+      },
       colors: {
         primary: " #2E37A4",
         secondary: "#2e82fd",
@@ -11,9 +15,10 @@ export default {
         textDarkBlack: "#272B41",
         textGray: "#757575",
         grey: "#F0F0F0",
-        background: "#edf0ff"
+        background: "#edf0ff",
       },
     },
   },
-  plugins: [],
+  darkMode: "class",
+  plugins: [nextui()],
 };

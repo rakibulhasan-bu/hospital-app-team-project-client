@@ -1,0 +1,11 @@
+
+.zoom-enter,
+.zoom-exit-done {
+  transform: scale(1);
+}
+
+.zoom-enter-active,
+.zoom-exit-active {
+  transform: scale(1.1);
+  transition: transform 300ms;
+}

@@ -1,21 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import design from "../../assets/login-02.png";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createUser } from "../../redux/features/user/userSlice";
+import { RootState } from "../../redux/store";
+import toast from "react-hot-toast";
+import { useInsertUsersMutation } from "../../redux/features/user/userApi";
 
 interface formInputs {
   name: string;
   email: string;
   password: unknown;
   confirmPassword: unknown;
-  image: File;
   role: string;
 }
 
 const PatientRegister = () => {
-  const [loadImage, setLoadImage] = useState('')
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const { error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
+  const [image, setImage] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -30,20 +37,52 @@ const PatientRegister = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<formInputs>();
   const password = watch("password");
 
-  const fileHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setLoadImage(reader.result as string);
-      };
-      reader.readAsDataURL(e.target.files[0]);
+  const fileHandle = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      try {
+        const formData = new FormData();
+        formData.append('file', e.target.files[0]);
+        formData.append('upload_preset', 'Lifecare');
+        formData.append('cloud_name', "dwx2jd8b1");
+
+        const uploadURL = `https://api.cloudinary.com/v1_1/dwx2jd8b1/image/upload`;
+
+        // Upload the image to Cloudinary
+        const response = await fetch(uploadURL, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setImage(data?.url)
+        } else {
+          console.error('Image upload failed.');
+        }
+      } catch (error) {
+        console.error('Error uploading image:', error);
+      }
     }
   };
-
+  const [insertUser, { isError: postError, isLoading: postLoading, isSuccess }] =
+    useInsertUsersMutation();
 
   const onSubmit: SubmitHandler<formInputs> = data => {
-    console.log(data);
+    const { name, email, password, role } = data;
+    insertUser({ email, userName: name, role, imageUrl: image });
+    dispatch(createUser({ name, email, password, role, image }))
   };
+
+  useEffect(() => {
+    if (!isLoading && email) {
+      navigate('/')
+      toast.success(`welcome to Lifecare`)
+    }
+    if (isError) {
+      toast.error(error)
+    }
+  }, [email, error, isError, isLoading, navigate])
+
   return (
     <section className="bg-background w-full flex items-center justify-between">
       {/* these is left image section  */}
@@ -56,41 +95,34 @@ const PatientRegister = () => {
           <h2 className="title text-center pb-2 2xl:pb-4 text-xl lg:text-3xl text-secondary">Patient Registration</h2>
 
           <form className="space-y-3 2xl:space-y-4" onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex flex-col">
-              <label>
-                <span className="text">Name</span>
-              </label>
+            <div className="flex flex-col relative w-full min-w-[200px]">
               <input
                 type="text"
-                placeholder="Name"
-                className="myInput"
+                className="myInput peer"
+                placeholder=" "
                 {...register("name", { required: true, maxLength: 20 })}
               />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">Name*</label>
               {errors.name?.type === 'required' && <p className="text-sm text-red-500" role="alert">Name is required</p>}
             </div>
 
-            <div className=" flex-col flex">
-              <label>
-                <span className="text">Email</span>
-              </label>
+            <div className=" flex-col flex relative w-full min-w-[200px]">
               <input
                 type="email"
-                placeholder="email"
-                className="myInput"
+                className="myInput peer"
+                placeholder=" "
                 {...register("email", { required: true })}
               />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">Email*</label>
               {errors.email?.type === 'required' && <p className="text-sm text-red-500" role="alert">Email is required</p>}
             </div>
 
             <div className="flex flex-col">
-              <label>
-                <span className="text">Password</span>
-              </label>
-              <div className="relative">
+              <div className="relative w-full min-w-[200px]">
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  placeholder="Type password"
-                  className="myInput"
+                  className="myInput peer"
+                  placeholder=" "
                   {...register("password", {
                     required: true,
                     pattern: {
@@ -99,6 +131,7 @@ const PatientRegister = () => {
                     }
                   })}
                 />
+                <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">Password*</label>
                 <button
                   type="button"
                   className="absolute top-1/2 right-2 transform -translate-y-1/2"
@@ -107,24 +140,23 @@ const PatientRegister = () => {
                   {showPassword ? <AiOutlineEyeInvisible className="text-xl" /> : <AiOutlineEye className="text-xl" />}
                 </button>
               </div>
+
               {errors.password?.type === 'required' && <p className="text-sm text-red-500" role="alert">Password is required</p>}
               {errors.password?.type === 'pattern' && <p className="text-sm text-red-500" role="alert">{errors.password.message}</p>}
             </div>
 
             <div className="flex flex-col">
-              <label>
-                <span className="text">Confirm password</span>
-              </label>
-              <div className="relative">
+              <div className="relative w-full min-w-[200px]">
                 <input
                   type={showConfirmPassword ? 'text' : 'password'}
-                  placeholder="Confirm password"
-                  className="myInput"
+                  className="myInput peer"
+                  placeholder=" "
                   {...register("confirmPassword", {
                     required: true,
                     validate: (value) => value === password || "Passwords do not match",
                   })}
                 />
+                <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">Confirm Password*</label>
                 <button
                   type="button"
                   className="absolute top-1/2 right-2 transform -translate-y-1/2"
@@ -139,8 +171,8 @@ const PatientRegister = () => {
 
             <div className='flex gap-4 items-center'>
               <div className="w-12 h-12 rounded-full shadow-lg border border-secondary">
-                {loadImage ?
-                  <img className="h-full w-full object-cover rounded-full" src={loadImage} alt="" />
+                {image ?
+                  <img className="h-full w-full object-cover rounded-full" src={image} alt="" />
                   : ""}
               </div>
               <div className=''>
@@ -153,7 +185,7 @@ const PatientRegister = () => {
                   onChange={fileHandle}
                 />
               </div>
-              {(errors.image?.type === 'required' && !loadImage) && (
+              {(errors.image?.type === 'required' && !image) && (
                 <p className="text-sm text-red-500" role="alert">Profile Picture is required</p>
               )}
             </div>

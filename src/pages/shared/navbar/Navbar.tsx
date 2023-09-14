@@ -4,10 +4,16 @@ import { Link, NavLink } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import { GrClose } from "react-icons/gr";
 import MobileMenu from "./MobileMenu";
-import DarkToggle from "./DarkToggle";
+import DarkToggle from "./darkToggle/DarkToggle";
 import LanguageNav from "./LanguageNav";
 import { Tooltip } from "react-tooltip";
 import DivisionList from "../../../components/Banches/DivisionList";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../firebase/firebase.config";
+import { userLogOut } from "../../../redux/features/user/userSlice";
 
 interface NavLink {
   path: string;
@@ -15,9 +21,14 @@ interface NavLink {
 }
 
 const Navbar: React.FC = () => {
+  const dispatch = useDispatch()
+  const { name, email, imageUrl } = useSelector((state: RootState) => state.userState)
   const [open, setOpen] = useState(false);
-  const UserLoggedIn: boolean = false;
 
+  const handleLogOut = () => {
+    signOut(auth)
+    dispatch(userLogOut())
+  }
   const navlinks: NavLink[] = [
     {
       path: "/",
@@ -51,10 +62,6 @@ const Navbar: React.FC = () => {
       path: "/newsMedia",
       title: "News & Media",
     },
-    {
-      path: "/contactUs",
-      title: "Contact Us",
-    },
   ];
   const jsonData = {
     Dhaka: ["Dhaka", "Gazipur", "Narayanganj", "Tangail", "Manikganj"],
@@ -87,10 +94,10 @@ const Navbar: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white ">
-      <nav className="container relative flex items-center justify-between px-4 mx-auto 2xl:h-24 lg:py-2">
+      <nav className="container relative flex items-center justify-between px-2 lg:px-0 mx-auto 2xl:h-24 lg:py-1.5 2xl:py-2">
         <div>
           <Link to="/">
-            <img src={logo} className=" h-14" alt="logo" />
+            <img src={logo} className="h-12 2xl:h-14 object-cover" alt="logo" />
           </Link>
         </div>
         <div className="hidden lg:block">
@@ -98,7 +105,7 @@ const Navbar: React.FC = () => {
             {navlinks.map((link) => (
               <li key={link.path} className="relative ">
                 <NavLink
-                  className="font-bold duration-500 text-textBlack hover:font-bold hover:text-secondary nav-link"
+                  className="font-medium text-textBlack hover:text-secondary nav-link"
                   to={link.path}
                 >
                   {link.title === "Branches" ? (
@@ -121,12 +128,38 @@ const Navbar: React.FC = () => {
             ))}
           </ul>
         </div>
-        <div className="hidden lg:block">
-          {UserLoggedIn ? (
-            <button className="bttn common-btn text-textBlack">Login</button>
+        <div className="hidden lg:flex justify-between items-center gap-6 2xl:gap-10">
+          <DarkToggle />
+          <LanguageNav />
+          {email ? (
+            <Dropdown placement="bottom-end">
+              <DropdownTrigger>
+                <Avatar
+                  isBordered
+                  as="button"
+                  className="transition-transform"
+                  color="secondary"
+                  name={name}
+                  size="sm"
+                  src={imageUrl}
+                />
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Profile Actions" variant="flat">
+                <DropdownItem key="profile" className="h-14 gap-2">
+                  <p className="font-semibold">Signed in as</p>
+                  <p className="font-semibold">{email}</p>
+                </DropdownItem>
+                <DropdownItem key="dashboard"><Link to='/dashboard'>Dashboard</Link></DropdownItem>
+                <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+                <DropdownItem key="logout" color="danger" onClick={handleLogOut}>
+                  Log Out
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+            // <img className="w-10 h-10 object-cover rounded-lg" src={imageUrl} alt="" />
           ) : (
-            <Link to="/register" className="bttn common-btn text-textBlack">
-              Register
+            <Link to="/login" className="bttn common-btn text-textBlack">
+              login
             </Link>
           )}
         </div>
@@ -138,16 +171,13 @@ const Navbar: React.FC = () => {
           )}
         </div>
         <div
-          className={` absolute duration-300 ease-out ${
-            open
-              ? "left-0 top-[56px] md:-left-[30px]"
-              : "-left-[220px] top-[56px] bottom-0 md:-left-[220px]"
-          }`}
+          className={` absolute duration-300 ease-out ${open
+            ? "left-0 top-[56px] md:-left-[30px]"
+            : "-left-[220px] top-[56px] bottom-0 md:-left-[220px]"
+            }`}
         >
           <MobileMenu />
         </div>
-        <DarkToggle />
-        <LanguageNav />
       </nav>
     </header>
   );
