@@ -6,6 +6,14 @@ import {
 } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
 
+interface createUserProps {
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+  image: string;
+}
+
 const initialState = {
   name: "",
   email: "",
@@ -18,7 +26,7 @@ const initialState = {
 
 export const createUser = createAsyncThunk(
   "userSlice/createUser",
-  async ({ name, email, password, role, image }) => {
+  async ({ name, email, password, role, image }: createUserProps) => {
     const data = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(auth.currentUser, {
       displayName: name,
