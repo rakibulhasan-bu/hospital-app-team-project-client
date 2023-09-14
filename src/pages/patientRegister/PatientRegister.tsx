@@ -16,6 +16,7 @@ interface formInputs {
   password: unknown;
   confirmPassword: unknown;
   role: string;
+  inputImage: File
 }
 
 const PatientRegister = () => {
@@ -64,13 +65,12 @@ const PatientRegister = () => {
       }
     }
   };
-  const [insertUser, { isError: postError, isLoading: postLoading, isSuccess }] =
-    useInsertUsersMutation();
+  const [insertUser] = useInsertUsersMutation();
 
   const onSubmit: SubmitHandler<formInputs> = data => {
-    const { name, email, password, role } = data;
-    insertUser({ email, userName: name, role, imageUrl: image });
-    dispatch(createUser({ name, email, password, role, image }))
+    const { name, email, password } = data;
+    insertUser({ email, userName: name, role: "PATIENT", imageUrl: image });
+    dispatch(createUser({ name, email, password, role: "PATIENT", image }))
   };
 
   useEffect(() => {
@@ -181,21 +181,14 @@ const PatientRegister = () => {
                   type="file"
                   id="image"
                   className="hidden"
-                  {...register('image', { required: true })}
+                  {...register('inputImage', { required: true })}
                   onChange={fileHandle}
                 />
               </div>
-              {(errors.image?.type === 'required' && !image) && (
+              {(errors.inputImage?.type === 'required' && !image) && (
                 <p className="text-sm text-red-500" role="alert">Profile Picture is required</p>
               )}
             </div>
-            {/* this is hidden div  */}
-            <input
-              type="text"
-              defaultValue='doctor'
-              className="hidden"
-              {...register("role", { required: true })}
-            />
             <div className="flex items-center justify-between pt-2">
               <input className="bttn common-btn w-full cursor-pointer" type="submit" value="Register" />
             </div>
