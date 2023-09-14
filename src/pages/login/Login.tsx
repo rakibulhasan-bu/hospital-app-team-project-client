@@ -33,7 +33,7 @@ const Login = () => {
         <div className=" bg-white rounded-3xl p-4 lg:px-10 lg:py-8 2xl:p-10" >
           <h2 className="title text-center pb-2 2xl:pb-4 text-xl lg:text-3xl text-secondary">Welcome to Lifecare</h2>
 
-          <form className="space-y-3 2xl:space-y-4" onSubmit={handleSubmit(onSubmit)}>
+          <form className="space-y-3 2xl:space-y-4" onSubmit={handleSubmit("onSubmit")}>
             <div className=" flex-col flex">
               <label>
                 <span className="text">Email</span>
