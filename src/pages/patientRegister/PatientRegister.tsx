@@ -21,7 +21,7 @@ interface formInputs {
 const PatientRegister = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  const { name, error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
+  const { error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
   const [image, setImage] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -69,19 +69,19 @@ const PatientRegister = () => {
 
   const onSubmit: SubmitHandler<formInputs> = data => {
     const { name, email, password, role } = data;
-    insertUser({ email, userName: name });
-    dispatch(createUser({ name, email, password, role }))
+    insertUser({ email, userName: name, role, imageUrl: image });
+    dispatch(createUser({ name, email, password, role, image }))
   };
 
   useEffect(() => {
     if (!isLoading && email) {
       navigate('/')
-      toast.success(`${name}, welcome to Lifecare`)
+      toast.success(`welcome to Lifecare`)
     }
     if (isError) {
       toast.error(error)
     }
-  }, [email, error, isError, isLoading, name, navigate])
+  }, [email, error, isError, isLoading, navigate])
 
   return (
     <section className="bg-background w-full flex items-center justify-between">

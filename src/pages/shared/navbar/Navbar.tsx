@@ -17,7 +17,7 @@ interface NavLink {
 }
 
 const Navbar: React.FC = () => {
-  const { email } = useSelector((state: RootState) => state.userState)
+  const { email, imageUrl } = useSelector((state: RootState) => state.userState)
   const [open, setOpen] = useState(false);
 
   const navlinks: NavLink[] = [
@@ -123,7 +123,7 @@ const Navbar: React.FC = () => {
           <DarkToggle />
           <LanguageNav />
           {email ? (
-            <img className="w-10 h-10 object-cover rounded-lg" src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1693057174/Website-assets/LifeCare/pexels-polina-tankilevitch-3873191_sobg4q.jpg" alt="" />
+            <img className="w-10 h-10 object-cover rounded-lg" src={imageUrl} alt="" />
           ) : (
             <Link to="/login" className="bttn common-btn text-textBlack">
               login

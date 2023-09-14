@@ -14,20 +14,22 @@ const PrivateRoute = ({ children }) => {
     const { email, isLoading } = useSelector((state: RootState) => state.userState)
     const { data: singleUser } = useGetSingleUsersQuery(email)
     console.log(singleUser);
+
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 dispatch(setUser({
                     name: user.displayName,
                     email: user.email,
-                    role: singleUser?.role
+                    role: singleUser.data?.role,
+                    imageUrl: singleUser.data?.imageUrl
                 }))
                 dispatch(toggleLoading(false))
             } else {
                 dispatch(toggleLoading(false))
             }
         })
-    }, [dispatch])
+    }, [dispatch, singleUser])
 
     if (isLoading) {
         return <Loading />;
