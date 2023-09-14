@@ -5,7 +5,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
-import { useInsertUsersMutation } from "./userApi";
 
 const initialState = {
   name: "",
@@ -18,25 +17,19 @@ const initialState = {
 
 export const createUser = createAsyncThunk(
   "userSlice/createUser",
-  async ({ name, email, password }) => {
+  async ({ name, email, password, role }) => {
     const data = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(auth.currentUser, {
       displayName: name,
     });
-    const [insertUser, { isError, isLoading, isSuccess }] =
-      useInsertUsersMutation();
-    insertUser({ email, userName: name });
-    console.log(data);
-    console.log("isError :>> ", isError);
-    console.log("isLoading :>> ", isLoading);
-    console.log("isSuccess :>> ", isSuccess);
+    console.log(role);
     return {
       name: data.user.displayName,
       email: data.user.email,
+      role: role,
     };
   }
 );
-
 export const signInUser = createAsyncThunk(
   "userSlice/signInUser",
   async ({ email, password }) => {
@@ -87,7 +80,7 @@ export const userSlice = createSlice({
       .addCase(createUser.fulfilled, (state, { payload }) => {
         (state.name = payload.name),
           (state.email = payload.email),
-          (state.role = ""),
+          (state.role = payload.role),
           (state.isLoading = false),
           (state.isError = false),
           (state.error = "");

@@ -8,13 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../redux/features/user/userSlice";
 import { RootState } from "../../redux/store";
 import toast from "react-hot-toast";
+import { useInsertUsersMutation } from "../../redux/features/user/userApi";
 
 interface formInputs {
   name: string;
   email: string;
   password: unknown;
   confirmPassword: unknown;
-  image: File;
   role: string;
 }
 
@@ -64,10 +64,13 @@ const PatientRegister = () => {
       }
     }
   };
+  const [insertUser, { isError: postError, isLoading: postLoading, isSuccess }] =
+    useInsertUsersMutation();
 
   const onSubmit: SubmitHandler<formInputs> = data => {
-    const { name, email, confirmPassword, image, password, role } = data;
-    dispatch(createUser({ name, email, password }))
+    const { name, email, password, role } = data;
+    insertUser({ email, userName: name });
+    dispatch(createUser({ name, email, password, role }))
   };
 
   useEffect(() => {
@@ -182,7 +185,7 @@ const PatientRegister = () => {
                   onChange={fileHandle}
                 />
               </div>
-              {(errors.image?.type === 'required' && !loadImage) && (
+              {(errors.image?.type === 'required' && !image) && (
                 <p className="text-sm text-red-500" role="alert">Profile Picture is required</p>
               )}
             </div>
