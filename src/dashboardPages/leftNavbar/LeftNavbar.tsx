@@ -99,7 +99,7 @@ const LeftNavbar = () => {
         {
             label: "Users",
             link: "/dashboard/users",
-            icon: <BsPeopleFill className={`text-lg cursor-pointer group-hover:text-primary ${isActive("/dashboard/patients-list") ? 'text-primary' : 'text-primary/60'}`} />,
+            icon: <BsPeopleFill className={`text-lg cursor-pointer group-hover:text-primary ${isActive("/dashboard/users") ? 'text-primary' : 'text-primary/60'}`} />,
         },
         {
             label: "Appointments",
