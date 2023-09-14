@@ -8,20 +8,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../redux/features/user/userSlice";
 import { RootState } from "../../redux/store";
 import toast from "react-hot-toast";
+import { useInsertUsersMutation } from "../../redux/features/user/userApi";
 
 interface formInputs {
   name: string;
   email: string;
   password: unknown;
   confirmPassword: unknown;
-  image: File;
   role: string;
 }
 
 const PatientRegister = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  const { name, error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
+  const { error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
   const [image, setImage] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -64,21 +64,24 @@ const PatientRegister = () => {
       }
     }
   };
+  const [insertUser, { isError: postError, isLoading: postLoading, isSuccess }] =
+    useInsertUsersMutation();
 
   const onSubmit: SubmitHandler<formInputs> = data => {
-    const { name, email, confirmPassword, image, password, role } = data;
-    dispatch(createUser({ name, email, password }))
+    const { name, email, password, role } = data;
+    insertUser({ email, userName: name, role, imageUrl: image });
+    dispatch(createUser({ name, email, password, role, image }))
   };
 
   useEffect(() => {
     if (!isLoading && email) {
       navigate('/')
-      toast.success(`${name}, welcome to Lifecare`)
+      toast.success(`welcome to Lifecare`)
     }
     if (isError) {
       toast.error(error)
     }
-  }, [email, error, isError, isLoading, name, navigate])
+  }, [email, error, isError, isLoading, navigate])
 
   return (
     <section className="bg-background w-full flex items-center justify-between">
@@ -182,7 +185,7 @@ const PatientRegister = () => {
                   onChange={fileHandle}
                 />
               </div>
-              {(errors.image?.type === 'required' && !loadImage) && (
+              {(errors.image?.type === 'required' && !image) && (
                 <p className="text-sm text-red-500" role="alert">Profile Picture is required</p>
               )}
             </div>
