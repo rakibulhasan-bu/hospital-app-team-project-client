@@ -10,6 +10,8 @@ import DivisionList from "../../../components/Banches/DivisionList";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
+import { FaCross } from "react-icons/fa";
+import { MdCancel } from "react-icons/md";
 interface NavLink {
   path: string;
   title: string;
@@ -103,11 +105,14 @@ const Navbar: React.FC = () => {
                         </h2>
                       </div>
                       {isOpen && (
-                        <div
-                          className="absolute p-5 rounded-lg shadow-lg bg-accent/80  max-h-[70vh] overflow-y-scroll top-10 md:p-10 lg:px-20 lg:py-10 w-max"
-                          onMouseLeave={toggleAccordion}
-                        >
-                          <DivisionList data={jsonData} />
+                        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-700/90">
+                          <div
+                            className="p-5 rounded-lg shadow-lg bg-accent/90  max-h-[70vh] overflow-y-scroll md:p-10 lg:px-20 lg:py-10 w-max"
+                            onMouseLeave={toggleAccordion}
+                          >
+                            {/* <button><MdCancel className="absolute top-0 right-0 text-4xl text-accent"/></button> */}
+                            <DivisionList data={jsonData} />
+                          </div>
                         </div>
                       )}
                     </div>

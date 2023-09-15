@@ -11,7 +11,7 @@ interface DivisionListProps {
 
 const DivisionList: React.FC<DivisionListProps> = ({ data }) => {
   return (
-    <div className="grid grid-cols-1 gap-3 text-white/70 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-3 text-white/70 md:grid-cols-2 lg:grid-cols-4">
       {Object.keys(data).map((division, index) => (
         <div key={index} className="p-5 border rounded-lg bg-primary">
           <h2 className="py-2 text-accent">
