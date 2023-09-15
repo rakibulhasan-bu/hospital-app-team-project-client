@@ -5,12 +5,20 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
-import { useInsertUsersMutation } from "./userApi";
+
+interface createUserProps {
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+  image: string;
+}
 
 const initialState = {
   name: "",
   email: "",
   role: "",
+  imageUrl: "",
   isLoading: true,
   isError: false,
   error: "",
@@ -18,25 +26,20 @@ const initialState = {
 
 export const createUser = createAsyncThunk(
   "userSlice/createUser",
-  async ({ name, email, password }) => {
+  async ({ name, email, password, role, image }: createUserProps) => {
     const data = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(auth.currentUser, {
       displayName: name,
     });
-    const [insertUser, { isError, isLoading, isSuccess }] =
-      useInsertUsersMutation();
-    insertUser({ email, userName: name });
-    console.log(data);
-    console.log("isError :>> ", isError);
-    console.log("isLoading :>> ", isLoading);
-    console.log("isSuccess :>> ", isSuccess);
+    console.log(role);
     return {
       name: data.user.displayName,
       email: data.user.email,
+      role: role,
+      image,
     };
   }
 );
-
 export const signInUser = createAsyncThunk(
   "userSlice/signInUser",
   async ({ email, password }) => {
@@ -65,7 +68,10 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, { payload }) => {
-      (state.name = payload.name), (state.email = payload.email);
+      (state.name = payload.name),
+        (state.email = payload.email),
+        (state.role = payload.role),
+        (state.imageUrl = payload.imageUrl);
     },
     toggleLoading: (state, { payload }) => {
       state.isLoading = payload;
@@ -80,6 +86,7 @@ export const userSlice = createSlice({
         (state.name = ""),
           (state.email = ""),
           (state.role = ""),
+          (state.imageUrl = ""),
           (state.isLoading = true),
           (state.isError = false),
           (state.error = "");
@@ -87,7 +94,8 @@ export const userSlice = createSlice({
       .addCase(createUser.fulfilled, (state, { payload }) => {
         (state.name = payload.name),
           (state.email = payload.email),
-          (state.role = ""),
+          (state.role = payload.role),
+          (state.imageUrl = payload.image),
           (state.isLoading = false),
           (state.isError = false),
           (state.error = "");
@@ -96,6 +104,7 @@ export const userSlice = createSlice({
         (state.name = ""),
           (state.email = ""),
           (state.role = ""),
+          (state.imageUrl = ""),
           (state.isLoading = false),
           (state.isError = true),
           (state.error = actions.error.message);

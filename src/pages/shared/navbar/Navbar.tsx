@@ -4,12 +4,16 @@ import { Link, NavLink } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import { GrClose } from "react-icons/gr";
 import MobileMenu from "./MobileMenu";
-import DarkToggle from "./DarkToggle";
+import DarkToggle from "./darkToggle/DarkToggle";
 import LanguageNav from "./LanguageNav";
 import { Tooltip } from "react-tooltip";
 import DivisionList from "../../../components/Banches/DivisionList";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
+import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../firebase/firebase.config";
+import { userLogOut } from "../../../redux/features/user/userSlice";
 
 interface NavLink {
   path: string;
@@ -17,9 +21,14 @@ interface NavLink {
 }
 
 const Navbar: React.FC = () => {
-  const { email } = useSelector((state: RootState) => state.userState)
+  const dispatch = useDispatch()
+  const { name, email, imageUrl } = useSelector((state: RootState) => state.userState)
   const [open, setOpen] = useState(false);
 
+  const handleLogOut = () => {
+    signOut(auth)
+    dispatch(userLogOut())
+  }
   const navlinks: NavLink[] = [
     {
       path: "/",
@@ -123,7 +132,31 @@ const Navbar: React.FC = () => {
           <DarkToggle />
           <LanguageNav />
           {email ? (
-            <img className="w-10 h-10 object-cover rounded-lg" src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1693057174/Website-assets/LifeCare/pexels-polina-tankilevitch-3873191_sobg4q.jpg" alt="" />
+            <Dropdown placement="bottom-end">
+              <DropdownTrigger>
+                <Avatar
+                  isBordered
+                  as="button"
+                  className="transition-transform"
+                  color="secondary"
+                  name={name}
+                  size="sm"
+                  src={imageUrl}
+                />
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Profile Actions" variant="flat">
+                <DropdownItem key="profile" className="h-14 gap-2">
+                  <p className="font-semibold">Signed in as</p>
+                  <p className="font-semibold">{email}</p>
+                </DropdownItem>
+                <DropdownItem key="dashboard"><Link to='/dashboard'>Dashboard</Link></DropdownItem>
+                <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+                <DropdownItem key="logout" color="danger" onClick={handleLogOut}>
+                  Log Out
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+            // <img className="w-10 h-10 object-cover rounded-lg" src={imageUrl} alt="" />
           ) : (
             <Link to="/login" className="bttn common-btn text-textBlack">
               login

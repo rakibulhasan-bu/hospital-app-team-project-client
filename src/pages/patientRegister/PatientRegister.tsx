@@ -8,21 +8,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../redux/features/user/userSlice";
 import { RootState } from "../../redux/store";
 import toast from "react-hot-toast";
+import { useInsertUsersMutation } from "../../redux/features/user/userApi";
 
 interface formInputs {
   name: string;
   email: string;
   password: unknown;
   confirmPassword: unknown;
-  image: File;
   role: string;
+  inputImage: File
 }
 
 const PatientRegister = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  const { name, error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
-  const [loadImage, setLoadImage] = useState('')
+  const { error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
+  const [image, setImage] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -37,30 +38,50 @@ const PatientRegister = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<formInputs>();
   const password = watch("password");
 
-  const fileHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setLoadImage(reader.result as string);
-      };
-      reader.readAsDataURL(e.target.files[0]);
+  const fileHandle = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      try {
+        const formData = new FormData();
+        formData.append('file', e.target.files[0]);
+        formData.append('upload_preset', 'Lifecare');
+        formData.append('cloud_name', "dwx2jd8b1");
+
+        const uploadURL = `https://api.cloudinary.com/v1_1/dwx2jd8b1/image/upload`;
+
+        // Upload the image to Cloudinary
+        const response = await fetch(uploadURL, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setImage(data?.url)
+        } else {
+          console.error('Image upload failed.');
+        }
+      } catch (error) {
+        console.error('Error uploading image:', error);
+      }
     }
   };
+  const [insertUser] = useInsertUsersMutation();
 
   const onSubmit: SubmitHandler<formInputs> = data => {
-    const { name, email, confirmPassword, image, password, role } = data;
-    dispatch(createUser({ name, email, password }))
+    const { name, email, password } = data;
+    insertUser({ email, userName: name, role: "PATIENT", imageUrl: image });
+    dispatch(createUser({ name, email, password, role: "PATIENT", image }))
   };
 
   useEffect(() => {
     if (!isLoading && email) {
       navigate('/')
-      toast.success(`${name}, welcome to Lifecare`)
+      toast.success(`welcome to Lifecare`)
     }
     if (isError) {
       toast.error(error)
     }
-  }, [email, error, isError, isLoading, name, navigate])
+  }, [email, error, isError, isLoading, navigate])
 
   return (
     <section className="bg-background w-full flex items-center justify-between">
@@ -150,8 +171,8 @@ const PatientRegister = () => {
 
             <div className='flex gap-4 items-center'>
               <div className="w-12 h-12 rounded-full shadow-lg border border-secondary">
-                {loadImage ?
-                  <img className="h-full w-full object-cover rounded-full" src={loadImage} alt="" />
+                {image ?
+                  <img className="h-full w-full object-cover rounded-full" src={image} alt="" />
                   : ""}
               </div>
               <div className=''>
@@ -160,21 +181,14 @@ const PatientRegister = () => {
                   type="file"
                   id="image"
                   className="hidden"
-                  {...register('image', { required: true })}
+                  {...register('inputImage', { required: true })}
                   onChange={fileHandle}
                 />
               </div>
-              {(errors.image?.type === 'required' && !loadImage) && (
+              {(errors.inputImage?.type === 'required' && !image) && (
                 <p className="text-sm text-red-500" role="alert">Profile Picture is required</p>
               )}
             </div>
-            {/* this is hidden div  */}
-            <input
-              type="text"
-              defaultValue='doctor'
-              className="hidden"
-              {...register("role", { required: true })}
-            />
             <div className="flex items-center justify-between pt-2">
               <input className="bttn common-btn w-full cursor-pointer" type="submit" value="Register" />
             </div>
