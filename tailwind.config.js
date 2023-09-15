@@ -17,6 +17,7 @@ export default {
         textGray: "var(--textGray)",
         grey: "var(--grey)",
         background: "var(--background)",
+        DashboardBackground: "var(--DashboardBackground)",
       },
     },
   },
