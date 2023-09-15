@@ -1,5 +1,3 @@
-import { Tooltip } from 'react-tooltip'
-
 const Branches = () => {
     return (
         <>
