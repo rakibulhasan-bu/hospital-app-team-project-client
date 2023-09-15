@@ -71,21 +71,21 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 3px;
+  height: 3px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
-  box-shadow: inset 0 0 5px gainsboro;
-  border-radius: 4px;
+  box-shadow: inset 0 0 3px gainsboro;
+  border-radius: 2px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #2686e0;
-  border-radius: 8px;
+  border-radius: 3px;
 }
 
 /* //responsive for phone */
@@ -93,8 +93,8 @@ body {
 
   /* width */
   ::-webkit-scrollbar {
-    width: 3px;
-    height: 3px;
+    width: 2px;
+    height: 2px;
   }
 
   /* Track */
