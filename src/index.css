@@ -82,9 +82,11 @@ body {
 }
 
 .dashboard-bg {
-  background: linear-gradient(0deg,
+  background: linear-gradient(
+      0deg,
       rgba(51, 53, 72, 0.05),
-      rgba(51, 53, 72, 0.05)),
+      rgba(51, 53, 72, 0.05)
+    ),
     #ffffff;
 }
 
@@ -113,7 +115,6 @@ body {
 
 /* //responsive for phone */
 @media only screen and (max-device-width: 767px) and (-webkit-min-device-pixel-ratio: 2) {
-
   /* width */
   ::-webkit-scrollbar {
     width: 2px;
@@ -138,7 +139,6 @@ body {
 }
 
 @keyframes bounce {
-
   0%,
   100% {
     transform: translateY(0);
