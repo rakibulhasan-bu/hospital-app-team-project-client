@@ -9,9 +9,6 @@ import LanguageNav from "./LanguageNav";
 import DivisionList from "../../../components/Banches/DivisionList";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-import { SlArrowDown, SlArrowUp } from "react-icons/sl";
-import { FaCross } from "react-icons/fa";
-import { MdCancel } from "react-icons/md";
 interface NavLink {
   path: string;
   title: string;
