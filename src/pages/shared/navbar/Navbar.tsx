@@ -6,20 +6,22 @@ import { GrClose } from "react-icons/gr";
 import MobileMenu from "./MobileMenu";
 import DarkToggle from "./DarkToggle";
 import LanguageNav from "./LanguageNav";
-import { Tooltip } from "react-tooltip";
 import DivisionList from "../../../components/Banches/DivisionList";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-
+import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 interface NavLink {
   path: string;
   title: string;
 }
 
 const Navbar: React.FC = () => {
-  const { email } = useSelector((state: RootState) => state.userState)
+  const { email } = useSelector((state: RootState) => state.userState);
   const [open, setOpen] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
   const navlinks: NavLink[] = [
     {
       path: "/",
@@ -60,13 +62,7 @@ const Navbar: React.FC = () => {
     Rajshahi: ["Rajshahi", "Bogura", "Pabna", "Naogaon", "Chapainawabganj"],
     Khulna: ["Khulna", "Jessore", "Satkhira", "Bagerhat", "Magura"],
     Barisal: ["Barisal", "Bhola", "Patuakhali", "Pirojpur", "Jhalokati"],
-    Sylhet: [
-      "Sylhet",
-      "Moulvibazar",
-      "Habiganj",
-      "Sunamganj",
-      "Sylhet",
-    ],
+    Sylhet: ["Sylhet", "Moulvibazar", "Habiganj", "Sunamganj", "Sylhet"],
     "Rangpur ": [
       "Rangpur",
       "Dinajpur",
@@ -88,7 +84,7 @@ const Navbar: React.FC = () => {
       <nav className="container relative flex items-center justify-between px-2 lg:px-0 mx-auto 2xl:h-24 lg:py-1.5 2xl:py-2">
         <div>
           <Link to="/">
-            <img src={logo} className="h-12 2xl:h-14 object-cover" alt="logo" />
+            <img src={logo} className="object-cover h-12 2xl:h-14" alt="logo" />
           </Link>
         </div>
         <div className="hidden lg:block">
@@ -100,30 +96,38 @@ const Navbar: React.FC = () => {
                   to={link.path}
                 >
                   {link.title === "Branches" ? (
-                    <h1 data-tooltip-id="my-tooltip-2">{link.title}</h1>
+                    <div className="">
+                      <div className="flex items-center justify-between cursor-pointer">
+                        <h2 className="" onMouseOver={toggleAccordion}>
+                          Branches
+                        </h2>
+                      </div>
+                      {isOpen && (
+                        <div
+                          className="absolute p-5 rounded-lg shadow-lg bg-accent/80  max-h-[70vh] overflow-y-scroll top-10 md:p-10 lg:px-20 lg:py-10 w-max"
+                          onMouseLeave={toggleAccordion}
+                        >
+                          <DivisionList data={jsonData} />
+                        </div>
+                      )}
+                    </div>
                   ) : (
                     <h1>{link.title}</h1>
                   )}
-                  <Tooltip
-                    id="my-tooltip-2"
-                    place="bottom"
-                    variant="light"
-                    content={
-                      <div className="container px-3 py-5 mx-auto">
-                        <DivisionList data={jsonData} />
-                      </div>
-                    }
-                  />
                 </NavLink>
               </li>
             ))}
           </ul>
         </div>
-        <div className="hidden lg:flex justify-between items-center gap-6 2xl:gap-10">
+        <div className="items-center justify-between hidden gap-6 lg:flex 2xl:gap-10">
           <DarkToggle />
           <LanguageNav />
           {email ? (
-            <img className="w-10 h-10 object-cover rounded-lg" src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1693057174/Website-assets/LifeCare/pexels-polina-tankilevitch-3873191_sobg4q.jpg" alt="" />
+            <img
+              className="object-cover w-10 h-10 rounded-lg"
+              src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1693057174/Website-assets/LifeCare/pexels-polina-tankilevitch-3873191_sobg4q.jpg"
+              alt=""
+            />
           ) : (
             <Link to="/login" className="bttn common-btn text-textBlack">
               login
@@ -138,10 +142,11 @@ const Navbar: React.FC = () => {
           )}
         </div>
         <div
-          className={` absolute duration-300 ease-out ${open
-            ? "left-0 top-[56px] md:-left-[30px]"
-            : "-left-[220px] top-[56px] bottom-0 md:-left-[220px]"
-            }`}
+          className={` absolute duration-300 ease-out ${
+            open
+              ? "left-0 top-[56px] md:-left-[30px]"
+              : "-left-[220px] top-[56px] bottom-0 md:-left-[220px]"
+          }`}
         >
           <MobileMenu />
         </div>
