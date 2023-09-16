@@ -137,7 +137,6 @@ body {
   position: relative;
   animation: bounce 3s infinite;
 }
-
 @keyframes bounce {
   0%,
   100% {
