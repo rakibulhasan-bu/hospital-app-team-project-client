@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import design from "../../assets/login-02.png";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
+import { ImSpinner9 } from "react-icons/im";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,6 +26,7 @@ const DoctorRegister = () => {
   const [insertUser] = useInsertUsersMutation();
   const { name, error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
   const [image, setImage] = useState('')
+  const [imageLoading, setImageLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -42,6 +44,7 @@ const DoctorRegister = () => {
   const fileHandle = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       try {
+        setImageLoading(true)
         const formData = new FormData();
         formData.append('file', e.target.files[0]);
         formData.append('upload_preset', 'Lifecare');
@@ -58,10 +61,12 @@ const DoctorRegister = () => {
         if (response.ok) {
           const data = await response.json();
           setImage(data?.url)
+          setImageLoading(false)
         } else {
           console.error('Image upload failed.');
         }
       } catch (error) {
+        setImageLoading(false)
         console.error('Error uploading image:', error);
       }
     }
@@ -197,7 +202,16 @@ const DoctorRegister = () => {
               )}
             </div>
             <div className="flex items-center justify-between pt-2">
-              <input className="bttn common-btn w-full cursor-pointer" type="submit" value="Register" />
+              <button
+                type="submit"
+                className="bttn common-btn w-full cursor-pointer"
+              >
+                {imageLoading ? (
+                  <ImSpinner9 className="m-auto animate-spin" size={24} />
+                ) : (
+                  "Register"
+                )}
+              </button>
             </div>
           </form>
           <div className=" pt-4 flex items-center justify-between gap-4">
