@@ -1,17 +1,14 @@
 import { Switch } from "@nextui-org/react";
+import { useState } from "react";
 import { SunIcon } from "./SunIcon";
 import { MoonIcon } from "./MoonIcon";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleTheme } from "../../../../redux/features/theme/themeSlice";
-import { RootState } from "../../../../redux/store";
-
 
 const DarkToggle = () => {
-  const dispatch = useDispatch()
-  const { theme } = useSelector((state: RootState) => state.themeState)
+  const [darkMode, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
-    dispatch(toggleTheme(theme === "light" ? "dark" : "light"))
+    setDarkMode(!darkMode);
+    document.body.classList.toggle("dark");
   };
   return (
     <Switch

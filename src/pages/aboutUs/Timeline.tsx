@@ -1,6 +1,6 @@
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import { FaHospital, FaMedal } from 'react-icons/fa'; // Import the icons you want to use
+import { FaHospital, FaMedal } from 'react-icons/fa';
 import SectionHeading from '../../components/sharedTitle/SectionHeading';
 
 const TimelineSection = () => {
@@ -17,7 +17,7 @@ const TimelineSection = () => {
         <VerticalTimeline>
           <VerticalTimelineElement
             className="vertical-timeline-element"
-            contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+            contentStyle={{ background: 'rgb(33, 150, 243)', color: '' }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
             date="1983"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
@@ -32,7 +32,7 @@ const TimelineSection = () => {
 
           <VerticalTimelineElement
             className="vertical-timeline-element"
-            contentStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+            contentStyle={{ background: 'rgb(233, 30, 99)', color: '' }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(233, 30, 99)' }}
             date="Year"
             iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
@@ -47,7 +47,7 @@ const TimelineSection = () => {
 
           <VerticalTimelineElement
             className="vertical-timeline-element"
-            contentStyle={{ background: 'rgb(0, 123, 255)', color: '#fff' }}
+            contentStyle={{ background: 'rgb(0, 123, 255)', color: '' }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(0, 123, 255)' }}
             date="Year"
             iconStyle={{ background: 'rgb(0, 123, 255)', color: '#fff' }}
@@ -62,7 +62,7 @@ const TimelineSection = () => {
 
           <VerticalTimelineElement
             className="vertical-timeline-element"
-            contentStyle={{ background: 'rgb(255, 165, 0)', color: '#fff' }}
+            contentStyle={{ background: 'rgb(255, 165, 0)', color: '' }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(255, 165, 0)' }}
             date="Year"
             iconStyle={{ background: 'rgb(255, 165, 0)', color: '#fff' }}
