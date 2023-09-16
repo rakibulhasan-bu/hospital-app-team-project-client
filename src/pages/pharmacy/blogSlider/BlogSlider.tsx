@@ -1,11 +1,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";  
+import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { Autoplay, Navigation } from "swiper/modules";
 import '../style.css';
 import BlogCard from "./BlogCard"; 
+import { useRef } from "react";
 
 const BlogSlider: React.FC = () => {
     const blogData = [ 
@@ -43,6 +44,10 @@ const BlogSlider: React.FC = () => {
         }
     ];
 
+     // Create ref for navigation buttons
+     const nextButtonRef = useRef(null);
+     const prevButtonRef = useRef(null);
+
     return (
       <>
         <div className="container px-4 py-10 mx-auto">
@@ -56,8 +61,8 @@ const BlogSlider: React.FC = () => {
                     spaceBetween={10}
                     autoplay={{ delay: 8000, disableOnInteraction: false }}
                     navigation={{
-                        nextEl: '.blog-swiper-button-next',
-                        prevEl: '.blog-swiper-button-prev', 
+                        nextEl: nextButtonRef.current,
+                        prevEl: prevButtonRef.current,
                     }}
                     modules={[Autoplay, Navigation]}
                     className="mySwiper"
@@ -76,7 +81,9 @@ const BlogSlider: React.FC = () => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-                <div className="next swiper-button-custom" style={{
+                <div className="next swiper-button-custom" 
+                 ref={nextButtonRef}
+                style={{
                     position: "absolute",
                     top: "50%",
                     right: "0px",
@@ -85,7 +92,9 @@ const BlogSlider: React.FC = () => {
                     height: "50px",
                     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
                 }}></div>
-                <div className="prev swiper-button-custom" style={{
+                <div className="prev swiper-button-custom" 
+                 ref={prevButtonRef}
+                style={{
                     position: "absolute",
                     top: "50%",
                     left: "0px",
