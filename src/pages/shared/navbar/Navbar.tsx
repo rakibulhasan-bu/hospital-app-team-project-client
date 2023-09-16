@@ -6,14 +6,19 @@ import { GrClose } from "react-icons/gr";
 import MobileMenu from "./MobileMenu";
 import DarkToggle from "./darkToggle/DarkToggle";
 import LanguageNav from "./LanguageNav";
-import { Tooltip } from "react-tooltip";
 import DivisionList from "../../../components/Banches/DivisionList";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
 import { userLogOut } from "../../../redux/features/user/userSlice";
+import {
+  Avatar,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@nextui-org/react";
 
 interface NavLink {
   path: string;
@@ -21,8 +26,14 @@ interface NavLink {
 }
 
 const Navbar: React.FC = () => {
-  const dispatch = useDispatch()
-  const { name, email, imageUrl } = useSelector((state: RootState) => state.userState)
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
+  const dispatch = useDispatch();
+  const { name, email, imageUrl } = useSelector(
+    (state: RootState) => state.userState
+  );
   const [open, setOpen] = useState(false);
 
   const handleLogOut = () => {
@@ -93,7 +104,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white ">
+    <header className="sticky top-0 z-50 bg-background shadow-sm">
       <nav className="container relative flex items-center justify-between px-2 lg:px-0 mx-auto 2xl:h-24 lg:py-1.5 2xl:py-2">
         <div>
           <Link to="/">
@@ -113,16 +124,6 @@ const Navbar: React.FC = () => {
                   ) : (
                     <h1>{link.title}</h1>
                   )}
-                  <Tooltip
-                    id="my-tooltip-2"
-                    place="bottom"
-                    variant="light"
-                    content={
-                      <div className="container px-3 py-5 mx-auto">
-                        <DivisionList data={jsonData} />
-                      </div>
-                    }
-                  />
                 </NavLink>
               </li>
             ))}

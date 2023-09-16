@@ -6,6 +6,20 @@ import {
 } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
 
+interface createUserProps {
+  name: string | null;
+  email: string;
+  password: string;
+  role: string;
+  image: string;
+}
+
+interface signInUserProps {
+  email: string;
+  password: string;
+  role: string;
+}
+
 const initialState = {
   name: "",
   email: "",
@@ -18,11 +32,15 @@ const initialState = {
 
 export const createUser = createAsyncThunk(
   "userSlice/createUser",
-  async ({ name, email, password, role, image }) => {
+  async ({ name, email, password, role, image }: createUserProps) => {
     const data = await createUserWithEmailAndPassword(auth, email, password);
-    await updateProfile(auth.currentUser, {
-      displayName: name,
-    });
+
+    if (auth.currentUser) {
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+      });
+    }
+
     console.log(role);
     return {
       name: data.user.displayName,
@@ -32,9 +50,10 @@ export const createUser = createAsyncThunk(
     };
   }
 );
+
 export const signInUser = createAsyncThunk(
   "userSlice/signInUser",
-  async ({ email, password }) => {
+  async ({ email, password, role }: signInUserProps) => {
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -47,6 +66,7 @@ export const signInUser = createAsyncThunk(
       return {
         name: user.displayName,
         email: user.email,
+        role,
       };
     } catch (error) {
       console.error("Error signing in:", error);
@@ -84,8 +104,8 @@ export const userSlice = createSlice({
           (state.error = "");
       })
       .addCase(createUser.fulfilled, (state, { payload }) => {
-        (state.name = payload.name),
-          (state.email = payload.email),
+        (state.name = payload.name || ""),
+          (state.email = payload.email || ""),
           (state.role = payload.role),
           (state.imageUrl = payload.image),
           (state.isLoading = false),
@@ -99,7 +119,7 @@ export const userSlice = createSlice({
           (state.imageUrl = ""),
           (state.isLoading = false),
           (state.isError = true),
-          (state.error = actions.error.message);
+          (state.error = actions.error.message || "");
       });
 
     builder
@@ -112,9 +132,9 @@ export const userSlice = createSlice({
           (state.error = "");
       })
       .addCase(signInUser.fulfilled, (state, { payload }) => {
-        (state.name = payload.name),
-          (state.email = payload.email),
-          (state.role = ""),
+        (state.name = payload.name || ""),
+          (state.email = payload.email || ""),
+          (state.role = payload.role || ""),
           (state.isLoading = false),
           (state.isError = false),
           (state.error = "");
@@ -125,7 +145,7 @@ export const userSlice = createSlice({
           (state.role = ""),
           (state.isLoading = false),
           (state.isError = true),
-          (state.error = actions.error.message);
+          (state.error = actions.error.message || "");
       });
   },
 });

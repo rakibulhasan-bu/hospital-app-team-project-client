@@ -49,7 +49,7 @@ const NewsMedia = () => {
                         {
                             a.map(one => (
                                 <div key={one} className='w-full flex items-center justify-between gap-4'>
-                                    <h3>Cardiology</h3>
+                                    <h3 className="text-textDarkBlack">Cardiology</h3>
                                     <h3 className="text-textGray">(62)</h3>
                                 </div>
 
@@ -64,7 +64,7 @@ const NewsMedia = () => {
                         {
                             a.map(one => (
                                 <div key={one} className='p-2 myBorder text-sm hover:bg-secondary hover:text-white cursor-pointer'>
-                                    <h3>Cardiology</h3>
+                                    <h3 className="text-textDarkBlack">Cardiology</h3>
                                 </div>
                             ))
                         }

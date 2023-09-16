@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import design from "../../assets/login-02.png";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
+import { ImSpinner9 } from "react-icons/im";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,14 +16,16 @@ interface formInputs {
   email: string;
   password: unknown;
   confirmPassword: unknown;
-  role: string;
+  inputImage: File
 }
 
 const PatientRegister = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  const [insertUser, { isSuccess, data: user }] = useInsertUsersMutation();
   const { error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
   const [image, setImage] = useState('')
+  const [imageLoading, setImageLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -40,6 +43,7 @@ const PatientRegister = () => {
   const fileHandle = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       try {
+        setImageLoading(true)
         const formData = new FormData();
         formData.append('file', e.target.files[0]);
         formData.append('upload_preset', 'Lifecare');
@@ -56,23 +60,22 @@ const PatientRegister = () => {
         if (response.ok) {
           const data = await response.json();
           setImage(data?.url)
+          setImageLoading(false)
         } else {
           console.error('Image upload failed.');
         }
       } catch (error) {
+        setImageLoading(false)
         console.error('Error uploading image:', error);
       }
     }
   };
-  const [insertUser, { isError: postError, isLoading: postLoading, isSuccess }] =
-    useInsertUsersMutation();
-
   const onSubmit: SubmitHandler<formInputs> = data => {
-    const { name, email, password, role } = data;
-    insertUser({ email, userName: name, role, imageUrl: image });
-    dispatch(createUser({ name, email, password, role, image }))
+    const { name, email, password } = data;
+    insertUser({ email, userName: name, role: "PATIENT", imageUrl: image });
+    dispatch(createUser({ name, email, password, role: "PATIENT", image }))
   };
-
+  console.log(user, isSuccess);
   useEffect(() => {
     if (!isLoading && email) {
       navigate('/')
@@ -181,23 +184,25 @@ const PatientRegister = () => {
                   type="file"
                   id="image"
                   className="hidden"
-                  {...register('image', { required: true })}
+                  {...register('inputImage', { required: true })}
                   onChange={fileHandle}
                 />
               </div>
-              {(errors.image?.type === 'required' && !image) && (
+              {(errors.inputImage?.type === 'required' && !image) && (
                 <p className="text-sm text-red-500" role="alert">Profile Picture is required</p>
               )}
             </div>
-            {/* this is hidden div  */}
-            <input
-              type="text"
-              defaultValue='doctor'
-              className="hidden"
-              {...register("role", { required: true })}
-            />
             <div className="flex items-center justify-between pt-2">
-              <input className="bttn common-btn w-full cursor-pointer" type="submit" value="Register" />
+              <button
+                type="submit"
+                className="bttn common-btn w-full cursor-pointer"
+              >
+                {imageLoading ? (
+                  <ImSpinner9 className="m-auto animate-spin" size={24} />
+                ) : (
+                  "Register"
+                )}
+              </button>
             </div>
           </form>
           <div className=" pt-4 flex items-center justify-between gap-4">

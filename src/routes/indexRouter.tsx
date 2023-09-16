@@ -19,7 +19,7 @@ import DashboardSetting from "../dashboardPages/dashboardSetting/DashboardSettin
 import AddNews from "../dashboardPages/dashboradNewsAll/addNews/AddNews";
 import AddNewsCategory from "../dashboardPages/dashboradNewsAll/addNewsCategory/AddNewsCategory";
 import DashboardAdmin from "../dashboardPages/dashboardAdmin/DashboardAdmin";
-import DashboardDoctors from "../dashboardPages/dashboardDoctors/DashboardDoctors";
+import DashboardDoctors from "../dashboardPages/dashboardContext/DashboardDoctors";
 import DoctorsList from "../dashboardPages/doctorsDashboard/DoctorsList";
 import PatientList from "../dashboardPages/patiendDashboard/PatientList";
 import AppointmentsList from "../dashboardPages/appointmentsList/AppointmentsList";
@@ -29,7 +29,7 @@ import AddDoctor from "../dashboardPages/doctorsDashboard/addDoctor/AddDoctor";
 import AddBranch from "../dashboardPages/dashboardBrances/addBranch/AddBranch";
 import BranchList from "../dashboardPages/dashboardBrances/branchList/BranchList";
 import PrivateRoute from "./PrivetRoutes";
-import DashboardProductList from "../dashboardPages/dashboardPharmacy/DashboardProductList";
+import DashboardProductList from "../dashboardPages/dashboardPharmacy/ProductList";
 import AddProduct from "../dashboardPages/dashboardPharmacy/addProduct/AddProduct";
 import DashboardUsers from "../dashboardPages/dashboardUsers/DashboardUsers";
 
