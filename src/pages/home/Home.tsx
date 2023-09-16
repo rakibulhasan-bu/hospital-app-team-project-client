@@ -25,8 +25,8 @@ const Home = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(setUser({
-          name: user.displayName,
-          email: user.email,
+          name: user?.displayName,
+          email: user?.email,
           role: singleUser.data?.role,
           imageUrl: singleUser.data?.imageUrl
         }))
