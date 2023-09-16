@@ -15,13 +15,13 @@ interface formInputs {
   email: string;
   password: unknown;
   confirmPassword: unknown;
-  role: string;
   inputImage: File
 }
 
 const PatientRegister = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  const [insertUser] = useInsertUsersMutation();
   const { error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
   const [image, setImage] = useState('')
   const [showPassword, setShowPassword] = useState(false);
@@ -65,7 +65,6 @@ const PatientRegister = () => {
       }
     }
   };
-  const [insertUser] = useInsertUsersMutation();
 
   const onSubmit: SubmitHandler<formInputs> = data => {
     const { name, email, password } = data;

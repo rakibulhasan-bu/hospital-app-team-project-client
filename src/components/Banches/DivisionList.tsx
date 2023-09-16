@@ -1,5 +1,4 @@
-import React from "react";
-import { FaLocationDot } from "react-icons/fa6";
+import React from 'react';
 
 interface DivisionData {
   [division: string]: string[];
@@ -11,22 +10,13 @@ interface DivisionListProps {
 
 const DivisionList: React.FC<DivisionListProps> = ({ data }) => {
   return (
-    <div className="grid grid-cols-1 gap-3 text-white/70 md:grid-cols-2 lg:grid-cols-4">
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
       {Object.keys(data).map((division, index) => (
-        <div key={index} className="p-5 border rounded-lg bg-primary">
-          <h2 className="py-2 text-accent">
-            <FaLocationDot className="inline-block me-3" />
-            {division}
-          </h2>
-          <hr />
-          <ul className="mt-2">
+        <div key={index}>
+          <h2 className='py-2 underline text-secondary'>{division}</h2>
+          <ul>
             {data[division].map((district, districtIndex) => (
-              <li
-                key={districtIndex}
-                className="font-normal transition-all duration-300 hover:underline hover:text-white hover:ml-4"
-              >
-                {district}
-              </li>
+              <li key={districtIndex} className='font-normal hover:underline hover:ps-1'>{district}</li>
             ))}
           </ul>
         </div>
