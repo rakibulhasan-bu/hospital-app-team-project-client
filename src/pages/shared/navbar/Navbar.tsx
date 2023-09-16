@@ -6,16 +6,11 @@ import { GrClose } from "react-icons/gr";
 import MobileMenu from "./MobileMenu";
 import DarkToggle from "./darkToggle/DarkToggle";
 import LanguageNav from "./LanguageNav";
+import { Tooltip } from "react-tooltip";
 import DivisionList from "../../../components/Banches/DivisionList";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-import {
-  Avatar,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from "@nextui-org/react";
+import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
 import { userLogOut } from "../../../redux/features/user/userSlice";
@@ -26,20 +21,14 @@ interface NavLink {
 }
 
 const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
-  const dispatch = useDispatch();
-  const { name, email, imageUrl } = useSelector(
-    (state: RootState) => state.userState
-  );
+  const dispatch = useDispatch()
+  const { name, email, imageUrl } = useSelector((state: RootState) => state.userState)
   const [open, setOpen] = useState(false);
 
   const handleLogOut = () => {
-    signOut(auth);
-    dispatch(userLogOut());
-  };
+    signOut(auth)
+    dispatch(userLogOut())
+  }
   const navlinks: NavLink[] = [
     {
       path: "/",
@@ -80,7 +69,13 @@ const Navbar: React.FC = () => {
     Rajshahi: ["Rajshahi", "Bogura", "Pabna", "Naogaon", "Chapainawabganj"],
     Khulna: ["Khulna", "Jessore", "Satkhira", "Bagerhat", "Magura"],
     Barisal: ["Barisal", "Bhola", "Patuakhali", "Pirojpur", "Jhalokati"],
-    Sylhet: ["Sylhet", "Moulvibazar", "Habiganj", "Sunamganj", "Sylhet"],
+    Sylhet: [
+      "Sylhet",
+      "Moulvibazar",
+      "Habiganj",
+      "Sunamganj",
+      "Sylhet",
+    ],
     "Rangpur ": [
       "Rangpur",
       "Dinajpur",
@@ -98,11 +93,11 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-background shadow-sm">
+    <header className="sticky top-0 z-50 bg-white ">
       <nav className="container relative flex items-center justify-between px-2 lg:px-0 mx-auto 2xl:h-24 lg:py-1.5 2xl:py-2">
         <div>
           <Link to="/">
-            <img src={logo} className="object-cover h-12 2xl:h-14" alt="logo" />
+            <img src={logo} className="h-12 2xl:h-14 object-cover" alt="logo" />
           </Link>
         </div>
         <div className="hidden lg:block">
@@ -114,33 +109,26 @@ const Navbar: React.FC = () => {
                   to={link.path}
                 >
                   {link.title === "Branches" ? (
-                    <div className="">
-                      <div className="flex items-center justify-between cursor-pointer">
-                        <h2 className="" onMouseOver={toggleAccordion}>
-                          Branches
-                        </h2>
-                      </div>
-                      {isOpen && (
-                        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-700/90">
-                          <div
-                            className="p-5 rounded-lg shadow-lg bg-accent/90  max-h-[70vh] overflow-y-scroll md:p-10 lg:px-20 lg:py-10 w-max"
-                            onMouseLeave={toggleAccordion}
-                          >
-                            {/* <button><MdCancel className="absolute top-0 right-0 text-4xl text-accent"/></button> */}
-                            <DivisionList data={jsonData} />
-                          </div>
-                        </div>
-                      )}
-                    </div>
+                    <h1 data-tooltip-id="my-tooltip-2">{link.title}</h1>
                   ) : (
                     <h1>{link.title}</h1>
                   )}
+                  <Tooltip
+                    id="my-tooltip-2"
+                    place="bottom"
+                    variant="light"
+                    content={
+                      <div className="container px-3 py-5 mx-auto">
+                        <DivisionList data={jsonData} />
+                      </div>
+                    }
+                  />
                 </NavLink>
               </li>
             ))}
           </ul>
         </div>
-        <div className="items-center justify-between hidden gap-6 lg:flex 2xl:gap-10">
+        <div className="hidden lg:flex justify-between items-center gap-6 2xl:gap-10">
           <DarkToggle />
           <LanguageNav />
           {email ? (
@@ -157,27 +145,19 @@ const Navbar: React.FC = () => {
                 />
               </DropdownTrigger>
               <DropdownMenu aria-label="Profile Actions" variant="flat">
-                <DropdownItem key="profile" className="gap-2 h-14">
+                <DropdownItem key="profile" className="h-14 gap-2">
                   <p className="font-semibold">Signed in as</p>
                   <p className="font-semibold">{email}</p>
                 </DropdownItem>
-                <DropdownItem key="dashboard">
-                  <Link to="/dashboard">Dashboard</Link>
-                </DropdownItem>
-                <DropdownItem key="help_and_feedback">
-                  Help & Feedback
-                </DropdownItem>
-                <DropdownItem
-                  key="logout"
-                  color="danger"
-                  onClick={handleLogOut}
-                >
+                <DropdownItem key="dashboard"><Link to='/dashboard'>Dashboard</Link></DropdownItem>
+                <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+                <DropdownItem key="logout" color="danger" onClick={handleLogOut}>
                   Log Out
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
+            // <img className="w-10 h-10 object-cover rounded-lg" src={imageUrl} alt="" />
           ) : (
-            // <img className="object-cover w-10 h-10 rounded-lg" src={imageUrl} alt="" />
             <Link to="/login" className="bttn common-btn text-textBlack">
               login
             </Link>
@@ -191,11 +171,10 @@ const Navbar: React.FC = () => {
           )}
         </div>
         <div
-          className={` absolute duration-300 ease-out ${
-            open
-              ? "left-0 top-[56px] md:-left-[30px]"
-              : "-left-[220px] top-[56px] bottom-0 md:-left-[220px]"
-          }`}
+          className={` absolute duration-300 ease-out ${open
+            ? "left-0 top-[56px] md:-left-[30px]"
+            : "-left-[220px] top-[56px] bottom-0 md:-left-[220px]"
+            }`}
         >
           <MobileMenu />
         </div>
