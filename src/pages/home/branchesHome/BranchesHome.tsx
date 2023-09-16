@@ -6,8 +6,8 @@ const BranchesHome = () => {
     <div
       className="w-full py-8"
       style={{
-        background: `url(${bg})`, // Set the background image here
-        backgroundSize: "cover", // Optional: You can adjust backgroundSize based on your needs
+        background: `url(${bg})`,
+        backgroundSize: "cover",
       }}
     >
       {/* upper content div */}
@@ -18,8 +18,6 @@ const BranchesHome = () => {
             <div className="w-1 bg-accent text-accent">.</div>
             <div className="w-1 bg-accent text-accent">.</div>
             <div className="w-3 bg-accent text-accent">.</div>
-            {/* <div className="w-6 bg-accent text-accent">.</div> */}
-            {/* <div className="w-6 bg-accent text-accent">.</div> */}
             <h1 className="flex-1 px-5 text-6xl font-bold text-blue-950 bg-accent">
               Nationwide
             </h1>
@@ -32,10 +30,14 @@ const BranchesHome = () => {
           </h1>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div className="md:col-span-2"><BranchesCard /></div>
+          <div className="md:col-span-2">
+            <BranchesCard />
+          </div>
           <BranchesCard />
           <BranchesCard />
-          <div className="md:col-span-2"><BranchesCard /></div>
+          <div className="md:col-span-2">
+            <BranchesCard />
+          </div>
         </div>
 
         <div className="flex flex-wrap justify-center gap-3 my-5">
