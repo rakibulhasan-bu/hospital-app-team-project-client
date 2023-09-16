@@ -5,6 +5,29 @@
 @tailwind utilities;
 
 @layer base {
+  .light {
+    --primary: #2e37a4;
+    --secondary: #2e82fd;
+    --background: #ffffff;
+    --accent: #a5d7e8;
+    --textBlack: #3d4461;
+    --textDarkBlack: #272b41;
+    --textGray: #757575;
+    --grey: #f0f0f0;
+    --DashboardBackground: #edf0ff;
+  }
+  .dark {
+    --primary: #faf9f6;
+    --secondary: #5494f4;
+    --background: #192734;
+    --accent: #a5d7e8;
+    --textBlack: #bfcafa;
+    --textDarkBlack: #cfd0d5;
+    --textGray: #a2a1a1;
+    --grey: #b7b4b4;
+    --DashboardBackground: #192734;
+  }
+
   .title {
     @apply text-base font-semibold text-textDarkBlack md:text-xl lg:text-[22px] 2xl:text-2xl;
   }
@@ -169,4 +192,12 @@ body.dark {
 .bttn:hover {
   border-color: #ffffff;
   border: 2px solid #0e82fd;
+}
+
+.branches-card {
+  transition: transform 0.3s ease;
+}
+
+.branches-card:hover {
+  transform: scale(1.1);
 }
