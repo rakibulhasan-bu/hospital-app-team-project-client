@@ -93,7 +93,7 @@ const BlogSlider: React.FC = () => {
                     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
                 }}></div>
                 <div className="prev swiper-button-custom" 
-                 ref={prevButtonRef}
+                ref={prevButtonRef}
                 style={{
                     position: "absolute",
                     top: "50%",

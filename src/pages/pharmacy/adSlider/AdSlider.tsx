@@ -1,11 +1,13 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";  
+import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { Autoplay, Navigation } from "swiper/modules";
-import '../style.css';
+import '../style.css'; 
+import { useRef } from "react";
 import AdCard from "./AdCard";
+
 
 
 const AdSlider: React.FC = () => {
@@ -34,10 +36,12 @@ const AdSlider: React.FC = () => {
         {
             img: 'https://i.ibb.co/TKBvrkT/dr-morepen-deals.webp',
         },
-
-
-
     ];
+
+     // Create ref for navigation buttons
+     const nextButtonRef = useRef(null);
+     const prevButtonRef = useRef(null);
+ 
 
     return (
       <>
@@ -52,8 +56,8 @@ const AdSlider: React.FC = () => {
                     spaceBetween={10}
                     autoplay={{ delay: 8000, disableOnInteraction: false }}
                     navigation={{
-                        nextEl: '.ad-swiper-button-next', // Use a unique class name
-                        prevEl: '.ad-swiper-button-prev', // Use a unique class name
+                        nextEl: nextButtonRef.current,
+                        prevEl: prevButtonRef.current,
                     }}
                     modules={[Autoplay, Navigation]}
                     className="mySwiper"
@@ -71,7 +75,9 @@ const AdSlider: React.FC = () => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-                <div className="next swiper-button-custom" style={{
+                <div className="next swiper-button-custom" 
+                ref={nextButtonRef}
+                style={{
                     position: "absolute",
                     top: "50%",
                     right: "0px",
@@ -80,7 +86,9 @@ const AdSlider: React.FC = () => {
                     height: "50px",
                     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
                 }}></div>
-                <div className="prev swiper-button-custom" style={{
+                <div className="prev swiper-button-custom" 
+                ref={prevButtonRef}
+                style={{
                     position: "absolute",
                     top: "50%",
                     left: "0px",
