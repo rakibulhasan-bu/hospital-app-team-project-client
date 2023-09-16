@@ -27,8 +27,8 @@ const Home = () => {
         dispatch(setUser({
           name: user?.displayName,
           email: user?.email,
-          role: singleUser.data?.role,
-          imageUrl: singleUser.data?.imageUrl
+          role: singleUser?.data?.role,
+          imageUrl: singleUser?.data?.imageUrl
         }))
         dispatch(toggleLoading(false))
       } else {
