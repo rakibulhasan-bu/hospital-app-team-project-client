@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
 const { nextui } = require("@nextui-org/react");
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",],
@@ -8,14 +9,15 @@ export default {
         'handwriting': ['Dancing Script', 'cursive']
       },
       colors: {
-        primary: " #2E37A4",
-        secondary: "#2e82fd",
-        accent: "#A5D7E8",
-        textBlack: "#3D4461",
-        textDarkBlack: "#272B41",
-        textGray: "#757575",
-        grey: "#F0F0F0",
-        background: "#edf0ff",
+        primary: 'var(--primary)',
+        secondary: "var(--secondary)",
+        accent: "var(--accent)",
+        textBlack: "var(--textBlack)",
+        textDarkBlack: "var(--textDarkBlack)",
+        textGray: "var(--textGray)",
+        grey: "var(--grey)",
+        background: "var(--background)",
+        DashboardBackground: "var(--DashboardBackground)",
       },
     },
   },

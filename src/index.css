@@ -5,30 +5,47 @@
 @tailwind utilities;
 
 @layer base {
+  .light {
+    --primary: #2e37a4;
+    --secondary: #2e82fd;
+    --background: #ffffff;
+    --accent: #a5d7e8;
+    --textBlack: #3d4461;
+    --textDarkBlack: #272b41;
+    --textGray: #757575;
+    --grey: #f0f0f0;
+    --DashboardBackground: #edf0ff;
+  }
+  .dark {
+    --primary: #faf9f6;
+    --secondary: #5494f4;
+    --background: #192734;
+    --accent: #a5d7e8;
+    --textBlack: #bfcafa;
+    --textDarkBlack: #cfd0d5;
+    --textGray: #a2a1a1;
+    --grey: #b7b4b4;
+    --DashboardBackground: #192734;
+  }
+
   .title {
     @apply text-base font-semibold text-textDarkBlack md:text-xl lg:text-[22px] 2xl:text-2xl;
   }
-
   .subTitle {
     @apply text-sm font-medium text-textDarkBlack lg:text-base 2xl:text-lg;
   }
-
   .text {
     @apply text-xs text-textBlack md:text-sm 2xl:text-base;
   }
-
   .myBorder {
     @apply border rounded border-grey;
   }
-
   .myInput {
-    @apply border border-grey text-textBlack placeholder-shown:border-grey placeholder-shown:border-t-grey disabled:bg-gray-50 h-full w-full rounded-md shadow-sm border-t-transparent bg-transparent px-3 py-2.5 text-sm lg:text-base font-normal outline outline-0 transition-all placeholder-shown:border focus:border-2 focus:border-secondary focus:border-t-transparent focus:outline-0 disabled:border-0;
+    @apply border border-grey text-textBlack placeholder-shown:border-grey placeholder-shown:border-t-grey disabled:bg-gray-50  h-full w-full rounded-md shadow-sm border-t-transparent bg-transparent px-3 py-2.5  text-sm lg:text-base font-normal outline outline-0 transition-all placeholder-shown:border focus:border-2 focus:border-secondary focus:border-t-transparent focus:outline-0 disabled:border-0;
   }
-
   .myLabel {
-    @apply flex h-full w-full pointer-events-none absolute -top-1.5 left-0 select-none text-xs text-primary font-medium leading-tight transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-xs peer-focus:leading-tight peer-focus:text-secondary peer-focus:before:border-l-2 peer-focus:before:border-t-2 peer-focus:before:border-secondary peer-focus:after:border-r-2 peer-focus:after:border-t-2 peer-focus:after:border-secondary before:pointer-events-none before:mr-1 before:mt-[6.5px] before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-l before:border-t before:transition-all peer-disabled:peer-placeholder-shown:text-primary after:pointer-events-none after:ml-1 after:mt-[6.5px] after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-r after:border-t after:transition-all;
+    @apply flex h-full w-full pointer-events-none absolute -top-1.5 left-0  select-none text-xs  text-primary font-medium leading-tight transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-xs peer-focus:leading-tight peer-focus:text-secondary peer-focus:before:border-l-2 peer-focus:before:border-t-2 peer-focus:before:border-secondary peer-focus:after:border-r-2 peer-focus:after:border-t-2 peer-focus:after:border-secondary before:pointer-events-none before:mr-1 before:mt-[6.5px] before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-l before:border-t before:transition-all  peer-disabled:peer-placeholder-shown:text-primary   after:pointer-events-none after:ml-1 after:mt-[6.5px] after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-r after:border-t after:transition-all;
   }
-
   .myBtn {
     @apply cursor-pointer select-none rounded border border-primary bg-primary px-4 py-1 text-center text-sm font-medium text-white hover:shadow-md 2xl:border-2 2xl:py-1.5 2xl:text-base;
   }
@@ -37,15 +54,12 @@
 body {
   font-family: "Poppins", sans-serif;
 }
-
 .active {
   @apply font-bold text-secondary;
 }
-
 .nav-link:hover::before {
   width: 100%;
 }
-
 .nav-link::before {
   position: absolute;
   content: "";
@@ -59,16 +73,16 @@ body {
 }
 
 .dashboard-bg {
-  background: linear-gradient(0deg,
+  background: linear-gradient(
+      0deg,
       rgba(51, 53, 72, 0.05),
-      rgba(51, 53, 72, 0.05)),
+      rgba(51, 53, 72, 0.05)
+    ),
     #ffffff;
 }
-
 .myShadow {
   box-shadow: 0px 0px 14px rgba(204, 204, 204, 0.25);
 }
-
 /* width */
 ::-webkit-scrollbar {
   width: 3px;
@@ -90,7 +104,6 @@ body {
 
 /* //responsive for phone */
 @media only screen and (max-device-width: 767px) and (-webkit-min-device-pixel-ratio: 2) {
-
   /* width */
   ::-webkit-scrollbar {
     width: 2px;
@@ -107,20 +120,16 @@ body {
     border-radius: 2px;
   }
 }
-
 /* bouncing style */
 .bounce-up {
   position: relative;
   animation: bounce 3s infinite;
 }
-
 @keyframes bounce {
-
   0%,
   100% {
     transform: translateY(0);
   }
-
   50% {
     transform: translateY(-20px);
   }
@@ -143,19 +152,15 @@ body.dark {
   0% {
     transform: translateY(0);
   }
-
   25% {
     transform: translateY(10px);
   }
-
   50% {
     transform: translateY(15px);
   }
-
   75% {
     transform: translateY(10px);
   }
-
   100% {
     transform: translateY(0);
   }
@@ -174,19 +179,16 @@ body.dark {
   -ms-transition: 0.5s;
   transition: 0.5s;
 }
-
 .common-btn {
   background-color: #0e82fd;
   color: #ffffff;
   box-shadow: inset 0 0 0 0 #ffffff;
 }
-
 .common-btn:hover {
   box-shadow: inset 0 0 0 50px #ffffff;
   border: 2px solid #0e82fd;
   color: #0e82fd;
 }
-
 .bttn:hover {
   border-color: #ffffff;
   border: 2px solid #0e82fd;

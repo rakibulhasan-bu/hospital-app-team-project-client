@@ -7,8 +7,9 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 import { setUser, toggleLoading } from '../redux/features/user/userSlice';
 import { useGetSingleUsersQuery } from '../redux/features/user/userApi';
+import { AnyAction } from '@reduxjs/toolkit';
 
-const PrivateRoute = ({ children }) => {
+const PrivateRoute = ({ children }: AnyAction) => {
     const dispatch = useDispatch()
     const { pathname } = useLocation();
     const { email, isLoading } = useSelector((state: RootState) => state.userState)
