@@ -75,6 +75,7 @@ const Pharmacy = () => {
       <AdSlider></AdSlider>
       <MedicinePromotion></MedicinePromotion>
       <BlogSlider></BlogSlider>
+      <ProductSlider></ProductSlider>
     </div>
     
   );
