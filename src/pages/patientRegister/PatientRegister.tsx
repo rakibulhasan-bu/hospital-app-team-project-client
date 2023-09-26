@@ -47,9 +47,9 @@ const PatientRegister = () => {
         const formData = new FormData();
         formData.append('file', e.target.files[0]);
         formData.append('upload_preset', 'Lifecare');
-        formData.append('cloud_name', "dwx2jd8b1");
+        formData.append('cloud_name', "xx");
 
-        const uploadURL = `https://api.cloudinary.com/v1_1/dwx2jd8b1/image/upload`;
+        const uploadURL = `https://api.cloudinary.com/v1_1/xx/image/upload`;
 
         // Upload the image to Cloudinary
         const response = await fetch(uploadURL, {
