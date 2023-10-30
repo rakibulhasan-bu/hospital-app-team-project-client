@@ -1,0 +1,110 @@
+[
+    {
+      "name": "Lifecare Hospital Gazipur",
+      "location": "Sadar, Gazipur",
+      "contact": "01675543210",
+      "email": "gazipur@lifecare.com",
+      "division": "Dhaka",
+      "district": "Gazipur",
+      "Category": "General"
+    },
+    {
+      "name": "Lifecare Hospital Dhaka",
+      "location": "Malibagh, Dhaka",
+      "contact": "01711112222",
+      "email": "dhaka@lifecare.com",
+      "division": "Dhaka",
+      "district": "Dhaka",
+      "Category": "Main"
+    },
+    {
+      "name": "Lifecare Hospital Chattogram",
+      "location": "Chattogram, Chittagong",
+      "contact": "01811113333",
+      "email": "chittagong@lifecare.com",
+      "division": "Chittagong",
+      "district": "Chattogram",
+      "Category": "Main"
+    },
+    {
+      "name": "Lifecare Hospital Jessore",
+      "location": "Jessore, Khulna",
+      "contact": "01911114444",
+      "email": "jessore@lifecare.com",
+      "division": "Khulna",
+      "district": "Jessore",
+      "Category": "General"
+    },
+    {
+      "name": "Lifecare Hospital Narayanganj",
+      "location": "Sadar, Narayanganj",
+      "contact": "01911115555",
+      "email": "narayanganj@lifecare.com",
+      "division": "Dhaka",
+      "district": "Narayanganj",
+      "Category": "General"
+    },
+    {
+      "name": "Lifecare Hospital Tangail",
+      "location": "Sadar, Tangail",
+      "contact": "01911116666",
+      "email": "tangail@lifecare.com",
+      "division": "Dhaka",
+      "district": "Tangail",
+      "Category": "General"
+    },
+    {
+      "name": "Lifecare Hospital Manikganj",
+      "location": "Sadar, Manikganj",
+      "contact": "01911117777",
+      "email": "manikganj@lifecare.com",
+      "division": "Dhaka",
+      "district": "Manikganj",
+      "Category": "General"
+    },
+    {
+      "name": "Lifecare Hospital Cox's Bazar",
+      "location": "Sadar, Cox's Bazar",
+      "contact": "01911118888",
+      "email": "coxs_bazar@lifecare.com",
+      "division": "Chittagong",
+      "district": "Cox's Bazar",
+      "Category": "Main"
+    },
+    {
+      "name": "Lifecare Hospital Feni",
+      "location": "Sadar, Feni",
+      "contact": "01911119999",
+      "email": "feni@lifecare.com",
+      "division": "Chittagong",
+      "district": "Feni",
+      "Category": "General"
+    },
+    {
+      "name": "Lifecare Hospital Comilla",
+      "location": "Sadar, Comilla",
+      "contact": "01911111010",
+      "email": "comilla@lifecare.com",
+      "division": "Chittagong",
+      "district": "Comilla",
+      "Category": "General"
+    },
+    {
+      "name": "Lifecare Hospital Noakhali",
+      "location": "Sadar, Noakhali",
+      "contact": "01911111111",
+      "email": "noakhali@lifecare.com",
+      "division": "Chittagong",
+      "district": "Noakhali",
+      "Category": "General"
+    },
+    {
+      "name": "Lifecare Hospital Satkhira",
+      "location": "Sadar, Satkhira",
+      "contact": "01911111212",
+      "email": "satkhira@lifecare.com",
+      "division": "Khulna",
+      "district": "Satkhira",
+      "Category": "General"
+    }
+]

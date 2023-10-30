@@ -77,24 +77,7 @@ const Navbar: React.FC = () => {
   const jsonData = {
     Dhaka: ["Dhaka", "Gazipur", "Narayanganj", "Tangail", "Manikganj"],
     Chittagong: ["Chattogram", "Cox's Bazar", "Feni", "Comilla", "Noakhali"],
-    Rajshahi: ["Rajshahi", "Bogura", "Pabna", "Naogaon", "Chapainawabganj"],
     Khulna: ["Khulna", "Jessore", "Satkhira", "Bagerhat", "Magura"],
-    Barisal: ["Barisal", "Bhola", "Patuakhali", "Pirojpur", "Jhalokati"],
-    Sylhet: ["Sylhet", "Moulvibazar", "Habiganj", "Sunamganj", "Sylhet"],
-    "Rangpur ": [
-      "Rangpur",
-      "Dinajpur",
-      "Kurigram",
-      "Lalmonirhat",
-      "Thakurgaon",
-    ],
-    "Mymensingh ": [
-      "Mymensingh",
-      "Jamalpur",
-      "Netrokona",
-      "Sherpur",
-      "Kishoreganj",
-    ],
   };
 
   return (
