@@ -8,6 +8,7 @@ interface formInputs {
   confirmPassword: unknown;
   dob: unknown;
   address: string;
+  service_charge: string;
   education: string;
   designation: string;
   image: File;
@@ -99,7 +100,7 @@ const AddDoctor = () => {
                 Confirm Password*
               </label>
             </div>
-            <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-4">
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3  self-center">
               <input
                 {...register("dob", { required: true })}
                 type="date"
@@ -110,12 +111,29 @@ const AddDoctor = () => {
                 Date Of Birth*
               </label>
             </div>
-            <div className=" flex relative w-full h-10 text-left items-center lg:col-end-7 lg:col-start-4">
+            <div className=" flex flex-col relative w-full h-12 text-left  lg:col-end-5 lg:col-start-3">
               <label className="">Gender*</label>
-              <div className=" flex gap-5 ">
-                <input type="radio" name="radio-2" className="" checked />
-                <input type="radio" name="radio-2" className="" />
+              <div className=" flex gap-5">
+                <div className=" space-x-3">
+                  <input className="" type="checkbox" name="" id="" />
+                  <label htmlFor="">Male</label>
+                </div>
+                <div className=" space-x-3">
+                  <input className="" type="checkbox" name="" id="" />
+                  <label htmlFor="">Female</label>
+                </div>
               </div>
+            </div>
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-5 lg:col-end-7">
+              <input
+                {...register("service_charge", { required: true })}
+                type="text"
+                className="myInput peer"
+                placeholder=" "
+              />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
+                Service Charge*
+              </label>
             </div>
             <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3">
               <input
