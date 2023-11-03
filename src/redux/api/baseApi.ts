@@ -4,7 +4,12 @@ export const baseApi = createApi({
   reducerPath: "hospitalApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000" }),
   tagTypes: ["users"],
-  endpoints: () => ({}),
+  endpoints: (builder) => ({
+    getDoctors: builder.query({
+      query: () => "/doctors",
+    }),
+  }),
 });
 
+export const { useGetDoctorsQuery } = baseApi;
 export default baseApi;
