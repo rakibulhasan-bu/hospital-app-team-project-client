@@ -31,6 +31,9 @@ export const baseApi = createApi({
         body: doctor,
       }),
     }),
+    getBranches: builder.query({
+      query: () => "/api/v1/branches",
+    }),
   }),
 });
 
