@@ -11,11 +11,25 @@ export const baseApi = createApi({
     getDoctorById: builder.query({
       query: (id) => `/doctors/${id}`,
     }),
+    setDoctor: builder.mutation({
+      query: (doctor) => ({
+        url: "/doctors",
+        method: "POST",
+        body: doctor,
+      }),
+    }),
     getProducts: builder.query({
       query: () => "/products",
     }),
     getProductById: builder.query({
       query: (id) => `/products/${id}`,
+    }),
+    setProduct: builder.mutation({
+      query: (doctor) => ({
+        url: "/product",
+        method: "POST",
+        body: doctor,
+      }),
     }),
   }),
 });
@@ -25,5 +39,7 @@ export const {
   useGetDoctorByIdQuery,
   useGetProductsQuery,
   useGetProductByIdQuery,
+  useSetDoctorMutation,
+  useSetProductMutation,
 } = baseApi;
 export default baseApi;
