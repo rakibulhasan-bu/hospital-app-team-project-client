@@ -40,5 +40,6 @@ export const {
   useGetProductsQuery,
   useGetProductByIdQuery,
   useSetDoctorMutation,
+  useSetProductMutation,
 } = baseApi;
 export default baseApi;
