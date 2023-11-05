@@ -31,6 +31,16 @@ export const baseApi = createApi({
         body: doctor,
       }),
     }),
+    getBranches: builder.query({
+      query: () => "/api/v1/branches",
+    }),
+    setBranch: builder.mutation({
+      query: (branch) => ({
+        url: "/api/v1/branches",
+        method: "POST",
+        body: branch,
+      }),
+    }),
   }),
 });
 
@@ -41,5 +51,7 @@ export const {
   useGetProductByIdQuery,
   useSetDoctorMutation,
   useSetProductMutation,
+  useGetBranchesQuery,
+  useSetBranchMutation,
 } = baseApi;
 export default baseApi;
