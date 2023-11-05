@@ -24,6 +24,13 @@ export const baseApi = createApi({
     getProductById: builder.query({
       query: (id) => `/products/${id}`,
     }),
+    setProduct: builder.mutation({
+      query: (doctor) => ({
+        url: "/product",
+        method: "POST",
+        body: doctor,
+      }),
+    }),
   }),
 });
 
