@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaCircle } from "react-icons/fa";
 import DoctorCard from "./DoctorCard";
+import { useGetDoctorsQuery } from "../../redux/api/baseApi";
 
 interface Card {
   img: string;
@@ -10,6 +11,9 @@ interface Card {
 }
 
 const Doctors: React.FC = () => {
+  const { data: doctors, isError } = useGetDoctorsQuery("");
+
+  console.log(doctors, isError);
   const cardData: Card[] = [
     {
       img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
