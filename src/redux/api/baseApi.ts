@@ -20,5 +20,10 @@ export const baseApi = createApi({
   }),
 });
 
-export const { useGetDoctorsQuery, useGetDoctorByIdQuery } = baseApi;
+export const {
+  useGetDoctorsQuery,
+  useGetDoctorByIdQuery,
+  useGetProductsQuery,
+  useGetProductByIdQuery,
+} = baseApi;
 export default baseApi;
