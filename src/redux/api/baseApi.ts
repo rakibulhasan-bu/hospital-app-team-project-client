@@ -11,6 +11,12 @@ export const baseApi = createApi({
     getDoctorById: builder.query({
       query: (id) => `/doctors/${id}`,
     }),
+    getProducts: builder.query({
+      query: () => "/products",
+    }),
+    getProductById: builder.query({
+      query: (id) => `/products/${id}`,
+    }),
   }),
 });
 
