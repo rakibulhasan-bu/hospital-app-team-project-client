@@ -11,8 +11,9 @@ interface Card {
 }
 
 const Doctors: React.FC = () => {
-  const { data, isError } = useGetDoctorsQuery("");
-  console.log(data, isError);
+  const { data: doctors, isError } = useGetDoctorsQuery("");
+
+  console.log(doctors, isError);
   const cardData: Card[] = [
     {
       img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
