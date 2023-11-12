@@ -11,7 +11,7 @@ export const baseApi = createApi({
     getDoctorById: builder.query({
       query: (id) => `/doctors/${id}`,
     }),
-    setDoctor: builder.mutation({
+    addDoctor: builder.mutation({
       query: (doctor) => ({
         url: "/doctors",
         method: "POST",
@@ -49,7 +49,7 @@ export const {
   useGetDoctorByIdQuery,
   useGetProductsQuery,
   useGetProductByIdQuery,
-  useSetDoctorMutation,
+  useAddDoctorMutation,
   useSetProductMutation,
   useGetBranchesQuery,
   useSetBranchMutation,
