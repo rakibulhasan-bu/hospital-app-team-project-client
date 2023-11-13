@@ -3,7 +3,9 @@ import BranchesCard from "../../../components/Banches/BranchesCard";
 
 const BranchesHome = () => {
   return (
-    <div
+    <div data-aos="fade-up"
+    data-aos-easing="linear"
+    data-aos-duration="1500"
       className="w-full py-8"
       style={{
         background: `url(${bg})`,
@@ -11,7 +13,9 @@ const BranchesHome = () => {
       }}
     >
       {/* upper content div */}
-      <div className="p-3 ml-auto w-max lg:p-10">
+      <div data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500" className="p-3 ml-auto w-max lg:p-10">
         <div className="my-10 text-right text-white capitalize">
           <h1 className="px-5 text-sm ">Serving Communities accross</h1>
           <div className="flex gap-3">

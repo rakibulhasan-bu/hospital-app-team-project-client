@@ -55,12 +55,13 @@ const PharmacyHome: React.FC = () => {
 
     return (
         <div className=''>
+          <div data-aos="fade-up" data-aos-duration="3000">
             <SectionHeading
              semiSubTitle="What product do we have"
              title="Our Pharmacy"
              subTitle="Check our pharmacy for your medicine and product"
-            />
-             <div className="container px-4 py-10 mx-auto">
+            /> </div>
+             <div data-aos="fade-down" className="container px-4 py-10 mx-auto">
         <Swiper
           slidesPerView={1}
           spaceBetween={10}
