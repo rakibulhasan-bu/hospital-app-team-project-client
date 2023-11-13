@@ -1,11 +1,13 @@
 import rightBanner from "../../../assets/rightBanner.png";
 import heart from "../../../assets/heart-bg.png";
-import virus from "../../../assets/virus.png";
+
 import virus2 from "../../../assets/virus2.png";
 import badge from "../../../assets/badge.png";
 const RightSide = () => {
   return (
-    <div className=" relative 2xl:pt-24 lg:pt-4">
+    <div data-aos="fade-up"
+    data-aos-easing="linear"
+    data-aos-duration="1500" className=" relative 2xl:pt-24 lg:pt-4">
       <img
         className="z-20 2xl:h-[610px] lg:h-[26rem]"
         src={rightBanner}

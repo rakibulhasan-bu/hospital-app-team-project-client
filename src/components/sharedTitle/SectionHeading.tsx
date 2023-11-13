@@ -12,7 +12,7 @@ const SectionHeading = ({
   semiSubTitle,
 }: SectionHeadingProps) => {
   return (
-    <div className="max-w-2xl px-4 mx-auto text-center lg:px-0">
+    <div data-aos="fade-up" data-aos-duration="3000" className="max-w-2xl px-4 mx-auto text-center lg:px-0">
       <h3 className="font-medium text-textGray">{semiSubTitle}</h3>
       <h1 className="flex items-center justify-center gap-1 my-3 text-2xl font-semibold text-secondary">
         <FaCircle className="text-xs text-accent" />
