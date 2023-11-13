@@ -11,12 +11,12 @@ const Partners = () => {
         "https://res.cloudinary.com/dwx2jd8b1/image/upload/v1693139008/Website-assets/LifeCare/pngegg_yty145.png",
     ]
     return (
-        <div data-aos="fade-down"
-        data-aos-easing="linear"
-        data-aos-duration="1500" className='px-2 lg:px-0 py-12'>
-            <h1 className="text-[34px] leading-[34px] text-textBlack font-extrabold text-center pb-12">Our valuable <span className="text-secondary">Partners</span></h1>
+        <div  className='px-2 lg:px-0 py-12'>
+            <h1 data-aos="fade-down" className="text-[34px] leading-[34px] text-textBlack font-extrabold text-center pb-12">Our valuable <span className="text-secondary">Partners</span></h1>
             <Marquee>
-                <div className='flex items-center gap-20 pl-20'>
+                <div data-aos="fade-up"
+        data-aos-easing="linear"
+        data-aos-duration="1500" className='flex items-center gap-20 pl-20'>
                     {
                         image.map((img, index) => {
                             return <div key={index} className='w-28 h-20'>

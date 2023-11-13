@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 const LeftSide = () => {
   const { t } = useTranslation();
   return (
-    <div className=" lg:space-y-6 pt-10 space-y-4 self-center">
+    <div data-aos="fade-down"
+    data-aos-easing="linear"
+    data-aos-duration="1500" className=" lg:space-y-6 pt-10 space-y-4 self-center">
       <div className=" flex items-center gap-4 text-white">
         <span>
           <FaHeartbeat size={30} />
