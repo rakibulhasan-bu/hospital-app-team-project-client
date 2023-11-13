@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useAddDoctorMutation } from "../../../redux/api/baseApi";
+
 interface formInputs {
   name: string;
   email: string;
@@ -8,13 +10,19 @@ interface formInputs {
   confirmPassword: unknown;
   dob: unknown;
   address: string;
+  gender: string;
   service_charge: string;
   education: string;
   designation: string;
+  department: string;
+  division: string;
   image: File;
 }
 
 const AddDoctor = () => {
+  const [addDoctor, { data, error }] = useAddDoctorMutation();
+  console.log(data);
+  console.log(error);
   const [loadImage, setLoadImage] = useState("");
   const {
     register,
@@ -34,6 +42,7 @@ const AddDoctor = () => {
 
   const onSubmit: SubmitHandler<formInputs> = (data) => {
     console.log(data);
+    addDoctor(data);
   };
   return (
     <section className="container mx-auto">
@@ -115,11 +124,25 @@ const AddDoctor = () => {
               <label className="">Gender*</label>
               <div className=" flex gap-5">
                 <div className=" space-x-3">
-                  <input className="" type="checkbox" name="" id="" />
+                  <input
+                    {...register("gender", { required: true })}
+                    className=""
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    id=""
+                  />
                   <label htmlFor="">Male</label>
                 </div>
                 <div className=" space-x-3">
-                  <input className="" type="checkbox" name="" id="" />
+                  <input
+                    {...register("gender", { required: true })}
+                    className=""
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    id=""
+                  />
                   <label htmlFor="">Female</label>
                 </div>
               </div>
@@ -158,13 +181,16 @@ const AddDoctor = () => {
               </label>
             </div>
             <div className=" flex-col flex lg:col-start-5 lg:col-end-7">
-              <select className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400">
+              <select
+                {...register("department", { required: true })}
+                className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400"
+              >
                 <option disabled selected>
                   Select Department
                 </option>
-                <option>Orthopedics</option>
-                <option>Radiology</option>
-                <option>Dentist</option>
+                <option value="Orthopedics">Orthopedics</option>
+                <option value="Radiology">Radiology</option>
+                <option value="Dentist">Dentist</option>
               </select>
             </div>
             <div className=" flex-col flex relative w-full h-20 lg:col-start-1 lg:col-end-7">
@@ -179,18 +205,21 @@ const AddDoctor = () => {
               </label>
             </div>
             <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3">
-              <select className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400">
+              <select
+                {...register("division", { required: true })}
+                className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400"
+              >
                 <option disabled selected>
                   Select Division
                 </option>
-                <option>Dhaka</option>
-                <option>Khulna</option>
-                <option>Sylhet</option>
-                <option>Barishal</option>
-                <option>Chattogram</option>
-                <option>Rajshahi</option>
-                <option>Rangpur</option>
-                <option>Mymensingh</option>
+                <option value="Dhaka">Dhaka</option>
+                <option value="Khulna">Khulna</option>
+                <option value="Sylhet">Sylhet</option>
+                <option value="Barishal">Barishal</option>
+                <option value="Chattogram">Chattogram</option>
+                <option value="Rajshahi">Rajshahi</option>
+                <option value="Rangpur">Rangpur</option>
+                <option value="Mymensingh">Mymensingh</option>
               </select>
             </div>
             <div className="flex gap-4 items-center lg:col-start-3 lg:col-end-5">

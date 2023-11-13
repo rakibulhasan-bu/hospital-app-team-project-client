@@ -20,7 +20,7 @@ import AddNews from "../dashboardPages/dashboradNewsAll/addNews/AddNews";
 import AddNewsCategory from "../dashboardPages/dashboradNewsAll/addNewsCategory/AddNewsCategory";
 import DashboardAdmin from "../dashboardPages/dashboardAdmin/DashboardAdmin";
 import DashboardDoctors from "../dashboardPages/dashboardContext/DashboardDoctors";
-import DoctorsList from "../dashboardPages/doctorsDashboard/DoctorsList";
+import DoctorsList from "../dashboardPages/doctorsDashboard/doctorList/DoctorsList";
 import PatientList from "../dashboardPages/patiendDashboard/PatientList";
 import AppointmentsList from "../dashboardPages/appointmentsList/AppointmentsList";
 import DashboardNewsList from "../dashboardPages/dashboradNewsAll/DashboardNewsList";
@@ -32,7 +32,6 @@ import PrivateRoute from "./PrivetRoutes";
 import DashboardProductList from "../dashboardPages/dashboardPharmacy/ProductList";
 import AddProduct from "../dashboardPages/dashboardPharmacy/addProduct/AddProduct";
 import DashboardUsers from "../dashboardPages/dashboardUsers/DashboardUsers";
-
 
 export const router = createBrowserRouter([
   {
@@ -100,69 +99,74 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <PrivateRoute> <DashboardLayout /></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        {" "}
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
         path: "/dashboard/dashboard-setting",
-        element: <DashboardSetting />
+        element: <DashboardSetting />,
       },
       {
         path: "/dashboard/admin-dashboard",
-        element: <DashboardAdmin />
+        element: <DashboardAdmin />,
       },
       {
         path: "/dashboard/doctor-dashboard",
-        element: <DashboardDoctors />
+        element: <DashboardDoctors />,
       },
       {
         path: "/dashboard/users",
-        element: <DashboardUsers />
+        element: <DashboardUsers />,
       },
       {
         path: "/dashboard/doctors-list",
-        element: <DoctorsList />
+        element: <DoctorsList />,
       },
       {
         path: "/dashboard/add-doctor",
-        element: <AddDoctor />
+        element: <AddDoctor />,
       },
       {
         path: "/dashboard/patients-list",
-        element: <PatientList />
+        element: <PatientList />,
       },
       {
         path: "/dashboard/appointments-list",
-        element: <AppointmentsList />
+        element: <AppointmentsList />,
       },
       {
         path: "/dashboard/news-list",
-        element: <DashboardNewsList />
+        element: <DashboardNewsList />,
       },
       {
         path: "/dashboard/add-news",
-        element: <AddNews />
+        element: <AddNews />,
       },
       {
         path: "/dashboard/product-list",
-        element: <DashboardProductList />
+        element: <DashboardProductList />,
       },
       {
         path: "/dashboard/add-product",
-        element: <AddProduct />
+        element: <AddProduct />,
       },
       {
         path: "/dashboard/add-news-category",
-        element: <AddNewsCategory />
+        element: <AddNewsCategory />,
       },
       {
         path: "/dashboard/add-branch",
-        element: <AddBranch />
+        element: <AddBranch />,
       },
       {
         path: "/dashboard/branches-list",
-        element: <BranchList />
+        element: <BranchList />,
       },
-    ]
+    ],
   },
 ]);
