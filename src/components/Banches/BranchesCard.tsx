@@ -1,31 +1,32 @@
-
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot, FaRegPaperPlane } from "react-icons/fa6";
 
-const BranchesCard = () => {
+const BranchesCard = ({
+  location = "Sadar, Gazipur",
+  contact = "01675543210",
+  email = "gazipur@lifecare.com",
+  name = "Lifecare Hospital Gazipur",
+}) => {
   return (
-    <div className="h-40 mx-auto overflow-hidden border border-textBlack/50 w-max">
-      <div className="flex items-center font-semibold text-textBlack/70">
+    <div className="h-32 w-max mx-auto overflow-hidden border rounded-lg branches-card border-accent hover:shadow-lg bg-[#112b4ed8] md:bg-transparent">
+      <div className="flex items-center text-xs font-semibold text-accent">
         <div className="m-3">
           <a href="#">
-            <FaLocationDot className="inline text-secondary" /> Sadar, Gazipur
+            <FaLocationDot className="inline text-secondary" /> {location}
           </a>
           <h3 className="">
             <FaPhoneAlt className="inline text-secondary" /> Contact:
-            01675543210
+            {contact}
           </h3>
           <h3 className="">
-            <FaRegPaperPlane className="inline text-secondary" />{" "}
-            gazipur@lifecare.com
+            <FaRegPaperPlane className="inline text-secondary" /> {email}
           </h3>
-          <h1 className="mt-2 font-bold text-secondary">
-            Lifecare Hospital Gazipur
-          </h1>
+          <h1 className="mt-2 font-bold text-secondary">{name}</h1>
         </div>
         <img
           src="https://res.cloudinary.com/dth0nno0p/image/upload/v1693534293/hospital_kisskz.jpg"
           alt=""
-          className="w-40 h-40"
+          className="h-32 w-36"
         />
       </div>
     </div>

@@ -1,16 +1,14 @@
-import { useState } from "react";
-import { FaEdit } from "react-icons/fa";
-import { HiOutlineDotsVertical } from "react-icons/hi";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import { useGetDoctorsQuery } from "../../../redux/api/baseApi";
+import Row from "./Row";
 const DoctorsList = () => {
-  const [open, setOpen] = useState(false);
+  const { data } = useGetDoctorsQuery("");
 
   return (
     <section className="container mx-auto">
       <p className=" py-6 text-primary font-medium">Doctors | Doctor list </p>
       <div className=" bg-white p-5 rounded-2xl">
         <h2 className=" mb-5 text-xl font-semibold text-primary">
-          Doctor List
+          Doctor List {data?.data?.length}
         </h2>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -49,7 +47,11 @@ const DoctorsList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="border-b transition duration-300 ease-in-out hover:bg-neutral-100">
+                    {data?.data?.map((singleData: any) => (
+                      <Row key={singleData._id} singleData={singleData}></Row>
+                    ))}
+
+                    {/* <tr className="border-b transition duration-300 ease-in-out hover:bg-neutral-100">
                       <td className="whitespace-nowrap px-6 py-4 font-medium">
                         1
                       </td>
@@ -94,7 +96,7 @@ const DoctorsList = () => {
                           </div>
                         </div>
                       </td>
-                    </tr>
+                    </tr> */}
                   </tbody>
                 </table>
               </div>

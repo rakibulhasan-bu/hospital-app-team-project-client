@@ -5,6 +5,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import PopularDoctorCard from "./PopularDoctorCard";
+import { useGetDoctorsQuery } from "../../../redux/api/baseApi";
 
 interface Card {
   img: string;
@@ -14,38 +15,40 @@ interface Card {
 }
 
 const PopularDoctor: React.FC = () => {
-  const cardData: Card[] = [
-    {
-      img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
-      title: "Heart surgery",
-      number: "120",
-      icon: FaCircle,
-    },
-    {
-      img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
-      title: "Urology",
-      number: "110",
-      icon: FaCircle,
-    },
-    {
-      img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
-      title: "Urology",
-      number: "110",
-      icon: FaCircle,
-    },
-    {
-      img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
-      title: "Urology",
-      number: "110",
-      icon: FaCircle,
-    },
-    {
-      img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
-      title: "Urology",
-      number: "110",
-      icon: FaCircle,
-    },
-  ];
+  const { data } = useGetDoctorsQuery("");
+
+  // const cardData: Card[] = [
+  //   {
+  //     img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
+  //     title: "Heart surgery",
+  //     number: "120",
+  //     icon: FaCircle,
+  //   },
+  //   {
+  //     img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
+  //     title: "Urology",
+  //     number: "110",
+  //     icon: FaCircle,
+  //   },
+  //   {
+  //     img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
+  //     title: "Urology",
+  //     number: "110",
+  //     icon: FaCircle,
+  //   },
+  //   {
+  //     img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
+  //     title: "Urology",
+  //     number: "110",
+  //     icon: FaCircle,
+  //   },
+  //   {
+  //     img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
+  //     title: "Urology",
+  //     number: "110",
+  //     icon: FaCircle,
+  //   },
+  // ];
 
   return (
     <section className="bg-[#F7FCFC] h-[80vh] lg:py-20 2xl:py-20 my-20 min-h-[100vh]">
@@ -88,8 +91,8 @@ const PopularDoctor: React.FC = () => {
           modules={[Autoplay, Navigation, Pagination]}
           className="mySwiper"
         >
-          {cardData.map((card, index) => (
-            <SwiperSlide key={index}>
+          {data?.data?.map((card: any) => (
+            <SwiperSlide key={card._id}>
               <PopularDoctorCard card={card} />
             </SwiperSlide>
           ))}
