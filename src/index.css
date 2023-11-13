@@ -46,6 +46,7 @@
   .myLabel {
     @apply flex h-full w-full pointer-events-none absolute -top-1.5 left-0  select-none text-xs  text-primary font-medium leading-tight transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-xs peer-focus:leading-tight peer-focus:text-secondary peer-focus:before:border-l-2 peer-focus:before:border-t-2 peer-focus:before:border-secondary peer-focus:after:border-r-2 peer-focus:after:border-t-2 peer-focus:after:border-secondary before:pointer-events-none before:mr-1 before:mt-[6.5px] before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-l before:border-t before:transition-all  peer-disabled:peer-placeholder-shown:text-primary   after:pointer-events-none after:ml-1 after:mt-[6.5px] after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-r after:border-t after:transition-all;
   }
+
   .myBtn {
     @apply cursor-pointer select-none rounded border border-primary bg-primary px-4 py-1 text-center text-sm font-medium text-white hover:shadow-md 2xl:border-2 2xl:py-1.5 2xl:text-base;
   }

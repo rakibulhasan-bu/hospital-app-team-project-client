@@ -2,13 +2,13 @@ import { useGetDoctorsQuery } from "../../../redux/api/baseApi";
 import Row from "./Row";
 const DoctorsList = () => {
   const { data } = useGetDoctorsQuery("");
-
+  console.log("all doctors", data);
   return (
     <section className="container mx-auto">
       <p className=" py-6 text-primary font-medium">Doctors | Doctor list </p>
       <div className=" bg-white p-5 rounded-2xl">
         <h2 className=" mb-5 text-xl font-semibold text-primary">
-          Doctor List {data?.data?.length}
+          Doctor List {data?.doctors?.length}
         </h2>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -47,7 +47,7 @@ const DoctorsList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {data?.data?.map((singleData: any) => (
+                    {data?.doctors?.map((singleData: any) => (
                       <Row key={singleData._id} singleData={singleData}></Row>
                     ))}
 

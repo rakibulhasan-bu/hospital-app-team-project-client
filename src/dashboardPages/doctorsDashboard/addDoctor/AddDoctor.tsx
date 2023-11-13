@@ -1,49 +1,59 @@
-import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useAddDoctorMutation } from "../../../redux/api/baseApi";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { ImSpinner9 } from "react-icons/im";
 
 interface formInputs {
   name: string;
   email: string;
-  mobile: number;
-  password: unknown;
-  confirmPassword: unknown;
+  phone: string;
+  imageUrl: string;
+  hospitalName: unknown;
   dob: unknown;
-  address: string;
+  qualifications: string;
   gender: string;
-  service_charge: string;
+  fees: number;
+  experience: number;
   education: string;
-  designation: string;
   department: string;
   division: string;
-  image: File;
+  district: string;
 }
 
 const AddDoctor = () => {
-  const [addDoctor, { data, error }] = useAddDoctorMutation();
-  console.log(data);
-  console.log(error);
-  const [loadImage, setLoadImage] = useState("");
+  const navigate = useNavigate()
+  const [addDoctor, { data: doctorData, isSuccess, isError, error, isLoading }] = useAddDoctorMutation();
+
   const {
     register,
-    handleSubmit,
-    formState: { errors },
+    handleSubmit
   } = useForm<formInputs>();
 
-  const fileHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setLoadImage(reader.result as string);
-      };
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  };
+  // const fileHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files && e.target.files.length > 0) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       setLoadImage(reader.result as string);
+  //     };
+  //     reader.readAsDataURL(e.target.files[0]);
+  //   }
+  // };
 
   const onSubmit: SubmitHandler<formInputs> = (data) => {
-    console.log(data);
     addDoctor(data);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success(`${doctorData?.doctor?.name} doctor added successfully`);
+      navigate("/dashboard/doctors-list")
+    }
+    if (isError) {
+      toast.error(`${error?.data?.message}`);
+    }
+  }, [error, isError, isSuccess, navigate])
   return (
     <section className="container mx-auto">
       <p className=" py-6 text-primary font-medium">Doctors | Add Doctor </p>
@@ -64,6 +74,7 @@ const AddDoctor = () => {
                 Name*
               </label>
             </div>
+
             <div className=" flex-col flex relative w-full h-10 lg:col-start-3 lg:col-end-5">
               <input
                 {...register("email", { required: true })}
@@ -75,41 +86,44 @@ const AddDoctor = () => {
                 Email*
               </label>
             </div>
+
             <div className=" flex-col flex relative w-full h-10 lg:col-start-5 lg:col-end-7">
               <input
-                {...register("mobile", { required: true })}
+                {...register("phone", { required: true })}
                 type="number"
                 className="myInput peer"
                 placeholder=" "
               />
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
-                Mobile*
+                Phone*
               </label>
             </div>
 
             <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-4">
               <input
-                {...register("password", { required: true })}
-                type="password"
+                {...register("imageUrl", { required: true })}
+                type="text"
                 className="myInput peer"
                 placeholder=" "
               />
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
-                Password*
+                image Url*
               </label>
             </div>
-            <div className=" flex-col flex relative w-full h-10 lg:col-end-7 lg:col-start-4">
+
+            <div className="flex-col flex relative w-full h-10 lg:col-end-7 lg:col-start-4">
               <input
-                {...register("confirmPassword", { required: true })}
-                type="password"
+                {...register("hospitalName", { required: true })}
+                type="text"
                 className="myInput peer"
                 placeholder=" "
               />
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
-                Confirm Password*
+                hospital Name*
               </label>
             </div>
-            <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3  self-center">
+
+            {/* <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3  self-center">
               <input
                 {...register("dob", { required: true })}
                 type="date"
@@ -119,7 +133,8 @@ const AddDoctor = () => {
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
                 Date Of Birth*
               </label>
-            </div>
+            </div> */}
+
             <div className=" flex flex-col relative w-full h-12 text-left  lg:col-end-5 lg:col-start-3">
               <label className="">Gender*</label>
               <div className=" flex gap-5">
@@ -147,10 +162,11 @@ const AddDoctor = () => {
                 </div>
               </div>
             </div>
+
             <div className=" flex-col flex relative w-full h-10 lg:col-start-5 lg:col-end-7">
               <input
-                {...register("service_charge", { required: true })}
-                type="text"
+                {...register("fees", { required: true, valueAsNumber: true })}
+                type="number"
                 className="myInput peer"
                 placeholder=" "
               />
@@ -158,6 +174,7 @@ const AddDoctor = () => {
                 Service Charge*
               </label>
             </div>
+
             <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3">
               <input
                 {...register("education", { required: true })}
@@ -169,17 +186,19 @@ const AddDoctor = () => {
                 Education*
               </label>
             </div>
+
             <div className=" flex-col flex relative w-full h-10 lg:col-start-3 lg:col-end-5">
               <input
-                {...register("designation", { required: true })}
-                type="text"
+                {...register("experience", { required: true, valueAsNumber: true })}
+                type="number"
                 className="myInput peer"
                 placeholder=" "
               />
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
-                Designation*
+                Experience*
               </label>
             </div>
+
             <div className=" flex-col flex lg:col-start-5 lg:col-end-7">
               <select
                 {...register("department", { required: true })}
@@ -193,17 +212,19 @@ const AddDoctor = () => {
                 <option value="Dentist">Dentist</option>
               </select>
             </div>
+
             <div className=" flex-col flex relative w-full h-20 lg:col-start-1 lg:col-end-7">
               <input
-                {...register("address", { required: true })}
+                {...register("qualifications", { required: true })}
                 type="text"
                 className="myInput peer"
                 placeholder=" "
               />
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
-                Address*
+                qualifications*
               </label>
             </div>
+
             <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3">
               <select
                 {...register("division", { required: true })}
@@ -222,7 +243,27 @@ const AddDoctor = () => {
                 <option value="Mymensingh">Mymensingh</option>
               </select>
             </div>
-            <div className="flex gap-4 items-center lg:col-start-3 lg:col-end-5">
+
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3">
+              <select
+                {...register("district", { required: true })}
+                className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400"
+              >
+                <option disabled selected>
+                  Select district
+                </option>
+                <option value="Dhakaa">Dhakaa</option>
+                <option value="Khulnaa">Khulnaa</option>
+                <option value="Sylheat">Sylheta</option>
+                <option value="Barishaal">Barishaal</option>
+                <option value="Chattogaram">Chattoagram</option>
+                <option value="Rajshaahi">Rajshahai</option>
+                <option value="Ranagpur">Rangpura</option>
+                <option value="Mymeansingh">Mymensaingh</option>
+              </select>
+            </div>
+
+            {/* <div className="flex gap-4 items-center lg:col-start-3 lg:col-end-5">
               <div className="w-12 h-12 rounded-full shadow-lg border border-secondary text-xs text-center">
                 {loadImage ? (
                   <img
@@ -249,11 +290,15 @@ const AddDoctor = () => {
                   onChange={fileHandle}
                 />
               </div>
-            </div>
+            </div> */}
 
             <div className=" flex justify-end gap-5 items-center lg:col-start-5 lg:col-end-7">
               <button type="submit" className=" bttn common-btn">
-                Submit
+                {isLoading ? (
+                  <ImSpinner9 className="m-auto animate-spin" size={24} />
+                ) : (
+                  "Submit"
+                )}
               </button>
               <button className="btn plan-btn">Cancel</button>
             </div>
