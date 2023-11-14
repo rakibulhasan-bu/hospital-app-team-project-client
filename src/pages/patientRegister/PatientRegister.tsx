@@ -9,23 +9,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../redux/features/user/userSlice";
 import { RootState } from "../../redux/store";
 import toast from "react-hot-toast";
-import { useInsertUsersMutation } from "../../redux/features/user/userApi";
 
 interface formInputs {
   name: string;
   email: string;
-  password: unknown;
-  confirmPassword: unknown;
+  password: string;
+  confirmPassword: string;
   inputImage: File
 }
 
 const PatientRegister = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  const [insertUser, { isSuccess, data: user }] = useInsertUsersMutation();
   const { error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
-  const [image, setImage] = useState('')
-  const [imageLoading, setImageLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -40,42 +36,17 @@ const PatientRegister = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<formInputs>();
   const password = watch("password");
 
-  const fileHandle = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      try {
-        setImageLoading(true)
-        const formData = new FormData();
-        formData.append('file', e.target.files[0]);
-        formData.append('upload_preset', 'Lifecare');
-        formData.append('cloud_name', "xx");
-
-        const uploadURL = `https://api.cloudinary.com/v1_1/xx/image/upload`;
-
-        // Upload the image to Cloudinary
-        const response = await fetch(uploadURL, {
-          method: 'POST',
-          body: formData,
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setImage(data?.url)
-          setImageLoading(false)
-        } else {
-          console.error('Image upload failed.');
-        }
-      } catch (error) {
-        setImageLoading(false)
-        console.error('Error uploading image:', error);
-      }
+  const onSubmit: SubmitHandler<formInputs> = (data) => {
+    try {
+      const { name, email, password } = data;
+      dispatch(createUser({ name, email, password, role: "PATIENT" }));
+      console.log(data);
+    } catch (error) {
+      console.error('Error creating user:', error);
     }
+    // insertUser({ email, userName: name, role: "PATIENT", imageUrl: image });
   };
-  const onSubmit: SubmitHandler<formInputs> = data => {
-    const { name, email, password } = data;
-    insertUser({ email, userName: name, role: "PATIENT", imageUrl: image });
-    dispatch(createUser({ name, email, password, role: "PATIENT", image }))
-  };
-  console.log(user, isSuccess);
+
   useEffect(() => {
     if (!isLoading && email) {
       navigate('/')
@@ -128,10 +99,6 @@ const PatientRegister = () => {
                   placeholder=" "
                   {...register("password", {
                     required: true,
-                    pattern: {
-                      value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-                      message: "Password must be at least 8 characters long and include at least one letter and one number."
-                    }
                   })}
                 />
                 <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">Password*</label>
@@ -172,7 +139,7 @@ const PatientRegister = () => {
               {errors.confirmPassword?.message && <p className="text-sm text-red-500" role="alert">{errors.confirmPassword.message}</p>}
             </div>
 
-            <div className='flex gap-4 items-center'>
+            {/* <div className='flex gap-4 items-center'>
               <div className="w-12 h-12 rounded-full shadow-lg border border-secondary">
                 {image ?
                   <img className="h-full w-full object-cover rounded-full" src={image} alt="" />
@@ -191,17 +158,18 @@ const PatientRegister = () => {
               {(errors.inputImage?.type === 'required' && !image) && (
                 <p className="text-sm text-red-500" role="alert">Profile Picture is required</p>
               )}
-            </div>
+            </div> */}
+
             <div className="flex items-center justify-between pt-2">
               <button
                 type="submit"
                 className="bttn common-btn w-full cursor-pointer"
               >
-                {imageLoading ? (
+                {/* {isLoading ? (
                   <ImSpinner9 className="m-auto animate-spin" size={24} />
                 ) : (
-                  "Register"
-                )}
+                  )} */}
+                "Register"
               </button>
             </div>
           </form>

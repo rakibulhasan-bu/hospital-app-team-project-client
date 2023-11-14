@@ -11,7 +11,6 @@ interface createUserProps {
   email: string;
   password: string;
   role: string;
-  image: string;
 }
 
 interface signInUserProps {
@@ -32,7 +31,7 @@ const initialState = {
 
 export const createUser = createAsyncThunk(
   "userSlice/createUser",
-  async ({ name, email, password, role, image }: createUserProps) => {
+  async ({ name, email, password, role }: createUserProps) => {
     const data = await createUserWithEmailAndPassword(auth, email, password);
 
     if (auth.currentUser) {
@@ -41,12 +40,10 @@ export const createUser = createAsyncThunk(
       });
     }
 
-    console.log(role);
     return {
       name: data.user.displayName,
       email: data.user.email,
       role: role,
-      image,
     };
   }
 );
@@ -107,7 +104,6 @@ export const userSlice = createSlice({
         (state.name = payload.name || ""),
           (state.email = payload.email || ""),
           (state.role = payload.role),
-          (state.imageUrl = payload.image),
           (state.isLoading = false),
           (state.isError = false),
           (state.error = "");
@@ -116,7 +112,6 @@ export const userSlice = createSlice({
         (state.name = ""),
           (state.email = ""),
           (state.role = ""),
-          (state.imageUrl = ""),
           (state.isLoading = false),
           (state.isError = true),
           (state.error = actions.error.message || "");

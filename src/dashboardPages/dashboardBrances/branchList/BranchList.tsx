@@ -1,4 +1,4 @@
-import { useGetBranchesQuery } from "../../../redux/api/baseApi";
+import { useGetBranchesQuery } from "../../../redux/features/branch/branchApi";
 import BranchRow from "./BranchRow";
 
 const BranchList = () => {
