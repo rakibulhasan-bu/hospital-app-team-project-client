@@ -1,9 +1,9 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useAddDoctorMutation } from "../../../redux/api/baseApi";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { ImSpinner9 } from "react-icons/im";
+import { useAddDoctorMutation } from "../../../redux/features/doctor/doctorApi";
 
 interface formInputs {
   name: string;

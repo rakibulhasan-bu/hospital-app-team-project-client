@@ -1,5 +1,6 @@
-import { useGetDoctorsQuery } from "../../../redux/api/baseApi";
+import { useGetDoctorsQuery } from "../../../redux/features/doctor/doctorApi";
 import Row from "./Row";
+
 const DoctorsList = () => {
   const { data } = useGetDoctorsQuery("");
   console.log("all doctors", data);
