@@ -5,7 +5,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import PopularDoctorCard from "./PopularDoctorCard";
-import { useGetDoctorsQuery } from "../../../redux/api/baseApi";
+import { useGetDoctorsQuery } from "../../../redux/features/doctor/doctorApi";
 
 // interface Card {
 //   img: string;
@@ -91,7 +91,7 @@ const PopularDoctor: React.FC = () => {
           modules={[Autoplay, Navigation, Pagination]}
           className="mySwiper"
         >
-          {data?.data?.map((card: any) => (
+          {data?.doctors?.map((card: any) => (
             <SwiperSlide key={card._id}>
               <PopularDoctorCard card={card} />
             </SwiperSlide>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaCircle } from "react-icons/fa";
 import DoctorCard from "./DoctorCard";
-import { useGetDoctorsQuery } from "../../redux/api/baseApi";
+import { useGetDoctorsQuery } from "../../redux/features/doctor/doctorApi";
 
 interface Card {
   img: string;
