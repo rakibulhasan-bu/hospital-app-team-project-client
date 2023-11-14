@@ -1,10 +1,18 @@
-import { useState } from "react";
-import { FaEdit } from "react-icons/fa";
-import { HiOutlineDotsVertical } from "react-icons/hi";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import ProductRow from "./ProductRow";
+import { useGetAllProductQuery } from "../../redux/features/product/productApi";
+
+interface SingleProduct {
+  _id: undefined;
+  name: string;
+  description: string;
+  oldPrice: number;
+  newPrice: number;
+  cashback: number;
+  imageUrl: string;
+}
 
 const ProductList = () => {
-  const [open, setOpen] = useState(false);
+  const { data } = useGetAllProductQuery("product");
 
   return (
     <section className="container mx-auto">
@@ -42,47 +50,7 @@ const ProductList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="border-b transition duration-300 ease-in-out hover:bg-neutral-100">
-                      <td className="whitespace-nowrap px-6 py-4 font-medium">
-                        1
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-4 font-medium">
-                        Product 1
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-4 font-medium">
-                        Category A
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-4 font-medium">
-                        $50.00
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-4 font-medium">
-                        100
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-4 font-medium">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-4 font-medium hover:text-secondary cursor-pointer">
-                        <div className="relative">
-                          <div
-                            onClick={() => setOpen((prev) => !prev)}
-                            className="w-8 h-8 bg-slate-200 items-center flex justify-center text-lg rounded-lg"
-                          >
-                            <HiOutlineDotsVertical />
-                          </div>
-                          <div className={`${open ? "block" : "hidden"}`}>
-                            <div className="border rounded-md p-4 flex flex-col items-start absolute -bottom-[70px] -left-[50px] z-50">
-                              <button className="flex items-center gap-3">
-                                <FaEdit /> Edit
-                              </button>
-                              <button className="flex items-center gap-3">
-                                <RiDeleteBin6Line /> Delete
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    {/* Add more product rows here */}
+                    {data?.products.map((product: SingleProduct) => (<ProductRow key={product._id} singleProduct={product} />))}
                   </tbody>
                 </table>
               </div>
