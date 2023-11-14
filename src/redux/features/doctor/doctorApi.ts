@@ -14,6 +14,7 @@ const doctorApi = baseApi.injectEndpoints({
         method: "POST",
         body: doctor,
       }),
+      invalidatesTags: ["doctor"],
     }),
   }),
 });

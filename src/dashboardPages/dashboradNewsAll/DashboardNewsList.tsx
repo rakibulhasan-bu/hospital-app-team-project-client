@@ -1,15 +1,15 @@
-import { useGetBranchesQuery } from "../../redux/features/branch/branchApi";
+import { useGetAllBlogQuery } from "../../redux/features/blog/blogApi";
 import NewsRow from "./NewsRow";
 
 const DashboardNewsList = () => {
-    const { data } = useGetBranchesQuery("");
+    const { data } = useGetAllBlogQuery("");
     console.log(data);
     return (
         <section className="container mx-auto">
             <p className=" py-6 text-primary font-medium">Branch | Branch list </p>
             <div className=" bg-white p-5 rounded-2xl">
                 <h2 className=" mb-5 text-xl font-semibold text-primary">
-                    Branch List {data?.branches?.length}
+                    Branch List {data?.blogs?.length}
                 </h2>
                 <div className="flex flex-col">
                     <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -39,7 +39,7 @@ const DashboardNewsList = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {data?.branches?.map((singleData: any) => (
+                                        {data?.blogs?.map((singleData: any) => (
                                             <NewsRow singleData={singleData}></NewsRow>
                                         ))}
                                     </tbody>

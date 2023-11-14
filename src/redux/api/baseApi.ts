@@ -6,7 +6,7 @@ export const baseApi = createApi({
     // baseUrl: "http://localhost:8000/api/v1",
     baseUrl: "https://hospital-app-team-project-server.vercel.app/api/v1",
   }),
-  tagTypes: ["users"],
+  tagTypes: ["users", "blog", "doctor"],
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: () => "/products",
