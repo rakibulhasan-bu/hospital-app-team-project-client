@@ -8,9 +8,11 @@ const productApi = baseApi.injectEndpoints({
         method: "POST",
         body: productData,
       }),
+      invalidatesTags: ["product"],
     }),
     getAllProduct: builder.query({
       query: () => "/products",
+      providesTags: ["product"],
     }),
     getSingleProduct: builder.query({
       query: (id) => `/products/${id}`,

@@ -11,22 +11,8 @@ export const baseApi = createApi({
     getProducts: builder.query({
       query: () => "/products",
     }),
-    getProductById: builder.query({
-      query: (id) => `/products/${id}`,
-    }),
-    setProduct: builder.mutation({
-      query: (doctor) => ({
-        url: "/product",
-        method: "POST",
-        body: doctor,
-      }),
-    }),
   }),
 });
 
-export const {
-  useGetProductsQuery,
-  useGetProductByIdQuery,
-  useSetProductMutation,
-} = baseApi;
+export const { useGetProductsQuery } = baseApi;
 export default baseApi;

@@ -1,37 +1,42 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useCreateProductMutation } from "../../../redux/features/product/productApi";
+import { ImSpinner9 } from "react-icons/im";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 interface formInputs {
   name: string;
-  category: string;
-  price: number;
-  stock: number;
+  oldPrice: number;
+  newPrice: number;
+  cashback: number;
   description: string;
-  image: File;
+  imageUrl: string;
 }
 
 const AddProduct = () => {
-  const [loadImage, setLoadImage] = useState("");
+  const [createProduct, { isError, isLoading, data: productData, error, isSuccess }] = useCreateProductMutation("product");
+
   const {
     register,
-    handleSubmit,
-    formState: { errors },
+    handleSubmit
   } = useForm<formInputs>();
 
-  const fileHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setLoadImage(reader.result as string);
-      };
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  };
+  const navigate = useNavigate()
 
   const onSubmit: SubmitHandler<formInputs> = (data) => {
-    console.log(data);
+    createProduct(data)
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success(`${productData?.product?.name} doctor added successfully`);
+      navigate("/dashboard/product-list")
+    }
+    if (isError) {
+      toast.error(`${error?.data?.message}`);
+    }
+  }, [error, isError, isSuccess, navigate])
 
   return (
     <section className="container mx-auto">
@@ -53,29 +58,56 @@ const AddProduct = () => {
                 Product Name*
               </label>
             </div>
+
             <div className="flex-col flex relative w-full h-10">
               <input
-                {...register("category", { required: true })}
+                {...register("imageUrl", { required: true })}
                 type="text"
                 className="myInput peer"
                 placeholder=" "
               />
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
-                Category*
+                imageUrl*
               </label>
             </div>
+
             <div className="flex-col flex relative w-full h-10">
               <input
-                {...register("price", { required: true, min: 0 })}
+                {...register("oldPrice", { required: true, min: 0, valueAsNumber: true })}
                 type="number"
                 className="myInput peer"
                 placeholder=" "
               />
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
-                Price*
+                Old Price*
               </label>
             </div>
+
             <div className="flex-col flex relative w-full h-10">
+              <input
+                {...register("newPrice", { required: true, min: 0, valueAsNumber: true })}
+                type="number"
+                className="myInput peer"
+                placeholder=" "
+              />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
+                New Price*
+              </label>
+            </div>
+
+            <div className="flex-col flex relative w-full h-10">
+              <input
+                {...register("cashback", { required: true, min: 0, valueAsNumber: true })}
+                type="number"
+                className="myInput peer"
+                placeholder=" "
+              />
+              <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
+                Cashback*
+              </label>
+            </div>
+
+            {/* <div className="flex-col flex relative w-full h-10">
               <input
                 {...register("stock", { required: true, min: 0 })}
                 type="number"
@@ -85,7 +117,8 @@ const AddProduct = () => {
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
                 Stock*
               </label>
-            </div>
+            </div> */}
+
             <div className="flex-col flex relative w-full h-20">
               <textarea
                 {...register("description", { required: true })}
@@ -96,37 +129,14 @@ const AddProduct = () => {
                 Description*
               </label>
             </div>
-            <div className="flex gap-4 items-center">
-              <div className="w-12 h-12 rounded-full shadow-lg border border-secondary text-xs text-center">
-                {loadImage ? (
-                  <img
-                    className="h-full w-full object-cover rounded-full"
-                    src={loadImage}
-                    alt=""
-                  />
-                ) : (
-                  "No image"
-                )}
-              </div>
-              <div>
-                <label
-                  htmlFor="image"
-                  className="shadow-sm border text-textBlack px-4 py-2 rounded-lg cursor-pointer"
-                >
-                  Select Product Image
-                </label>
-                <input
-                  type="file"
-                  id="image"
-                  className="hidden"
-                  {...register("image", { required: true })}
-                  onChange={fileHandle}
-                />
-              </div>
-            </div>
+
             <div className="flex justify-end gap-5 items-center">
               <button type="submit" className="btn common-btn">
-                Submit
+                {isLoading ? (
+                  <ImSpinner9 className="m-auto animate-spin" size={24} />
+                ) : (
+                  "Submit"
+                )}
               </button>
               <button className="btn plan-btn">Cancel</button>
             </div>
