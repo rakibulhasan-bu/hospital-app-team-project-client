@@ -3,7 +3,7 @@ import NewsRow from "./NewsRow";
 
 const DashboardNewsList = () => {
     const { data } = useGetAllBlogQuery("");
-    console.log(data);
+
     return (
         <section className="container mx-auto">
             <p className=" py-6 text-primary font-medium">Branch | Branch list </p>

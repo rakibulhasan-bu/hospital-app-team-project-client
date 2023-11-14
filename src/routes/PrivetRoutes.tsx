@@ -6,31 +6,26 @@ import { useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 import { setUser, toggleLoading } from '../redux/features/user/userSlice';
-import { useGetSingleUsersQuery } from '../redux/features/user/userApi';
 import { AnyAction } from '@reduxjs/toolkit';
 
 const PrivateRoute = ({ children }: AnyAction) => {
     const dispatch = useDispatch()
     const { pathname } = useLocation();
     const { email, isLoading } = useSelector((state: RootState) => state.userState)
-    const { data: singleUser } = useGetSingleUsersQuery(email)
-    console.log(singleUser);
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 dispatch(setUser({
                     name: user.displayName,
-                    email: user.email,
-                    role: singleUser.data?.role,
-                    imageUrl: singleUser.data?.imageUrl
+                    email: user.email
                 }))
                 dispatch(toggleLoading(false))
             } else {
                 dispatch(toggleLoading(false))
             }
         })
-    }, [dispatch, singleUser])
+    }, [dispatch])
 
     if (isLoading) {
         return <Loading />;

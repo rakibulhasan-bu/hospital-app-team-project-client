@@ -3,36 +3,47 @@ import { FaEdit } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-interface SingleData {
+interface SingleProduct {
     name: string;
-    email: string;
-    mobile: string;
-    division: string;
-    phone: string;
+    description: string;
+    oldPrice: number;
+    newPrice: number;
+    cashback: number;
+    imageUrl: string;
 }
 
 interface RowProps {
-    singleData: SingleData;
+    singleProduct: SingleProduct;
 }
-const NewsRow: React.FC<RowProps> = ({ singleData }) => {
 
-    const { name, email, phone, division } = singleData;
+const ProductRow: React.FC<RowProps> = ({ singleProduct }) => {
+
     const [open, setOpen] = useState<boolean>(false);
 
-    const toggleOpen = () => {
-        setOpen((prev) => !prev);
-    };
     return (
         <tr className="border-b transition duration-300 ease-in-out hover:bg-neutral-100">
-            <td className="whitespace-nowrap px-6 py-4 font-medium">#</td>
-            <td className="whitespace-nowrap px-6 py-4 font-medium">{name}</td>
-            <td className="whitespace-nowrap px-6 py-4 font-medium">{phone}</td>
-            <td className="whitespace-nowrap px-6 py-4 font-medium">{email}</td>
-            <td className="whitespace-nowrap px-6 py-4 font-medium">{division}</td>
+            <td className="whitespace-nowrap px-6 py-4 font-medium">
+                1
+            </td>
+            <td className="whitespace-nowrap px-6 py-4 font-medium">
+                {singleProduct?.name}
+            </td>
+            <td className="whitespace-nowrap px-6 py-4 font-medium">
+                {singleProduct?.description}
+            </td>
+            <td className="whitespace-nowrap px-6 py-4 font-medium">
+                {singleProduct?.oldPrice}
+            </td>
+            <td className="whitespace-nowrap px-6 py-4 font-medium">
+                {singleProduct?.newPrice}
+            </td>
+            <td className="whitespace-nowrap px-6 py-4 font-medium">
+                {singleProduct?.cashback}
+            </td>
             <td className="whitespace-nowrap px-6 py-4 font-medium hover:text-secondary cursor-pointer">
-                <div className=" relative">
+                <div className="relative">
                     <div
-                        onClick={toggleOpen}
+                        onClick={() => setOpen((prev) => !prev)}
                         className="w-8 h-8 bg-slate-200 items-center flex justify-center text-lg rounded-lg"
                     >
                         <HiOutlineDotsVertical />
@@ -53,4 +64,4 @@ const NewsRow: React.FC<RowProps> = ({ singleData }) => {
     );
 };
 
-export default NewsRow;
+export default ProductRow;

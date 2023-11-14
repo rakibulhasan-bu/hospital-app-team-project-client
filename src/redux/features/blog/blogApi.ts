@@ -8,9 +8,11 @@ const blogApi = baseApi.injectEndpoints({
         method: "POST",
         body: blogData,
       }),
+      invalidatesTags: ["blog"],
     }),
     getAllBlog: builder.query({
       query: () => "/blogs",
+      providesTags: ["blog"],
     }),
   }),
 });
