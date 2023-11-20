@@ -38,4 +38,5 @@ export const {
   useGetDoctorByIdQuery,
   useGetDoctorsQuery,
   useDeleteDoctorMutation,
+  useUpdateDoctorMutation,
 } = doctorApi;
