@@ -3,7 +3,6 @@ import Row from "./Row";
 
 const DoctorsList = () => {
   const { data } = useGetDoctorsQuery("");
-  console.log("all doctors", data);
   return (
     <section className="container mx-auto">
       <p className=" py-6 text-primary font-medium">Doctors | Doctor list </p>

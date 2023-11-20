@@ -2,9 +2,12 @@ import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { useDeleteDoctorMutation } from "../../../redux/features/doctor/doctorApi";
+import { Link } from "react-router-dom";
 
 interface SingleData {
   name: string;
+  _id: string;
   email: string;
   mobile: string;
   specialist: string;
@@ -17,7 +20,9 @@ interface RowProps {
 }
 
 const Row: React.FC<RowProps> = ({ singleData }) => {
-  const { name, email, mobile, specialist, department, qualification } =
+  const [deleteDoctor] = useDeleteDoctorMutation();
+
+  const { name, email, mobile, specialist, department, qualification, _id } =
     singleData;
   const [open, setOpen] = useState<boolean>(false);
 
@@ -37,20 +42,27 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
       <td className="whitespace-nowrap px-6 py-4 font-medium">{mobile}</td>
       <td className="whitespace-nowrap px-6 py-4 font-medium">{email}</td>
       <td className="whitespace-nowrap px-6 py-4 font-medium">@mdo</td>
-      <td className="whitespace-nowrap px-6 py-4 font-medium hover:text-secondary cursor-pointer">
+      <td className="whitespace-nowrap px-6 py-4 font-medium cursor-pointer">
         <div className=" relative">
           <div
             onClick={toggleOpen}
-            className="w-8 h-8 bg-slate-200 items-center flex justify-center text-lg rounded-lg"
+            className="w-8 h-8 bg-slate-200 items-center flex justify-center text-lg rounded-lg group"
           >
-            <HiOutlineDotsVertical />
+            <span className="group-hover:text-secondary">
+              <HiOutlineDotsVertical />
+            </span>
           </div>
-          <div className={`${open ? "block" : "hidden"}`}>
-            <div className="border rounded-md p-4 flex flex-col items-start absolute -bottom-[70px] -left-[50px] z-50">
-              <button className="flex items-center gap-3">
-                <FaEdit /> Edit
-              </button>
-              <button className="flex items-center gap-3">
+          <div className={`${open ? "block z-10" : "hidden"}`}>
+            <div className="border rounded-md py-4 flex flex-col items-start absolute -bottom-[90px] -left-[80px] z-50 bg-slate-100">
+              <Link to={`/dashboard/edit-doctor/${_id}`}>
+                <button className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1 w-full">
+                  <FaEdit /> Edit
+                </button>
+              </Link>
+              <button
+                onClick={() => deleteDoctor(_id)}
+                className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1"
+              >
                 <RiDeleteBin6Line /> Delete
               </button>
             </div>
