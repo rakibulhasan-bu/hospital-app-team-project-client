@@ -23,13 +23,13 @@ interface formInputs {
 }
 
 const AddDoctor = () => {
-  const navigate = useNavigate()
-  const [addDoctor, { data: doctorData, isSuccess, isError, error, isLoading }] = useAddDoctorMutation();
+  const navigate = useNavigate();
+  const [
+    addDoctor,
+    { data: doctorData, isSuccess, isError, error, isLoading },
+  ] = useAddDoctorMutation();
 
-  const {
-    register,
-    handleSubmit
-  } = useForm<formInputs>();
+  const { register, handleSubmit } = useForm<formInputs>();
 
   // const fileHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
   //   if (e.target.files && e.target.files.length > 0) {
@@ -48,12 +48,12 @@ const AddDoctor = () => {
   useEffect(() => {
     if (isSuccess) {
       toast.success(`${doctorData?.doctor?.name} doctor added successfully`);
-      navigate("/dashboard/doctors-list")
+      navigate("/dashboard/doctors-list");
     }
     if (isError) {
       toast.error(`${error?.data?.message}`);
     }
-  }, [error, isError, isSuccess, navigate])
+  }, [error, isError, isSuccess, navigate]);
   return (
     <section className="container mx-auto">
       <p className=" py-6 text-primary font-medium">Doctors | Add Doctor </p>
@@ -135,7 +135,7 @@ const AddDoctor = () => {
               </label>
             </div> */}
 
-            <div className=" flex flex-col relative w-full h-12 text-left  lg:col-end-5 lg:col-start-3">
+            <div className=" flex flex-col relative w-full h-12 text-left  lg:col-end-3 lg:col-start-1">
               <label className="">Gender*</label>
               <div className=" flex gap-5">
                 <div className=" space-x-3">
@@ -163,7 +163,7 @@ const AddDoctor = () => {
               </div>
             </div>
 
-            <div className=" flex-col flex relative w-full h-10 lg:col-start-5 lg:col-end-7">
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-3 lg:col-end-5">
               <input
                 {...register("fees", { required: true, valueAsNumber: true })}
                 type="number"
@@ -175,7 +175,7 @@ const AddDoctor = () => {
               </label>
             </div>
 
-            <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3">
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-5 lg:col-end-7">
               <input
                 {...register("education", { required: true })}
                 type="text"
@@ -187,9 +187,12 @@ const AddDoctor = () => {
               </label>
             </div>
 
-            <div className=" flex-col flex relative w-full h-10 lg:col-start-3 lg:col-end-5">
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3">
               <input
-                {...register("experience", { required: true, valueAsNumber: true })}
+                {...register("experience", {
+                  required: true,
+                  valueAsNumber: true,
+                })}
                 type="number"
                 className="myInput peer"
                 placeholder=" "
@@ -199,7 +202,7 @@ const AddDoctor = () => {
               </label>
             </div>
 
-            <div className=" flex-col flex lg:col-start-5 lg:col-end-7">
+            <div className=" flex-col flex lg:col-start-3 lg:col-end-5">
               <select
                 {...register("department", { required: true })}
                 className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400"
@@ -213,11 +216,11 @@ const AddDoctor = () => {
               </select>
             </div>
 
-            <div className=" flex-col flex relative w-full h-20 lg:col-start-1 lg:col-end-7">
+            <div className=" flex-col flex relative w-full lg:col-start-5 lg:col-end-7">
               <input
                 {...register("qualifications", { required: true })}
                 type="text"
-                className="myInput peer"
+                className="myInput peer h-10"
                 placeholder=" "
               />
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
@@ -244,7 +247,7 @@ const AddDoctor = () => {
               </select>
             </div>
 
-            <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3">
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-3 lg:col-end-5">
               <select
                 {...register("district", { required: true })}
                 className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400"
