@@ -32,6 +32,7 @@ import PrivateRoute from "./PrivetRoutes";
 import DashboardProductList from "../dashboardPages/dashboardPharmacy/ProductList";
 import AddProduct from "../dashboardPages/dashboardPharmacy/addProduct/AddProduct";
 import DashboardUsers from "../dashboardPages/dashboardUsers/DashboardUsers";
+import EditDoctor from "../dashboardPages/doctorsDashboard/editDoctor/EditDoctor";
 
 export const router = createBrowserRouter([
   {
@@ -130,6 +131,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/add-doctor",
         element: <AddDoctor />,
+      },
+      {
+        path: "/dashboard/edit-doctor",
+        element: <EditDoctor />,
       },
       {
         path: "/dashboard/patients-list",
