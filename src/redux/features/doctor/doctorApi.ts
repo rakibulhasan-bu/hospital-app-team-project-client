@@ -23,6 +23,13 @@ const doctorApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["doctor"],
     }),
+    updateDoctor: builder.mutation({
+      query: (id) => ({
+        url: `/doctor/${id}`,
+        method: "PATCH",
+      }),
+      invalidatesTags: ["doctor"],
+    }),
   }),
 });
 
