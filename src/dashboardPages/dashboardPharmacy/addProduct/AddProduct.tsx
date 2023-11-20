@@ -15,28 +15,28 @@ interface formInputs {
 }
 
 const AddProduct = () => {
-  const [createProduct, { isError, isLoading, data: productData, error, isSuccess }] = useCreateProductMutation("product");
+  const [
+    createProduct,
+    { isError, isLoading, data: productData, error, isSuccess },
+  ] = useCreateProductMutation("product");
 
-  const {
-    register,
-    handleSubmit
-  } = useForm<formInputs>();
+  const { register, handleSubmit } = useForm<formInputs>();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<formInputs> = (data) => {
-    createProduct(data)
+    createProduct(data);
   };
 
   useEffect(() => {
     if (isSuccess) {
       toast.success(`${productData?.product?.name} doctor added successfully`);
-      navigate("/dashboard/product-list")
+      navigate("/dashboard/product-list");
     }
     if (isError) {
       toast.error(`${error?.data?.message}`);
     }
-  }, [error, isError, isSuccess, navigate])
+  }, [error, isError, isSuccess, navigate]);
 
   return (
     <section className="container mx-auto">
@@ -73,7 +73,11 @@ const AddProduct = () => {
 
             <div className="flex-col flex relative w-full h-10">
               <input
-                {...register("oldPrice", { required: true, min: 0, valueAsNumber: true })}
+                {...register("oldPrice", {
+                  required: true,
+                  min: 0,
+                  valueAsNumber: true,
+                })}
                 type="number"
                 className="myInput peer"
                 placeholder=" "
@@ -85,7 +89,11 @@ const AddProduct = () => {
 
             <div className="flex-col flex relative w-full h-10">
               <input
-                {...register("newPrice", { required: true, min: 0, valueAsNumber: true })}
+                {...register("newPrice", {
+                  required: true,
+                  min: 0,
+                  valueAsNumber: true,
+                })}
                 type="number"
                 className="myInput peer"
                 placeholder=" "
@@ -97,7 +105,11 @@ const AddProduct = () => {
 
             <div className="flex-col flex relative w-full h-10">
               <input
-                {...register("cashback", { required: true, min: 0, valueAsNumber: true })}
+                {...register("cashback", {
+                  required: true,
+                  min: 0,
+                  valueAsNumber: true,
+                })}
                 type="number"
                 className="myInput peer"
                 placeholder=" "
@@ -119,7 +131,7 @@ const AddProduct = () => {
               </label>
             </div> */}
 
-            <div className="flex-col flex relative w-full h-20">
+            <div className="flex-col flex relative w-full">
               <textarea
                 {...register("description", { required: true })}
                 className="myInput peer"
@@ -130,7 +142,7 @@ const AddProduct = () => {
               </label>
             </div>
 
-            <div className="flex justify-end gap-5 items-center">
+            <div className="flex justify-start gap-5 items-center">
               <button type="submit" className="btn common-btn">
                 {isLoading ? (
                   <ImSpinner9 className="m-auto animate-spin" size={24} />
