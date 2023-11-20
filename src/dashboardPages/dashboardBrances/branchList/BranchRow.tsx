@@ -2,9 +2,11 @@ import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { useDeleteBranchMutation } from "../../../redux/features/branch/branchApi";
 
 interface SingleData {
   name: string;
+  _id: string;
   email: string;
   mobile: string;
   division: string;
@@ -16,8 +18,9 @@ interface RowProps {
 }
 
 const BranchRow: React.FC<RowProps> = ({ singleData }) => {
-  console.log(singleData);
-  const { name, email, phone, division } = singleData;
+  const [deleteBranch] = useDeleteBranchMutation();
+  const { name, email, phone, division, _id } = singleData;
+
   const [open, setOpen] = useState<boolean>(false);
 
   const toggleOpen = () => {
@@ -44,7 +47,10 @@ const BranchRow: React.FC<RowProps> = ({ singleData }) => {
               <button className="flex items-center gap-3">
                 <FaEdit /> Edit
               </button>
-              <button className="flex items-center gap-3">
+              <button
+                onClick={() => deleteBranch(_id)}
+                className="flex items-center gap-3"
+              >
                 <RiDeleteBin6Line /> Delete
               </button>
             </div>

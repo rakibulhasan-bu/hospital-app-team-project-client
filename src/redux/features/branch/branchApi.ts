@@ -4,6 +4,7 @@ const branchApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getBranches: builder.query({
       query: () => "/branches",
+      providesTags: ["branch"],
     }),
     setBranch: builder.mutation({
       query: (branch) => ({
@@ -17,6 +18,7 @@ const branchApi = baseApi.injectEndpoints({
         url: `/branch/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["branch"],
     }),
   }),
 });

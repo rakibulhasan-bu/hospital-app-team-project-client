@@ -3,7 +3,6 @@ import BranchRow from "./BranchRow";
 
 const BranchList = () => {
   const { data } = useGetBranchesQuery("");
-  console.log(data);
 
   return (
     <section className="container mx-auto">
@@ -41,7 +40,10 @@ const BranchList = () => {
                   </thead>
                   <tbody>
                     {data?.branches?.map((singleData: any) => (
-                      <BranchRow singleData={singleData}></BranchRow>
+                      <BranchRow
+                        key={singleData._id}
+                        singleData={singleData}
+                      ></BranchRow>
                     ))}
                   </tbody>
                 </table>
