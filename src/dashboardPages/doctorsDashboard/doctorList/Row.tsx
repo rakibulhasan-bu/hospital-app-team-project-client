@@ -41,7 +41,7 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
       <td className="whitespace-nowrap px-6 py-4 font-medium">{mobile}</td>
       <td className="whitespace-nowrap px-6 py-4 font-medium">{email}</td>
       <td className="whitespace-nowrap px-6 py-4 font-medium">@mdo</td>
-      <td className="whitespace-nowrap px-6 py-4 font-medium hover:text-secondary cursor-pointer">
+      <td className="whitespace-nowrap px-6 py-4 font-medium cursor-pointer">
         <div className=" relative">
           <div
             onClick={toggleOpen}
@@ -50,13 +50,13 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
             <HiOutlineDotsVertical />
           </div>
           <div className={`${open ? "block z-10" : "hidden"}`}>
-            <div className="border rounded-md p-4 flex flex-col items-start absolute -bottom-[70px] -left-[50px] z-50">
-              <button className="flex items-center gap-3">
+            <div className="border rounded-md py-4 flex flex-col items-start absolute -bottom-[90px] -left-[80px] z-50 bg-slate-100">
+              <button className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1 w-full">
                 <FaEdit /> Edit
               </button>
               <button
                 onClick={() => deleteDoctor(_id)}
-                className="flex items-center gap-3"
+                className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1"
               >
                 <RiDeleteBin6Line /> Delete
               </button>
