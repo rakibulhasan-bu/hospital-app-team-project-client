@@ -12,7 +12,17 @@ const branchApi = baseApi.injectEndpoints({
         body: branch,
       }),
     }),
+    deleteBranch: builder.mutation({
+      query: (id) => ({
+        url: `/branch/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useGetBranchesQuery, useSetBranchMutation } = branchApi;
+export const {
+  useGetBranchesQuery,
+  useSetBranchMutation,
+  useDeleteBranchMutation,
+} = branchApi;
