@@ -19,8 +19,8 @@ interface RowProps {
 }
 
 const Row: React.FC<RowProps> = ({ singleData }) => {
-  const [deleteDoctor, { isLoading, isError, isSuccess, error }] =
-    useDeleteDoctorMutation();
+  const [deleteDoctor] = useDeleteDoctorMutation();
+
   const { name, email, mobile, specialist, department, qualification, _id } =
     singleData;
   const [open, setOpen] = useState<boolean>(false);
