@@ -43,13 +43,14 @@ const BranchRow: React.FC<RowProps> = ({ singleData }) => {
             <HiOutlineDotsVertical />
           </div>
           <div className={`${open ? "block" : "hidden"}`}>
-            <div className="border rounded-md p-4 flex flex-col items-start absolute -bottom-[70px] -left-[50px] z-50">
-              <button className="flex items-center gap-3">
+            <div className="border rounded-md py-4 flex flex-col items-start absolute -bottom-[90px] -left-[80px] z-50 bg-slate-100">
+              <button className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1 w-full">
                 <FaEdit /> Edit
               </button>
+
               <button
                 onClick={() => deleteBranch(_id)}
-                className="flex items-center gap-3"
+                className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1"
               >
                 <RiDeleteBin6Line /> Delete
               </button>

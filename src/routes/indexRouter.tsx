@@ -132,10 +132,10 @@ export const router = createBrowserRouter([
         path: "/dashboard/add-doctor",
         element: <AddDoctor />,
       },
-      {
-        path: "/dashboard/edit-doctor",
-        element: <EditDoctor />,
-      },
+      // {
+      //   path: "/dashboard/edit-doctor",
+      //   element: <EditDoctor />,
+      // },
       {
         path: "/dashboard/patients-list",
         element: <PatientList />,
