@@ -15,11 +15,8 @@ interface formInputs {
 }
 
 const AddBranch = () => {
-  const navigate = useNavigate()
-  const {
-    register,
-    handleSubmit
-  } = useForm<formInputs>();
+  const navigate = useNavigate();
+  const { register, handleSubmit } = useForm<formInputs>();
 
   // const fileHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
   //   if (e.target.files && e.target.files.length > 0) {
@@ -30,7 +27,10 @@ const AddBranch = () => {
   //     reader.readAsDataURL(e.target.files[0]);
   //   }
   // };
-  const [setBranch, { isError, isLoading, isSuccess, error, data: branchData }] = useSetBranchMutation()
+  const [
+    setBranch,
+    { isError, isLoading, isSuccess, error, data: branchData },
+  ] = useSetBranchMutation();
   const onSubmit: SubmitHandler<formInputs> = (data) => {
     setBranch(data);
   };
@@ -38,7 +38,7 @@ const AddBranch = () => {
   useEffect(() => {
     if (isSuccess) {
       toast.success(`${branchData?.branch?.name} doctor added successfully`);
-      navigate("/dashboard/branches-list")
+      navigate("/dashboard/branches-list");
     }
     if (isError) {
       toast.error(`${error?.data?.message}`);
@@ -53,7 +53,11 @@ const AddBranch = () => {
           Branch Details
         </h2>
 
-        <form action="" onSubmit={handleSubmit(onSubmit)} className=" grid grid-cols-1 lg:grid-cols-6 gap-5">
+        <form
+          action=""
+          onSubmit={handleSubmit(onSubmit)}
+          className=" grid grid-cols-1 lg:grid-cols-6 gap-5"
+        >
           <div className="flex flex-col relative h-10 lg:col-start-1 lg:col-end-3">
             <input
               {...register("name", { required: true })}
@@ -109,7 +113,7 @@ const AddBranch = () => {
             </select>
           </div>
 
-          <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3">
+          <div className=" flex-col flex relative w-full h-10 lg:col-start-3 lg:col-end-5">
             <select
               {...register("district", { required: true })}
               className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400"
@@ -128,7 +132,7 @@ const AddBranch = () => {
             </select>
           </div>
 
-          <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-4">
+          <div className=" flex-col flex relative w-full h-10 lg:col-start-5 lg:col-end-7">
             <input
               {...register("imageUrl", { required: true })}
               type="text"
@@ -169,7 +173,7 @@ const AddBranch = () => {
               </div>
             </div> */}
 
-          <div className=" flex justify-end gap-5 items-center lg:col-start-5 lg:col-end-7">
+          <div className=" flex justify-start gap-5 items-center lg:col-start-1 lg:col-end-3">
             <button type="submit" className=" bttn common-btn">
               {isLoading ? (
                 <ImSpinner9 className="m-auto animate-spin" size={24} />
