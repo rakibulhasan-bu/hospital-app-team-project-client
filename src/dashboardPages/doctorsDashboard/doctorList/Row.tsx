@@ -2,9 +2,11 @@ import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { useDeleteDoctorMutation } from "../../../redux/features/doctor/doctorApi";
 
 interface SingleData {
   name: string;
+  _id: string;
   email: string;
   mobile: string;
   specialist: string;
@@ -17,7 +19,9 @@ interface RowProps {
 }
 
 const Row: React.FC<RowProps> = ({ singleData }) => {
-  const { name, email, mobile, specialist, department, qualification } =
+  const [deleteDoctor, { isLoading, isError, isSuccess, error }] =
+    useDeleteDoctorMutation();
+  const { name, email, mobile, specialist, department, qualification, _id } =
     singleData;
   const [open, setOpen] = useState<boolean>(false);
 
@@ -45,12 +49,15 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
           >
             <HiOutlineDotsVertical />
           </div>
-          <div className={`${open ? "block" : "hidden"}`}>
+          <div className={`${open ? "block z-10" : "hidden"}`}>
             <div className="border rounded-md p-4 flex flex-col items-start absolute -bottom-[70px] -left-[50px] z-50">
               <button className="flex items-center gap-3">
                 <FaEdit /> Edit
               </button>
-              <button className="flex items-center gap-3">
+              <button
+                onClick={() => deleteDoctor(_id)}
+                className="flex items-center gap-3"
+              >
                 <RiDeleteBin6Line /> Delete
               </button>
             </div>
