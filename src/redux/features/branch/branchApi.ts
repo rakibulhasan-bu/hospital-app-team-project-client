@@ -13,6 +13,14 @@ const branchApi = baseApi.injectEndpoints({
         body: branch,
       }),
     }),
+    updateBranch: builder.mutation({
+      query: ({ id, branch }) => ({
+        url: `/branch/${id}`,
+        method: "PATCH",
+        body: branch,
+      }),
+      invalidatesTags: ["branch"],
+    }),
     deleteBranch: builder.mutation({
       query: (id) => ({
         url: `/branch/${id}`,
