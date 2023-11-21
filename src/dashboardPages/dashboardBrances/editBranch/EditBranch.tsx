@@ -1,4 +1,13 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import {
+  useGetBranchByIdQuery,
+  useSetBranchMutation,
+  useUpdateBranchMutation,
+} from "../../../redux/features/branch/branchApi";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
+import { ImSpinner9 } from "react-icons/im";
 interface formInputs {
   name: string;
   phone: string;
@@ -9,8 +18,36 @@ interface formInputs {
 }
 
 const EditBranch = () => {
+  const navigate = useNavigate();
+  const { id } = useParams<string>();
+
+  const { data } = useGetBranchByIdQuery(id);
+
+  const [updateBranch, { data: branch, isError, isLoading, isSuccess, error }] =
+    useUpdateBranchMutation();
+
+  console.log(branch?.branches?.name);
+
   const { register, handleSubmit } = useForm<formInputs>();
-  const onSubmit: SubmitHandler<formInputs> = (data) => {};
+
+  const onSubmit: SubmitHandler<formInputs> = (branch) => {
+    updateBranch({ id, branch });
+  };
+
+  useEffect(() => {
+    if (!id) {
+      navigate(`/dashboard/branches-list`);
+    }
+    if (isSuccess) {
+      //   toast(`${branch?.branches?.name} is updated successfully`);
+      navigate(`/dashboard/branches-list`);
+    }
+    if (isError) {
+      //   console.log(error?.data?.message);
+      toast(error?.data?.message);
+    }
+  }, [isSuccess, isError, id]);
+
   return (
     <section className="container mx-auto">
       <p className=" py-6 text-primary font-medium">Branch | Add Branch </p>
@@ -26,10 +63,11 @@ const EditBranch = () => {
         >
           <div className="flex flex-col relative h-10 lg:col-start-1 lg:col-end-3">
             <input
-              {...register("name", { required: true })}
+              {...register("name")}
               type="text"
               className="myInput peer"
               placeholder=" "
+              value={data?.branch?.name}
             />
             <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
               Name*
@@ -38,10 +76,11 @@ const EditBranch = () => {
 
           <div className=" flex-col flex relative w-full h-10 lg:col-start-3 lg:col-end-5">
             <input
-              {...register("email", { required: true })}
+              {...register("email")}
               type="email"
               className="myInput peer"
               placeholder=" "
+              defaultValue={data?.branch?.email}
             />
             <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
               Email*
@@ -50,10 +89,11 @@ const EditBranch = () => {
 
           <div className=" flex-col flex relative w-full h-10 lg:col-start-5 lg:col-end-7">
             <input
-              {...register("phone", { required: true })}
+              {...register("phone")}
               type="number"
               className="myInput peer"
               placeholder=""
+              defaultValue={data?.branch?.phone}
             />
             <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
               Mobile*
@@ -62,7 +102,8 @@ const EditBranch = () => {
 
           <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3">
             <select
-              {...register("division", { required: true })}
+              {...register("division")}
+              value={data?.branch?.division}
               className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400"
             >
               <option disabled selected>
@@ -81,7 +122,8 @@ const EditBranch = () => {
 
           <div className=" flex-col flex relative w-full h-10 lg:col-start-3 lg:col-end-5">
             <select
-              {...register("district", { required: true })}
+              {...register("district")}
+              value={data?.branch?.district}
               className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400"
             >
               <option disabled selected>
@@ -100,7 +142,8 @@ const EditBranch = () => {
 
           <div className=" flex-col flex relative w-full h-10 lg:col-start-5 lg:col-end-7">
             <input
-              {...register("imageUrl", { required: true })}
+              {...register("imageUrl")}
+              defaultValue={data?.branch?.imageUrl}
               type="text"
               className="myInput peer"
               placeholder=" "
@@ -112,11 +155,11 @@ const EditBranch = () => {
 
           <div className=" flex justify-start gap-5 items-center lg:col-start-1 lg:col-end-3">
             <button type="submit" className=" bttn common-btn">
-              {/* {isLoading ? (
+              {isLoading ? (
                 <ImSpinner9 className="m-auto animate-spin" size={24} />
               ) : (
                 "Submit"
-              )} */}
+              )}
             </button>
             <button className="btn plan-btn">Cancel</button>
           </div>

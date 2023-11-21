@@ -6,6 +6,10 @@ const branchApi = baseApi.injectEndpoints({
       query: () => "/branches",
       providesTags: ["branch"],
     }),
+    getBranchById: builder.query({
+      query: (id) => `/branch/${id}`,
+      providesTags: ["branch"],
+    }),
     setBranch: builder.mutation({
       query: (branch) => ({
         url: "/create_branch",
@@ -35,4 +39,6 @@ export const {
   useGetBranchesQuery,
   useSetBranchMutation,
   useDeleteBranchMutation,
+  useGetBranchByIdQuery,
+  useUpdateBranchMutation,
 } = branchApi;

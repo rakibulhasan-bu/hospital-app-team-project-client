@@ -32,7 +32,7 @@ const EditDoctor = () => {
   const { data: singleDoctor } = useGetDoctorByIdQuery(id);
   const [updateDoctor, { data, isSuccess, isError, error, isLoading }] =
     useUpdateDoctorMutation();
-  console.log(isSuccess, data, id);
+  console.log(isSuccess, data, id, singleDoctor);
 
   const { register, handleSubmit } = useForm<formInputs>();
 

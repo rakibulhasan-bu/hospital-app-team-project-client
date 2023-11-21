@@ -4,7 +4,7 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useDeleteBranchMutation } from "../../../redux/features/branch/branchApi";
 import { ImSpinner9 } from "react-icons/im";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface SingleData {
   name: string;
@@ -20,6 +20,7 @@ interface RowProps {
 }
 
 const BranchRow: React.FC<RowProps> = ({ singleData }) => {
+  const navigate = useNavigate();
   const [deleteBranch, { isLoading }] = useDeleteBranchMutation();
   const { name, email, phone, division, _id } = singleData;
 
@@ -28,6 +29,9 @@ const BranchRow: React.FC<RowProps> = ({ singleData }) => {
   const toggleOpen = () => {
     setOpen((prev) => !prev);
   };
+  // const handleClick = (singleData: SingleData) => {
+  //   navigate(`/dashboard/edit-branch/${singleData._id}`);
+  // };
 
   return (
     <tr className="border-b transition duration-300 ease-in-out hover:bg-neutral-100">
@@ -47,7 +51,10 @@ const BranchRow: React.FC<RowProps> = ({ singleData }) => {
           <div className={`${open ? "block" : "hidden"}`}>
             <div className="border rounded-md py-4 flex flex-col items-start absolute -bottom-[90px] -left-[80px] z-50 bg-slate-100">
               <Link to={`/dashboard/edit-branch/${_id}`}>
-                <button className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1 w-full">
+                <button
+                  // onClick={() => handleClick(singleData)}
+                  className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1 w-full"
+                >
                   <FaEdit /> Edit
                 </button>
               </Link>
