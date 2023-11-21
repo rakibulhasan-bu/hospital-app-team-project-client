@@ -1,6 +1,10 @@
 import { ImSpinner9 } from "react-icons/im";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useUpdateProductMutation } from "../../../redux/features/product/productApi";
+import {
+  useGetSingleProductQuery,
+  useUpdateProductMutation,
+} from "../../../redux/features/product/productApi";
+import { useParams } from "react-router-dom";
 
 interface formInputs {
   name: string;
@@ -12,13 +16,20 @@ interface formInputs {
 }
 
 const EditProduct = () => {
+  const { id } = useParams();
+
   const { register, handleSubmit } = useForm<formInputs>();
-  const onSubmit: SubmitHandler<formInputs> = (data) => {};
+  const { data: singleProduct } = useGetSingleProductQuery(id);
+  console.log(singleProduct?.product?.name, id);
   const [updateProduct, { isLoading, data, isError, error, isSuccess }] =
     useUpdateProductMutation();
+
+  const onSubmit: SubmitHandler<formInputs> = (updateData) => {
+    updateProduct({ updateData, id });
+  };
   return (
     <section className="container mx-auto">
-      <p className="py-6 text-primary font-medium">Products | Add Product</p>
+      <p className="py-6 text-primary font-medium">Products | Update Product</p>
       <div className="bg-white p-5 rounded-2xl">
         <h2 className="mb-5 text-xl font-semibold text-primary">
           Product Details
@@ -28,6 +39,7 @@ const EditProduct = () => {
             <div className="flex flex-col relative h-10">
               <input
                 {...register("name")}
+                defaultValue={singleProduct?.product?.name}
                 type="text"
                 className="myInput peer"
                 placeholder=" "
@@ -40,6 +52,7 @@ const EditProduct = () => {
             <div className="flex-col flex relative w-full h-10">
               <input
                 {...register("imageUrl")}
+                defaultValue={singleProduct?.product?.imageUrl}
                 type="text"
                 className="myInput peer"
                 placeholder=" "
@@ -55,6 +68,7 @@ const EditProduct = () => {
                   min: 0,
                   valueAsNumber: true,
                 })}
+                defaultValue={singleProduct?.product?.oldPrice}
                 type="number"
                 className="myInput peer"
                 placeholder=" "
@@ -70,6 +84,7 @@ const EditProduct = () => {
                   min: 0,
                   valueAsNumber: true,
                 })}
+                defaultValue={singleProduct?.product?.newPrice}
                 type="number"
                 className="myInput peer"
                 placeholder=" "
@@ -85,6 +100,7 @@ const EditProduct = () => {
                   min: 0,
                   valueAsNumber: true,
                 })}
+                defaultValue={singleProduct?.product?.cashback}
                 type="number"
                 className="myInput peer"
                 placeholder=" "
@@ -97,6 +113,7 @@ const EditProduct = () => {
             <div className="flex-col flex relative w-full">
               <textarea
                 {...register("description")}
+                defaultValue={singleProduct?.product?.description}
                 className="myInput peer"
                 placeholder=" "
               />
