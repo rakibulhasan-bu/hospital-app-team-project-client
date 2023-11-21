@@ -10,10 +10,11 @@ interface SingleData {
   name: string;
   _id: string;
   email: string;
-  mobile: string;
+  phone: string;
   specialist: string;
   department: string;
-  qualification: string;
+  qualifications: string;
+  createdAt: string;
 }
 
 interface RowProps {
@@ -24,7 +25,7 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
   const [deleteDoctor, { isLoading }] = useDeleteDoctorMutation();
   const navigate = useNavigate();
 
-  const { name, email, mobile, specialist, department, qualification, _id } =
+  const { name, email, phone, department, qualifications, _id, createdAt } =
     singleData;
   const [open, setOpen] = useState<boolean>(false);
   const handleEdit = (doctor: SingleData) => {
@@ -40,13 +41,12 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
       <td className="whitespace-nowrap px-6 py-4 font-medium">#</td>
       <td className="whitespace-nowrap px-6 py-4 font-medium">{name}</td>
       <td className="whitespace-nowrap px-6 py-4 font-medium">{department}</td>
-      <td className="whitespace-nowrap px-6 py-4 font-medium">{specialist}</td>
       <td className="whitespace-nowrap px-6 py-4 font-medium">
-        {qualification}
+        {qualifications}
       </td>
-      <td className="whitespace-nowrap px-6 py-4 font-medium">{mobile}</td>
+      <td className="whitespace-nowrap px-6 py-4 font-medium">{phone}</td>
       <td className="whitespace-nowrap px-6 py-4 font-medium">{email}</td>
-      <td className="whitespace-nowrap px-6 py-4 font-medium">@mdo</td>
+      <td className="whitespace-nowrap px-6 py-4 font-medium">{createdAt}</td>
       <td className="whitespace-nowrap px-6 py-4 font-medium cursor-pointer">
         <div className=" relative">
           <div
