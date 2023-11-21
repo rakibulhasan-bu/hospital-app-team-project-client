@@ -33,6 +33,8 @@ import DashboardProductList from "../dashboardPages/dashboardPharmacy/ProductLis
 import AddProduct from "../dashboardPages/dashboardPharmacy/addProduct/AddProduct";
 import DashboardUsers from "../dashboardPages/dashboardUsers/DashboardUsers";
 import EditDoctor from "../dashboardPages/doctorsDashboard/editDoctor/EditDoctor";
+import EditBranch from "../dashboardPages/dashboardBrances/editBranch/EditBranch";
+import EditProduct from "../dashboardPages/dashboardPharmacy/editProduct/EditProduct";
 
 export const router = createBrowserRouter([
   {
@@ -160,12 +162,20 @@ export const router = createBrowserRouter([
         element: <AddProduct />,
       },
       {
+        path: "/dashboard/edit-product/:id",
+        element: <EditProduct />,
+      },
+      {
         path: "/dashboard/add-news-category",
         element: <AddNewsCategory />,
       },
       {
         path: "/dashboard/add-branch",
         element: <AddBranch />,
+      },
+      {
+        path: "/dashboard/edit-branch/:id",
+        element: <EditBranch />,
       },
       {
         path: "/dashboard/branches-list",
