@@ -1,7 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
   useGetBranchByIdQuery,
-  useSetBranchMutation,
   useUpdateBranchMutation,
 } from "../../../redux/features/branch/branchApi";
 import { useNavigate, useParams } from "react-router-dom";
@@ -26,8 +25,6 @@ const EditBranch = () => {
   const [updateBranch, { data: branch, isError, isLoading, isSuccess, error }] =
     useUpdateBranchMutation();
 
-  console.log(branch?.branches?.name);
-
   const { register, handleSubmit } = useForm<formInputs>();
 
   const onSubmit: SubmitHandler<formInputs> = (branch) => {
@@ -39,7 +36,7 @@ const EditBranch = () => {
       navigate(`/dashboard/branches-list`);
     }
     if (isSuccess) {
-      //   toast(`${branch?.branches?.name} is updated successfully`);
+      toast.success(`Branch updated successfully`);
       navigate(`/dashboard/branches-list`);
     }
     if (isError) {

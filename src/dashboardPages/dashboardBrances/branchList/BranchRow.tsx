@@ -51,10 +51,7 @@ const BranchRow: React.FC<RowProps> = ({ singleData }) => {
           <div className={`${open ? "block" : "hidden"}`}>
             <div className="border rounded-md py-4 flex flex-col items-start absolute -bottom-[90px] -left-[80px] z-50 bg-slate-100">
               <Link to={`/dashboard/edit-branch/${_id}`}>
-                <button
-                  // onClick={() => handleClick(singleData)}
-                  className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1 w-full"
-                >
+                <button className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1 w-full">
                   <FaEdit /> Edit
                 </button>
               </Link>
