@@ -3,6 +3,7 @@ import { FaEdit } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useDeleteBranchMutation } from "../../../redux/features/branch/branchApi";
+import { ImSpinner9 } from "react-icons/im";
 
 interface SingleData {
   name: string;
@@ -18,7 +19,7 @@ interface RowProps {
 }
 
 const BranchRow: React.FC<RowProps> = ({ singleData }) => {
-  const [deleteBranch] = useDeleteBranchMutation();
+  const [deleteBranch, { isLoading }] = useDeleteBranchMutation();
   const { name, email, phone, division, _id } = singleData;
 
   const [open, setOpen] = useState<boolean>(false);
@@ -52,7 +53,14 @@ const BranchRow: React.FC<RowProps> = ({ singleData }) => {
                 onClick={() => deleteBranch(_id)}
                 className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1"
               >
-                <RiDeleteBin6Line /> Delete
+                {isLoading ? (
+                  <ImSpinner9 className="m-auto animate-spin" size={20} />
+                ) : (
+                  <div className="flex gap-2 items-center">
+                    <RiDeleteBin6Line />
+                    delele
+                  </div>
+                )}
               </button>
             </div>
           </div>
