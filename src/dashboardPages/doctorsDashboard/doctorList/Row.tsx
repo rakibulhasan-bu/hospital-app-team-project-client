@@ -3,7 +3,7 @@ import { FaEdit } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useDeleteDoctorMutation } from "../../../redux/features/doctor/doctorApi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface SingleData {
   name: string;
@@ -21,10 +21,14 @@ interface RowProps {
 
 const Row: React.FC<RowProps> = ({ singleData }) => {
   const [deleteDoctor] = useDeleteDoctorMutation();
+  const navigate = useNavigate();
 
   const { name, email, mobile, specialist, department, qualification, _id } =
     singleData;
   const [open, setOpen] = useState<boolean>(false);
+  const handleEdit = (doctor: SingleData) => {
+    navigate(`/dashboard/edit-doctor/${doctor._id}`);
+  };
 
   const toggleOpen = () => {
     setOpen((prev) => !prev);
@@ -54,11 +58,13 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
           </div>
           <div className={`${open ? "block z-10" : "hidden"}`}>
             <div className="border rounded-md py-4 flex flex-col items-start absolute -bottom-[90px] -left-[80px] z-50 bg-slate-100">
-              <Link to={`/dashboard/edit-doctor/${_id}`}>
-                <button className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1 w-full">
-                  <FaEdit /> Edit
-                </button>
-              </Link>
+              <button
+                onClick={() => handleEdit(singleData)}
+                className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1 w-full"
+              >
+                <FaEdit /> Edit
+              </button>
+
               <button
                 onClick={() => deleteDoctor(_id)}
                 className="flex items-center gap-3 px-4 hover:bg-slate-200 py-1"

@@ -102,7 +102,6 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        {" "}
         <DashboardLayout />
       </PrivateRoute>
     ),
@@ -132,10 +131,10 @@ export const router = createBrowserRouter([
         path: "/dashboard/add-doctor",
         element: <AddDoctor />,
       },
-      // {
-      //   path: "/dashboard/edit-doctor",
-      //   element: <EditDoctor />,
-      // },
+      {
+        path: "/dashboard/edit-doctor/:id",
+        element: <EditDoctor />,
+      },
       {
         path: "/dashboard/patients-list",
         element: <PatientList />,
