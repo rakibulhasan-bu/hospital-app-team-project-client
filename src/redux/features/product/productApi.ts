@@ -24,6 +24,7 @@ const productApi = baseApi.injectEndpoints({
         method: "PATCH",
         body: updateData,
       }),
+      invalidatesTags: ["product"],
     }),
     deleteProduct: builder.mutation({
       query: (id) => ({

@@ -4,7 +4,9 @@ import {
   useGetSingleProductQuery,
   useUpdateProductMutation,
 } from "../../../redux/features/product/productApi";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 interface formInputs {
   name: string;
@@ -17,6 +19,7 @@ interface formInputs {
 
 const EditProduct = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm<formInputs>();
   const { data: singleProduct } = useGetSingleProductQuery(id);
@@ -27,6 +30,20 @@ const EditProduct = () => {
   const onSubmit: SubmitHandler<formInputs> = (updateData) => {
     updateProduct({ updateData, id });
   };
+
+  useEffect(() => {
+    if (!id) {
+      navigate(`/dashboard/product-list`);
+    }
+    if (isSuccess) {
+      toast.success(`product is updated successfully`);
+      navigate(`/dashboard/product-list`);
+    }
+    if (isError) {
+      toast(error?.data?.message);
+    }
+  }, [isSuccess, id, isError]);
+
   return (
     <section className="container mx-auto">
       <p className="py-6 text-primary font-medium">Products | Update Product</p>
