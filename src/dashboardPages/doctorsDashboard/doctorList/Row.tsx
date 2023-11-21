@@ -15,6 +15,7 @@ interface SingleData {
   department: string;
   qualifications: string;
   createdAt: string;
+  imageUrl: string;
 }
 
 interface RowProps {
@@ -25,8 +26,16 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
   const [deleteDoctor, { isLoading }] = useDeleteDoctorMutation();
   const navigate = useNavigate();
 
-  const { name, email, phone, department, qualifications, _id, createdAt } =
-    singleData;
+  const {
+    name,
+    email,
+    phone,
+    department,
+    qualifications,
+    _id,
+    createdAt,
+    imageUrl,
+  } = singleData;
   const [open, setOpen] = useState<boolean>(false);
   const handleEdit = (doctor: SingleData) => {
     navigate(`/dashboard/edit-doctor/${doctor._id}`);
@@ -39,7 +48,14 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
   return (
     <tr className="border-b transition duration-300 ease-in-out hover:bg-neutral-100">
       <td className="whitespace-nowrap px-6 py-4 font-medium">#</td>
-      <td className="whitespace-nowrap px-6 py-4 font-medium">{name}</td>
+      <td className="whitespace-nowrap px-6 py-4 font-medium flex items-center justify-center gap-2">
+        <img
+          className=" w-7 h-7 object-cover rounded-full"
+          src={imageUrl}
+          alt={name}
+        />
+        {name}
+      </td>
       <td className="whitespace-nowrap px-6 py-4 font-medium">{department}</td>
       <td className="whitespace-nowrap px-6 py-4 font-medium">
         {qualifications}
