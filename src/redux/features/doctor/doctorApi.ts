@@ -25,7 +25,7 @@ const doctorApi = baseApi.injectEndpoints({
       invalidatesTags: ["doctors"],
     }),
     updateDoctor: builder.mutation({
-      query: ({ doctor, id }) => ({
+      query: ({ id, doctor }) => ({
         url: `/doctor/${id}`,
         method: "PATCH",
         body: doctor,

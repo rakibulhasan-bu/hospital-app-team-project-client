@@ -27,7 +27,7 @@ interface formInputs {
 
 const EditDoctor = () => {
   const navigate = useNavigate();
-  const { id } = useParams<string>();
+  const { id } = useParams();
   console.log(id);
 
   const [updateDoctor, { data, isSuccess, isError, error }] =
@@ -37,9 +37,8 @@ const EditDoctor = () => {
 
   const { register, handleSubmit } = useForm<formInputs>();
 
-  const onSubmit: SubmitHandler<formInputs> = (data) => {
-    console.log(data);
-    updateDoctor({ data, id });
+  const onSubmit: SubmitHandler<formInputs> = (doctor) => {
+    updateDoctor({ id, doctor });
   };
 
   useEffect(() => {
@@ -47,13 +46,13 @@ const EditDoctor = () => {
       navigate(`/dashboard/doctors-list`);
     }
     if (isSuccess) {
-      toast("skdhfksdhf");
+      toast(`${data?.doctor?.name} is updated successfully`);
       navigate(`/dashboard/doctors-list`);
     }
     if (isError) {
       toast(error?.data?.message);
     }
-  }, [isSuccess, isError, id]);
+  }, [isSuccess, isError, id, navigate, error?.data?.message]);
 
   return (
     <section className="container mx-auto">
