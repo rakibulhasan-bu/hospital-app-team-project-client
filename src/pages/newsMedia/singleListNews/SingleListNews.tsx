@@ -14,15 +14,7 @@ type Blog = {
 };
 
 const SingleListNews: React.FC<{ blog: Blog }> = ({ blog }) => {
-  const {
-    description,
-
-    imageUrl,
-
-    title,
-    createdAt,
-    author,
-  } = blog;
+  const { description, imageUrl, title, createdAt, author } = blog;
   return (
     <div className="myBorder p-4">
       {/* this is image div  */}

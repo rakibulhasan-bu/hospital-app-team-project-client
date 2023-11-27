@@ -4,11 +4,12 @@ import { useGetAllBlogQuery } from "../../redux/features/blog/blogApi";
 
 type Blog = {
   _id: string;
+  author: string;
   description: string;
   district: string;
   email: string;
   imageUrl: string;
-  tags: string;
+  tags: string[];
   title: string;
   createdAt: string;
 };
