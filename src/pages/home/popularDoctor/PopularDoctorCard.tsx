@@ -13,13 +13,16 @@ interface PopularDoctorCardProps {
 
 const PopularDoctorCard: React.FC<PopularDoctorCardProps> = ({ card }) => {
   return (
-    <div className="hover:bg-gradient-to-b from-cyan-300 to-transparent p-[2px] rounded-3xl">
-      <div className=" bg-white rounded-3xl pb-6 flex flex-col gap-4 mb-10">
-        <img
-          className=" rounded-t-3xl h-[240px] object-cover w-full object-top"
-          src={card?.imageUrl}
-          alt=""
-        />
+    <div className="hover:bg-gradient-to-b from-blue-400 to-transparent p-[3px] pb-0 rounded-3xl group">
+      <div className=" bg-white rounded-3xl pb-6 flex flex-col gap-4 mb-10 overflow-hidden">
+        <div className="overflow-hidden">
+          <img
+            className=" rounded-t-3xl h-[240px] object-cover w-full object-top hover:scale-110 duration-300"
+            src={card?.imageUrl}
+            alt=""
+          />
+        </div>
+
         <div className=" flex items-center gap-3 px-6">
           <span className=" bg-green-200 px-3 py-1 text-green-600">
             Cardiology
@@ -35,7 +38,9 @@ const PopularDoctorCard: React.FC<PopularDoctorCardProps> = ({ card }) => {
           <p>{card.department}</p>
         </div>
         <div className=" px-6">
-          <button className="bttn common-btn">Consult</button>
+          <Link to={`/appointment`}>
+            <button className="bttn common-btn">Consult</button>
+          </Link>
         </div>
       </div>
     </div>
