@@ -2,7 +2,7 @@ import { BiSearchAlt2 } from "react-icons/bi";
 import SingleListNews from "./singleListNews/SingleListNews";
 import { useGetAllBlogQuery } from "../../redux/features/blog/blogApi";
 
-type Blogs = {
+type Blog = {
   _id: string;
   description: string;
   district: string;
@@ -21,9 +21,9 @@ const NewsMedia = () => {
     <div className="container mx-auto px-2 lg:px-0 py-8 flex gap-4">
       {/* list view news side  */}
       <div className="w-8/12 flex flex-col gap-4">
-        <SingleListNews />
-        <SingleListNews />
-        <SingleListNews />
+        {data?.blogs?.map((blog: Blog) => (
+          <SingleListNews key={blog._id} blog={blog} />
+        ))}
       </div>
       {/* search and latest post heading side  */}
       <div className="w-4/12">
@@ -45,7 +45,7 @@ const NewsMedia = () => {
         <div className="myBorder mt-6">
           <h3 className="subTitle p-4">Latest posts</h3>
           <div className="border-t border-grey p-4 space-y-4">
-            {data.blogs.map((blog: Blogs) => (
+            {data?.blogs?.map((blog: Blog) => (
               <div
                 key={blog._id}
                 className="w-full h-16 flex items-center gap-4"
@@ -71,7 +71,7 @@ const NewsMedia = () => {
         <div className="myBorder mt-6">
           <h3 className="subTitle p-4">Blog categories</h3>
           <div className="border-t border-grey p-4 space-y-4">
-            {data.blogs.map((blog: Blogs) => (
+            {data?.blogs?.map((blog: Blog) => (
               <div
                 key={blog._id}
                 className="w-full flex items-center justify-between gap-4"
