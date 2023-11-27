@@ -7,51 +7,57 @@ import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { useGetAllProductQuery } from "../../../redux/features/product/productApi";
 
-interface Card {
-  img: string;
-  title: string;
+interface SingleProduct {
+  _id: undefined;
+  name: string;
+  description: string;
+  oldPrice: number;
+  newPrice: number;
+  cashback: number;
+  imageUrl: string;
 }
 
 const PharmacyHome: React.FC = () => {
   const { data } = useGetAllProductQuery("");
-  const cardData: Card[] = [
-    {
-      img: "https://i.ibb.co/sp7JHWr/babycare.webp",
-      title: "Baby Care",
-    },
-    {
-      img: "https://i.ibb.co/HtqBSHx/glucometer-strips.webp",
-      title: "Glucometer Strips",
-    },
-    {
-      img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
-      title: "Heanth and Newtrition",
-    },
-    {
-      img: "https://i.ibb.co/fGqNXk9/healthdevices.webp",
-      title: "Health Device",
-    },
-    {
-      img: "https://i.ibb.co/vwfrhXq/personalcare.webp",
-      title: "Personal Care",
-    },
-    {
-      img: "https://i.ibb.co/bWL31Yd/apollo-products.webp",
-      title: "Lifecare Product",
-    },
-    {
-      img: "https://i.ibb.co/h8VBj58/ayurvedic-range.webp",
-      title: "Ayurvedic RangeS",
-    },
-    {
-      img: "https://i.ibb.co/xKvd4Tm/sexualwellness.webp",
-      title: "Sexual Wellness",
-    },
-    {
-      img: "https://i.ibb.co/VVHHx2k/womencare.webp",
-      title: "Women Care",
-    },
-  ];
+
+  // const cardData: Card[] = [
+  //   {
+  //     img: "https://i.ibb.co/sp7JHWr/babycare.webp",
+  //     title: "Baby Care",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/HtqBSHx/glucometer-strips.webp",
+  //     title: "Glucometer Strips",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
+  //     title: "Heanth and Newtrition",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/fGqNXk9/healthdevices.webp",
+  //     title: "Health Device",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/vwfrhXq/personalcare.webp",
+  //     title: "Personal Care",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/bWL31Yd/apollo-products.webp",
+  //     title: "Lifecare Product",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/h8VBj58/ayurvedic-range.webp",
+  //     title: "Ayurvedic RangeS",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/xKvd4Tm/sexualwellness.webp",
+  //     title: "Sexual Wellness",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/VVHHx2k/womencare.webp",
+  //     title: "Women Care",
+  //   },
+  // ];
 
   return (
     <div className="">
@@ -90,7 +96,7 @@ const PharmacyHome: React.FC = () => {
           modules={[Autoplay, Navigation, Pagination]}
           className="mySwiper"
         >
-          {data?.products?.map((card) => (
+          {data?.products?.map((card: SingleProduct) => (
             <SwiperSlide key={card._id} className="my-12">
               <PharmacyCard card={card} />
             </SwiperSlide>
