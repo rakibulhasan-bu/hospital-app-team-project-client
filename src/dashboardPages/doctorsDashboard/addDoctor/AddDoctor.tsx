@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ImSpinner9 } from "react-icons/im";
 import { useAddDoctorMutation } from "../../../redux/features/doctor/doctorApi";
 
@@ -47,7 +47,7 @@ const AddDoctor = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success(`${doctorData?.doctor?.name} doctor added successfully`);
+      toast.success(`Doctor ${doctorData?.doctor?.name} added successfully`);
       navigate("/dashboard/doctors-list");
     }
     if (isError) {
@@ -56,7 +56,9 @@ const AddDoctor = () => {
   }, [error, isError, isSuccess, navigate]);
   return (
     <section className="container mx-auto">
-      <p className=" py-6 text-primary font-medium">Doctors | Add Doctor </p>
+      <p className=" py-6 text-primary font-medium">
+        <Link to="/dashboard/doctors-list">Doctors</Link> | Add Doctor{" "}
+      </p>
       <div className=" bg-white p-5 rounded-2xl">
         <h2 className=" mb-5 text-xl font-semibold text-primary">
           Doctor Details
