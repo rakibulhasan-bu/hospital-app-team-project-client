@@ -5,13 +5,14 @@ import { useGetDoctorsQuery } from "../../redux/features/doctor/doctorApi";
 
 interface Card {
   imageUrl: string;
+  _id: string;
   title: string;
   number: string;
   icon: any;
 }
 
 const Doctors: React.FC = () => {
-  const { data, isError } = useGetDoctorsQuery("");
+  const { data, isLoading } = useGetDoctorsQuery("");
 
   // console.log(doctors, isError);
   // const cardData: Card[] = [
@@ -122,8 +123,9 @@ const Doctors: React.FC = () => {
           </div>
         </div>
         <div className=" lg:w-3/5 2xl:w-3/5 w-full">
+          {isLoading && <h2>Loading..</h2>}
           {data?.doctors?.map((card: Card) => (
-            <DoctorCard card={card} />
+            <DoctorCard key={card._id} card={card} />
           ))}
         </div>
       </div>
