@@ -101,7 +101,7 @@ const Pharmacy = () => {
       <ProductSlider></ProductSlider>
       <ProductSlider></ProductSlider>
 
-      <AdSlider></AdSlider>
+      {/* <AdSlider></AdSlider> */}
       <MedicinePromotion></MedicinePromotion>
       <BlogSlider></BlogSlider>
     </div>
