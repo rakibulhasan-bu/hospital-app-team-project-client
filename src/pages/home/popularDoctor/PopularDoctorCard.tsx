@@ -32,9 +32,10 @@ const PopularDoctorCard: React.FC<PopularDoctorCardProps> = ({ card }) => {
           </span>
         </div>
         <div className=" px-6">
-          <Link className=" subTitle hover:text-secondary duration-300" to="/">
+          <h3 className=" text-secondary font-semi-bold text-xl">
             {card.name}
-          </Link>
+          </h3>
+
           <p>{card.department}</p>
         </div>
         <div className=" px-6">

@@ -1,10 +1,14 @@
-
-import { FaMedkit, FaHospital, FaVideo, FaVial, FaArrowRight } from 'react-icons/fa';
-import ProductSlider from './slider/ProductSlider';
-import AdSlider from './adSlider/AdSlider';
-import MedicinePromotion from './promotionCard/MedicinePromotion';
-import BlogSlider from './blogSlider/BlogSlider';
-
+import {
+  FaMedkit,
+  FaHospital,
+  FaVideo,
+  FaVial,
+  FaArrowRight,
+} from "react-icons/fa";
+import ProductSlider from "./slider/ProductSlider";
+import AdSlider from "./adSlider/AdSlider";
+import MedicinePromotion from "./promotionCard/MedicinePromotion";
+import BlogSlider from "./blogSlider/BlogSlider";
 
 const Pharmacy = () => {
   return (
@@ -36,47 +40,71 @@ const Pharmacy = () => {
       {/* Cards Section */}
       <div className="flex justify-around mt-12 flex-wrap">
         <div className="bg-gray-100 border p-4 h-20 w-1/4 flex items-center justify-between rounded-md overflow-hidden">
-          <div><FaMedkit className="text-3xl text-blue-500 " /></div>
+          <div>
+            <FaMedkit className="text-3xl text-blue-500 " />
+          </div>
           <div className="w-full text-left ms-8">
-            <h3 className="text-md font-bold text-secondary "> Get 15% off on <br /> Medicines</h3>
+            <h3 className="text-md font-bold text-secondary ">
+              {" "}
+              Get 15% off on <br /> Medicines
+            </h3>
             <p className="text-sm text-textBlack">Upload</p>
           </div>
-          <div><FaArrowRight className="text-xl text-green-500" /></div>
+          <div>
+            <FaArrowRight className="text-xl text-green-500" />
+          </div>
         </div>
         <div className="bg-gray-200 border p-4 h-20 w-1/4 flex items-center justify-between rounded-md overflow-hidden">
-          <div><FaHospital className="text-3xl text-red-500 " /></div>
+          <div>
+            <FaHospital className="text-3xl text-red-500 " />
+          </div>
           <div className="w-full text-left ms-8">
-            <h3 className="text-md font-bold text-secondary "> Hospital Visit</h3>
+            <h3 className="text-md font-bold text-secondary ">
+              {" "}
+              Hospital Visit
+            </h3>
             <p className="text-sm text-textBlack">Pre-book</p>
           </div>
-          <div><FaArrowRight className="text-xl text-green-500" /></div>
+          <div>
+            <FaArrowRight className="text-xl text-green-500" />
+          </div>
         </div>
         <div className="bg-gray-300 border p-4 h-20 w-1/4 flex items-center justify-between rounded-md overflow-hidden">
-          <div><FaVideo className="text-3xl text-purple-500 " /></div>
+          <div>
+            <FaVideo className="text-3xl text-purple-500 " />
+          </div>
           <div className="w-full text-left ms-8">
-            <h3 className="text-md font-bold text-secondary "> Video Consult</h3>
+            <h3 className="text-md font-bold text-secondary ">
+              {" "}
+              Video Consult
+            </h3>
             <p className="text-sm text-textBlack">In 15 min</p>
           </div>
-          <div><FaArrowRight className="text-xl text-green-500" /></div>
+          <div>
+            <FaArrowRight className="text-xl text-green-500" />
+          </div>
         </div>
         <div className="bg-gray-400 border p-4 h-20 w-1/4 flex items-center justify-between rounded-md overflow-hidden">
-          <div><FaVial className="text-3xl text-yellow-500 " /></div>
+          <div>
+            <FaVial className="text-3xl text-yellow-500 " />
+          </div>
           <div className="w-full text-left ms-8">
             <h3 className="text-md font-bold text-secondary "> Lab Tests</h3>
             <p className="text-sm text-textBlack">At home</p>
           </div>
-          <div><FaArrowRight className="text-xl text-green-500" /></div>
+          <div>
+            <FaArrowRight className="text-xl text-green-500" />
+          </div>
         </div>
       </div>
 
       <ProductSlider></ProductSlider>
       <ProductSlider></ProductSlider>
-      
-      <AdSlider></AdSlider>
+
+      {/* <AdSlider></AdSlider> */}
       <MedicinePromotion></MedicinePromotion>
       <BlogSlider></BlogSlider>
     </div>
-    
   );
 };
 
