@@ -173,6 +173,8 @@ const Navbar: React.FC = () => {
             <BiMenuAltRight size={35} color="secondary" />
           )}
         </div>
+        {/* mobile menu  */}
+
         <div
           className={` absolute duration-300 ease-out ${
             open
@@ -180,7 +182,7 @@ const Navbar: React.FC = () => {
               : "-left-[220px] top-[56px] bottom-0 md:-left-[220px]"
           }`}
         >
-          <MobileMenu />
+          <MobileMenu setOpen={setOpen} />
         </div>
       </nav>
     </header>

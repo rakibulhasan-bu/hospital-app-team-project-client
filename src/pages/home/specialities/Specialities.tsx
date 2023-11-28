@@ -71,14 +71,18 @@ const Specialities: React.FC = () => {
   ];
   return (
     <div className="container px-2 mx-auto my-10 text-xl lg:min-h-screen lg:px-0 ">
-      <section >
+      <section>
         <div data-aos="fade-up" data-aos-duration="3000">
-        <SectionHeading
-          semiSubTitle="Explore Specialized Care at Our Hospital"
-          title="Browse by Specialities"
-          subTitle="Navigate through our comprehensive list of specialized departments to ensure you receive the personalized treatment you deserve."
-        /></div>
-        <div data-aos="fade-down" className="grid grid-cols-2 gap-4 mx-6 md:grid-cols-4 lg:grid-cols-6 mt-7">
+          <SectionHeading
+            semiSubTitle="Explore Specialized Care at Our Hospital"
+            title="Browse by Specialities"
+            subTitle="Navigate through our comprehensive list of specialized departments to ensure you receive the personalized treatment you deserve."
+          />
+        </div>
+        <div
+          data-aos="fade-down"
+          className="grid grid-cols-2 gap-4 mx-6 md:grid-cols-4 lg:grid-cols-6 mt-7"
+        >
           {cardData.map((card, index) => (
             <div
               key={index}
@@ -101,11 +105,14 @@ const Specialities: React.FC = () => {
         </div>
       </section>
       <section className="grid grid-cols-1 md:grid-cols-2">
-        <div data-aos="fade-left" className="relative bg-[url('https://i.ibb.co/f21Z6Q1/doctor-bg.jpg')] bg-cover bg-center ">
+        <div
+          data-aos="fade-left"
+          className="relative bg-[url('https://i.ibb.co/f21Z6Q1/doctor-bg.jpg')] bg-cover bg-center "
+        >
           <div className="absolute inset-0 bg-black opacity-70"></div>
           <div className="relative z-10 m-10">
             <h2 className="mt-24 mb-12 text-5xl font-bold text-white">
-              ARE YOU A DOCTOR?
+              Are You A Patient?
             </h2>
             <p className="mb-16 text-white">
               The service allows you to get maximum visibility online and to
@@ -117,7 +124,10 @@ const Specialities: React.FC = () => {
             </div>
           </div>
         </div>
-        <div data-aos="fade-right" className="relative bg-[url('https://i.ibb.co/PDZQWRJ/doctor-right-bg.jpg')] bg-cover bg-center ">
+        <div
+          data-aos="fade-right"
+          className="relative bg-[url('https://i.ibb.co/PDZQWRJ/doctor-right-bg.jpg')] bg-cover bg-center "
+        >
           <div className="absolute inset-0 bg-blue-800 opacity-70"></div>
           <div className="relative z-10 m-8">
             <h2 className="mt-24 mb-12 text-5xl font-bold text-white">
