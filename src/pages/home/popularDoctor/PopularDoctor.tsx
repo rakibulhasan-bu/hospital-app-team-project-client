@@ -53,9 +53,9 @@ const PopularDoctor: React.FC = () => {
   return (
     <section
       data-aos="fade-up"
-      className="bg-[#F7FCFC] h-[70vh] lg:py-10 2xl:py-6  min-h-[100vh] flex-col flex items-center justify-center"
+      className="bg-[#F7FCFC] 2xl:min-h-[84dvh] lg:py-10 2xl:py-10  flex-col flex items-center justify-center w-full"
     >
-      <h1 className="flex items-center justify-center gap-1 text-2xl font-semibold text-center lg:mb-16 text-primary px-5">
+      <h1 className="flex items-center justify-center gap-1 text-2xl font-semibold text-center lg:mb-10 text-primary px-5">
         <FaCircle className="text-xs text-accent" />
         <FaCircle className="text-xl text-secondary" />
         <FaCircle className="text-xs text-accent" />
@@ -66,7 +66,7 @@ const PopularDoctor: React.FC = () => {
         <FaCircle className="text-xl text-secondary" />
         <FaCircle className="text-xs text-accent" />
       </h1>
-      <div className="container px-4 py-10 mx-auto">
+      <div className="container px-4 pb-6 mx-auto">
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
