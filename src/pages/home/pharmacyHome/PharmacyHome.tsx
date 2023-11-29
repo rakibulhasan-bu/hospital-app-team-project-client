@@ -78,12 +78,16 @@ const PharmacyHome: React.FC = () => {
               spaceBetween: 5,
             },
             768: {
-              slidesPerView: 3,
-              spaceBetween: 70,
+              slidesPerView: 2,
+              spaceBetween: 20,
             },
             1024: {
               slidesPerView: 4,
-              spaceBetween: 10,
+              spaceBetween: 60,
+            },
+            1440: {
+              slidesPerView: 4,
+              spaceBetween: 30,
             },
           }}
           pagination={{

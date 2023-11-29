@@ -6,7 +6,7 @@ import { RootState } from "./redux/store";
 import { useSelector } from "react-redux";
 
 const App = () => {
-  const { theme } = useSelector((state: RootState) => state.themeState)
+  const { theme } = useSelector((state: RootState) => state.themeState);
   return (
     <div className={`${theme} bg-background`}>
       <Navbar />

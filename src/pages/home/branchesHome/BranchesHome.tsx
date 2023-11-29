@@ -7,10 +7,11 @@ const BranchesHome = () => {
       data-aos="fade-up"
       data-aos-easing="linear"
       data-aos-duration="1500"
-      className="w-full py-8"
+      className="w-full py-8 object-left"
       style={{
         background: `url(${bg})`,
         backgroundSize: "cover",
+        backgroundPositionX: "center",
       }}
     >
       {/* upper content div */}

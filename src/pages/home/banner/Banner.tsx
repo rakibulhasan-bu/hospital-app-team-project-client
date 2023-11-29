@@ -8,11 +8,10 @@ const Banner = () => {
       style={{
         backgroundImage: `url(${banner})`,
         backgroundRepeat: "no-repeat",
-        width: "100%",
       }}
-      className="lg:h-[87dvh] 2xl:h-[90dvh] bg-white bg-cover bg-center w-full"
+      className="lg:min-h-[90vh] 2xl:min-h-[84vh] bg-white bg-cover bg-center overflow-hidden"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 2xl:grid-cols-2 justify-items-center container mx-auto px-5 gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 2xl:grid-cols-2 justify-items-center container mx-auto px-5 gap-16 items-center">
         <LeftSide />
         <RightSide />
       </div>
