@@ -1,8 +1,14 @@
 import BranchesCard from "../../components/Banches/BranchesCard";
 import allBranches from "../../components/data/branches.json";
 import SectionHeading from "../../components/sharedTitle/SectionHeading";
+import CountUp from "./CountUp";
+import GoogleMap from "./GoogleMap";
+
+import { WhyUs } from "./WhyUs";
 
 const Branches = () => {
+
+
   console.log(allBranches);
   return (
     <>
@@ -18,6 +24,9 @@ const Branches = () => {
           />
         ))}
       </div>
+      <WhyUs/>
+      <CountUp/>
+  
     </>
   );
 };

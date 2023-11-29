@@ -8,8 +8,8 @@ const BranchesCard = ({
   name = "Lifecare Hospital Gazipur",
 }) => {
   return (
-    <div className="h-32 w-max mx-auto overflow-hidden border rounded-lg branches-card border-accent hover:shadow-lg bg-[#112b4ed8] md:bg-transparent">
-      <div className="flex items-center text-xs font-semibold text-accent">
+    <div className="h-32 w-full mx-auto overflow-hidden border rounded-lg branches-card border-accent hover:shadow-lg bg-[#112b4ed8] md:bg-transparent">
+      <div className="flex items-center justify-between text-xs font-semibold text-accent">
         <div className="m-3">
           <a href="#">
             <FaLocationDot className="inline text-secondary" /> {location}
