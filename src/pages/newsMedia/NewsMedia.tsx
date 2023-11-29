@@ -16,7 +16,7 @@ type Blog = {
 
 const NewsMedia = () => {
   const { data } = useGetAllBlogQuery("");
-  console.log(data);
+
   const a = [1, 2, 3, 4, 5];
   return (
     <div className="container mx-auto px-2 lg:px-0 py-8 flex gap-4">

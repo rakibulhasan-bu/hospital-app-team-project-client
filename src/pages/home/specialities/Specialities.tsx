@@ -70,7 +70,7 @@ const Specialities: React.FC = () => {
     },
   ];
   return (
-    <div className="container px-2 mx-auto my-10 text-xl lg:min-h-screen lg:px-0 ">
+    <div className="container px-2 mx-auto my-10 text-xl lg:min-h-screen lg:px-0 bg-red-500">
       <section>
         <div data-aos="fade-up" data-aos-duration="3000">
           <SectionHeading

@@ -43,13 +43,9 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
     createdAt,
     imageUrl,
   } = singleData;
-  const [open, setOpen] = useState<boolean>(false);
+
   const handleEdit = (doctor: SingleData) => {
     navigate(`/dashboard/edit-doctor/${doctor._id}`);
-  };
-
-  const toggleOpen = () => {
-    setOpen((prev) => !prev);
   };
 
   return (
