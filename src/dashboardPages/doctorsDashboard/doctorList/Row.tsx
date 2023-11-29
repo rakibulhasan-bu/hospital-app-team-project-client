@@ -5,6 +5,13 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { useDeleteDoctorMutation } from "../../../redux/features/doctor/doctorApi";
 import { Link, useNavigate } from "react-router-dom";
 import { ImSpinner9 } from "react-icons/im";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+} from "@nextui-org/react";
 
 interface SingleData {
   name: string;
@@ -36,19 +43,15 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
     createdAt,
     imageUrl,
   } = singleData;
-  const [open, setOpen] = useState<boolean>(false);
+
   const handleEdit = (doctor: SingleData) => {
     navigate(`/dashboard/edit-doctor/${doctor._id}`);
-  };
-
-  const toggleOpen = () => {
-    setOpen((prev) => !prev);
   };
 
   return (
     <tr className="border-b transition duration-300 ease-in-out hover:bg-neutral-100">
       <td className="whitespace-nowrap px-6 py-4 font-medium">#</td>
-      <td className="whitespace-nowrap px-6 py-4 font-medium flex items-center justify-center gap-2">
+      <td className="whitespace-nowrap px-6 py-4 font-medium flex items-center  gap-2">
         <img
           className=" w-7 h-7 object-cover rounded-full"
           src={imageUrl}
@@ -64,7 +67,7 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
       <td className="whitespace-nowrap px-6 py-4 font-medium">{email}</td>
       <td className="whitespace-nowrap px-6 py-4 font-medium">{createdAt}</td>
       <td className="whitespace-nowrap px-6 py-4 font-medium cursor-pointer">
-        <div className=" relative">
+        {/* <div className=" relative">
           <div
             onClick={toggleOpen}
             className="w-8 h-8 bg-slate-200 items-center flex justify-center text-lg rounded-lg group"
@@ -73,6 +76,7 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
               <HiOutlineDotsVertical />
             </span>
           </div>
+
           <div className={`${open ? "block z-10" : "hidden"}`}>
             <div className="border rounded-md py-4 flex flex-col items-start absolute -bottom-[90px] -left-[80px] z-50 bg-slate-100">
               <button
@@ -97,7 +101,34 @@ const Row: React.FC<RowProps> = ({ singleData }) => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
+        <Dropdown>
+          <DropdownTrigger>
+            <Button size="sm" variant="bordered">
+              <HiOutlineDotsVertical size={20} />
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Static Actions">
+            <DropdownItem key="edit" onClick={() => handleEdit(singleData)}>
+              <div className=" flex items-center gap-3">
+                <FaEdit /> Edit
+              </div>
+            </DropdownItem>
+            <DropdownItem
+              onClick={() => deleteDoctor(_id)}
+              key="delete"
+              className="text-danger"
+              color="danger"
+            >
+              <div className=" flex items-center gap-3">
+                <span>
+                  <RiDeleteBin6Line />
+                </span>
+                <span> Delele</span>
+              </div>
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
       </td>
     </tr>
   );

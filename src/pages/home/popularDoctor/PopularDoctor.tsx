@@ -53,9 +53,9 @@ const PopularDoctor: React.FC = () => {
   return (
     <section
       data-aos="fade-up"
-      className="bg-[#F7FCFC] h-[70vh] lg:py-10 2xl:py-6 my-20 min-h-[100vh] flex-col flex items-center justify-center"
+      className="bg-[#F7FCFC] h-[70vh] lg:py-10 2xl:py-6  min-h-[100vh] flex-col flex items-center justify-center"
     >
-      <h1 className="flex items-center justify-center gap-1 text-2xl font-semibold text-center lg:mb-16 text-primary">
+      <h1 className="flex items-center justify-center gap-1 text-2xl font-semibold text-center lg:mb-16 text-primary px-5">
         <FaCircle className="text-xs text-accent" />
         <FaCircle className="text-xl text-secondary" />
         <FaCircle className="text-xs text-accent" />

@@ -3,9 +3,10 @@ import BranchesCard from "../../../components/Banches/BranchesCard";
 
 const BranchesHome = () => {
   return (
-    <div data-aos="fade-up"
-    data-aos-easing="linear"
-    data-aos-duration="1500"
+    <div
+      data-aos="fade-up"
+      data-aos-easing="linear"
+      data-aos-duration="1500"
       className="w-full py-8"
       style={{
         background: `url(${bg})`,
@@ -13,16 +14,21 @@ const BranchesHome = () => {
       }}
     >
       {/* upper content div */}
-      <div data-aos="fade-down"
-     data-aos-easing="linear"
-     data-aos-duration="1500" className="p-3 ml-auto w-max lg:p-10">
+      <div
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1500"
+        className="p-3 ml-auto lg:p-10 lg:w-max"
+      >
         <div className="my-10 text-right text-white capitalize">
-          <h1 className="px-5 text-sm ">Serving Communities accross</h1>
+          <h1 className="px-5 text-sm text-center">
+            Serving Communities accross
+          </h1>
           <div className="flex gap-3">
             <div className="w-1 bg-accent text-accent">.</div>
             <div className="w-1 bg-accent text-accent">.</div>
             <div className="w-3 bg-accent text-accent">.</div>
-            <h1 className="flex-1 px-5 text-6xl font-bold text-blue-950 bg-accent">
+            <h1 className="flex-1 px-5 lg:text-6xl text-3xl text-center font-bold text-blue-950 bg-accent">
               Nationwide
             </h1>
           </div>

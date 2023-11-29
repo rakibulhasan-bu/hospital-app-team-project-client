@@ -1,5 +1,6 @@
 import { BiTimeFive } from "react-icons/bi";
 import { FaRegComments, FaTags } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 type Blog = {
   _id: string;
@@ -14,7 +15,7 @@ type Blog = {
 };
 
 const SingleListNews: React.FC<{ blog: Blog }> = ({ blog }) => {
-  const { description, imageUrl, title, createdAt, author } = blog;
+  const { description, imageUrl, title, createdAt, author, _id } = blog;
   return (
     <div className="myBorder p-4">
       {/* this is image div  */}
@@ -39,6 +40,7 @@ const SingleListNews: React.FC<{ blog: Blog }> = ({ blog }) => {
               src={imageUrl}
               alt=""
             />
+
             <h3>{author}</h3>
           </div>
           {/* this is date div  */}
@@ -58,9 +60,11 @@ const SingleListNews: React.FC<{ blog: Blog }> = ({ blog }) => {
           </div>
         </div>
         <p className="text">{description}</p>
-        <h3 className="text-secondary underline font-medium cursor-pointer">
-          Read more
-        </h3>
+        <Link to={`/newsMedia/${_id}`}>
+          <h3 className="text-secondary underline font-medium cursor-pointer">
+            Read more
+          </h3>
+        </Link>
       </div>
     </div>
   );

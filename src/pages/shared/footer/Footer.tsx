@@ -1,25 +1,45 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaInstagram, FaMapMarkerAlt, FaEnvelope, FaPhone } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaMapMarkerAlt,
+  FaEnvelope,
+  FaPhone,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 
 const Footer: React.FC = () => {
   const socialLinks = [
-    { name: "Facebook", url: "https://www.facebook.com/yourhospital", icon: <FaFacebook /> },
-    { name: "Twitter", url: "https://twitter.com/yourhospital", icon: <FaTwitter /> },
-    { name: "Instagram", url: "https://www.instagram.com/yourhospital", icon: <FaInstagram /> },
+    {
+      name: "Facebook",
+      url: "https://www.facebook.com/yourhospital",
+      icon: <FaFacebook />,
+    },
+    {
+      name: "Twitter",
+      url: "https://twitter.com/yourhospital",
+      icon: <FaTwitter />,
+    },
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/yourhospital",
+      icon: <FaInstagram />,
+    },
   ];
 
   return (
-    <footer className="text-primary font-medium relative px-2 mb-10">
+    <footer className="text-primary font-medium relative px-5 mb-10">
       <div className="absolute inset-x-0 top-0 h-3 bg-gradient-to-t from-gray-200 to-transparent"></div>
-      <div className="shadow-t sm:shadow-md py-8">
+      <div className="shadow-t sm:shadow-md pt-8">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             <div className="text-center lg:text-left">
               <img src={logo} alt="Hospital Logo" className="h-16" />
               <p className="mt-4 text-textBlack">
-                To serve the humanity as a whole with this noble vision, Lifecare Hospital started its journey in 2023.
+                To serve the humanity as a whole with this noble vision,
+                Lifecare Hospital started its journey in 2023.
               </p>
               <div className="mt-4 flex items-center">
                 {socialLinks.map((link) => (
@@ -42,7 +62,9 @@ const Footer: React.FC = () => {
                   <Link to="/emergency-care">Emergency Care</Link>
                 </li>
                 <li className="mb-2 text-textBlack transition-all duration-300 hover:text-secondary hover:ml-4">
-                  <Link to="/specialized-treatments">Specialized Treatments</Link>
+                  <Link to="/specialized-treatments">
+                    Specialized Treatments
+                  </Link>
                 </li>
                 <li className="mb-2 text-textBlack transition-all duration-300 hover:text-secondary hover:ml-4">
                   <Link to="/diagnostic-services">Diagnostic Services</Link>
@@ -86,7 +108,9 @@ const Footer: React.FC = () => {
           </div>
           <div className="mt-5 text-center">
             <hr />
-            <p className="text-textBlack mt-3">&copy; 2023 Lifecare Hospital. All rights reserved.</p>
+            <p className="text-textBlack mt-3">
+              &copy; 2023 Lifecare Hospital. All rights reserved.
+            </p>
           </div>
         </div>
       </div>

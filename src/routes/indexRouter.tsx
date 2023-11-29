@@ -35,6 +35,7 @@ import DashboardUsers from "../dashboardPages/dashboardUsers/DashboardUsers";
 import EditDoctor from "../dashboardPages/doctorsDashboard/editDoctor/EditDoctor";
 import EditBranch from "../dashboardPages/dashboardBrances/editBranch/EditBranch";
 import EditProduct from "../dashboardPages/dashboardPharmacy/editProduct/EditProduct";
+import NewsDetails from "../pages/newsMedia/NewsDetails/NewsDetails";
 
 export const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
       {
         path: "newsMedia",
         element: <NewsMedia />,
+      },
+      {
+        path: "newsMedia/:id",
+        element: <NewsDetails />,
       },
       {
         path: "gallery",

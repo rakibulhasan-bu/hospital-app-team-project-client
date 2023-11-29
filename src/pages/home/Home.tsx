@@ -18,24 +18,26 @@ import { useGetSingleUsersQuery } from "../../redux/features/user/userApi";
 import { RootState } from "../../redux/store";
 
 const Home = () => {
-  const dispatch = useDispatch()
-  const { email } = useSelector((state: RootState) => state.userState)
-  const { data: singleUser } = useGetSingleUsersQuery(email)
+  const dispatch = useDispatch();
+  const { email } = useSelector((state: RootState) => state.userState);
+  const { data: singleUser } = useGetSingleUsersQuery(email);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(setUser({
-          name: user?.displayName,
-          email: user?.email,
-          role: singleUser?.data?.role,
-          imageUrl: singleUser?.data?.imageUrl
-        }))
-        dispatch(toggleLoading(false))
+        dispatch(
+          setUser({
+            name: user?.displayName,
+            email: user?.email,
+            role: singleUser?.data?.role,
+            imageUrl: singleUser?.data?.imageUrl,
+          })
+        );
+        dispatch(toggleLoading(false));
       } else {
-        dispatch(toggleLoading(false))
+        dispatch(toggleLoading(false));
       }
-    })
-  }, [dispatch, singleUser, email])
+    });
+  }, [dispatch, singleUser, email]);
 
   return (
     <div className="">

@@ -20,66 +20,65 @@ type Products = {
 
 const ProductSlider: React.FC = () => {
   const { data } = useGetProductsQuery("");
-  console.log(data);
 
-  const productData = [
-    {
-      img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
-      title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
-      cashback: "₹75.50 cashback",
-      price: "$1509.9",
-      discount: "39% Off",
-    },
-    {
-      img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
-      title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
-      cashback: "₹75.50 cashback",
-      price: "$1509.9",
-      discount: "39% Off",
-    },
-    {
-      img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
-      title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
-      cashback: "₹75.50 cashback",
-      price: "$1509.9",
-      discount: "39% Off",
-    },
-    {
-      img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
-      title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
-      cashback: "₹75.50 cashback",
-      price: "$1509.9",
-      discount: "39% Off",
-    },
-    {
-      img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
-      title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
-      cashback: "₹75.50 cashback",
-      price: "$1509.9",
-      discount: "39% Off",
-    },
-    {
-      img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
-      title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
-      cashback: "₹75.50 cashback",
-      price: "$1509.9",
-      discount: "39% Off",
-    },
-    {
-      img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
-      title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
-      cashback: "₹75.50 cashback",
-      price: "$1509.9",
-      discount: "39% Off",
-    },
-    {
-      img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
-      title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
-      cashback: "₹75.50 cashback",
-      price: "$1509.9",
-      discount: "39% Off",
-    },
-  ];
+  // const productData = [
+  //   {
+  //     img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
+  //     title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
+  //     cashback: "₹75.50 cashback",
+  //     price: "$1509.9",
+  //     discount: "39% Off",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
+  //     title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
+  //     cashback: "₹75.50 cashback",
+  //     price: "$1509.9",
+  //     discount: "39% Off",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
+  //     title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
+  //     cashback: "₹75.50 cashback",
+  //     price: "$1509.9",
+  //     discount: "39% Off",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
+  //     title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
+  //     cashback: "₹75.50 cashback",
+  //     price: "$1509.9",
+  //     discount: "39% Off",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
+  //     title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
+  //     cashback: "₹75.50 cashback",
+  //     price: "$1509.9",
+  //     discount: "39% Off",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
+  //     title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
+  //     cashback: "₹75.50 cashback",
+  //     price: "$1509.9",
+  //     discount: "39% Off",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
+  //     title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
+  //     cashback: "₹75.50 cashback",
+  //     price: "$1509.9",
+  //     discount: "39% Off",
+  //   },
+  //   {
+  //     img: "https://i.ibb.co/cc4NZNf/health-and-nutrition.webp",
+  //     title: "Ensure Complete, Balanced Nutrition Drink Powder for...",
+  //     cashback: "₹75.50 cashback",
+  //     price: "$1509.9",
+  //     discount: "39% Off",
+  //   },
+  // ];
 
   return (
     <>
