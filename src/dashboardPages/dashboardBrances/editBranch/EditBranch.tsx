@@ -15,6 +15,13 @@ interface formInputs {
   district: string;
   imageUrl: File;
 }
+interface UpdateDoctorMutationResult {
+  data: any;
+  isSuccess: boolean;
+  isError: boolean;
+  error: { data: { message: string } };
+  isLoading: boolean;
+}
 
 const EditBranch = () => {
   const navigate = useNavigate();
@@ -23,7 +30,7 @@ const EditBranch = () => {
   const { data } = useGetBranchByIdQuery(id);
 
   const [updateBranch, { data: branch, isError, isLoading, isSuccess, error }] =
-    useUpdateBranchMutation();
+    useUpdateBranchMutation<UpdateDoctorMutationResult>();
 
   const { register, handleSubmit } = useForm<formInputs>();
 
@@ -36,7 +43,7 @@ const EditBranch = () => {
       navigate(`/dashboard/branches-list`);
     }
     if (isSuccess) {
-      toast.success(`Branch updated successfully`);
+      toast.success(`${branch.name} updated successfully`);
       navigate(`/dashboard/branches-list`);
     }
     if (isError) {
