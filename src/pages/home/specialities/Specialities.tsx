@@ -106,7 +106,7 @@ const Specialities: React.FC = () => {
       </section>
       <section className="grid grid-cols-1 md:grid-cols-2">
         <div
-          data-aos="fade-left"
+          data-aos="fade-up"
           className="relative bg-[url('https://i.ibb.co/f21Z6Q1/doctor-bg.jpg')] bg-cover bg-center "
         >
           <div className="absolute inset-0 bg-black opacity-70"></div>
@@ -125,7 +125,7 @@ const Specialities: React.FC = () => {
           </div>
         </div>
         <div
-          data-aos="fade-right"
+          data-aos="fade-up"
           className="relative bg-[url('https://i.ibb.co/PDZQWRJ/doctor-right-bg.jpg')] bg-cover bg-center "
         >
           <div className="absolute inset-0 bg-blue-800 opacity-70"></div>

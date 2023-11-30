@@ -22,12 +22,20 @@ interface formInputs {
   district: string;
 }
 
+interface UpdateDoctorMutationResult {
+  data: any;
+  isSuccess: boolean;
+  isError: boolean;
+  error: { data: { message: string } };
+  isLoading: boolean;
+}
+
 const AddDoctor = () => {
   const navigate = useNavigate();
   const [
     addDoctor,
     { data: doctorData, isSuccess, isError, error, isLoading },
-  ] = useAddDoctorMutation();
+  ] = useAddDoctorMutation<UpdateDoctorMutationResult>();
 
   const { register, handleSubmit } = useForm<formInputs>();
 

@@ -13,12 +13,19 @@ interface formInputs {
   description: string;
   imageUrl: string;
 }
+interface UpdateDoctorMutationResult {
+  data: any;
+  isSuccess: boolean;
+  isError: boolean;
+  error: { data: { message: string } };
+  isLoading: boolean;
+}
 
 const AddProduct = () => {
   const [
     createProduct,
     { isError, isLoading, data: productData, error, isSuccess },
-  ] = useCreateProductMutation("product");
+  ] = useCreateProductMutation<UpdateDoctorMutationResult>();
 
   const { register, handleSubmit } = useForm<formInputs>();
 

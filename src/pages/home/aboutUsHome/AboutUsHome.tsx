@@ -12,7 +12,7 @@ const AboutUsHome = () => {
         />
       </div>
       <section className="container mx-auto px-4 md:px-0 my-8 flex flex-col md:flex-row gap-8">
-        <div data-aos="fade-up-right" className="relative w-full md:w-3/6">
+        <div data-aos="fade-up" className="relative w-full md:w-3/6">
           <img
             src="https://i.ibb.co/3FKGpDW/pexels-tima-miroshnichenko-5452293.jpg"
             alt=""
@@ -27,7 +27,7 @@ const AboutUsHome = () => {
           </div>
         </div>
         <div
-          data-aos="fade-up-left"
+          data-aos="fade-up"
           className="flex flex-col gap-4 ml-0 md:ml-6 pt-10 md:mt-0 "
         >
           <p className="text-secondary font-semibold">

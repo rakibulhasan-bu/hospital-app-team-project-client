@@ -25,6 +25,14 @@ interface formInputs {
   district: string;
 }
 
+interface UpdateDoctorMutationResult {
+  data: any;
+  isSuccess: boolean;
+  isError: boolean;
+  error: { data: { message: string } };
+  isLoading: boolean;
+}
+
 const EditDoctor = () => {
   const navigate = useNavigate();
   const { id } = useParams<string>();
@@ -32,7 +40,7 @@ const EditDoctor = () => {
 
   const { data: singleDoctor } = useGetDoctorByIdQuery(id);
   const [updateDoctor, { data, isSuccess, isError, error, isLoading }] =
-    useUpdateDoctorMutation();
+    useUpdateDoctorMutation<UpdateDoctorMutationResult>();
   console.log(data);
 
   const { register, handleSubmit } = useForm<formInputs>();
