@@ -4,48 +4,48 @@ import DoctorCard from "./DoctorCard";
 import { useGetDoctorsQuery } from "../../redux/features/doctor/doctorApi";
 
 interface Card {
-  img: string;
+  imageUrl: string;
   title: string;
   number: string;
   icon: any;
 }
 
 const Doctors: React.FC = () => {
-  const { data: doctors, isError } = useGetDoctorsQuery("");
+  const { data, isError } = useGetDoctorsQuery("");
 
-  console.log(doctors, isError);
-  const cardData: Card[] = [
-    {
-      img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
-      title: "Heart surgery",
-      number: "120",
-      icon: FaCircle,
-    },
-    {
-      img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
-      title: "Urology",
-      number: "110",
-      icon: FaCircle,
-    },
-    {
-      img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
-      title: "Urology",
-      number: "110",
-      icon: FaCircle,
-    },
-    {
-      img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
-      title: "Urology",
-      number: "110",
-      icon: FaCircle,
-    },
-    {
-      img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
-      title: "Urology",
-      number: "110",
-      icon: FaCircle,
-    },
-  ];
+  // console.log(doctors, isError);
+  // const cardData: Card[] = [
+  //   {
+  //     img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
+  //     title: "Heart surgery",
+  //     number: "120",
+  //     icon: FaCircle,
+  //   },
+  //   {
+  //     img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
+  //     title: "Urology",
+  //     number: "110",
+  //     icon: FaCircle,
+  //   },
+  //   {
+  //     img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
+  //     title: "Urology",
+  //     number: "110",
+  //     icon: FaCircle,
+  //   },
+  //   {
+  //     img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
+  //     title: "Urology",
+  //     number: "110",
+  //     icon: FaCircle,
+  //   },
+  //   {
+  //     img: "https://doccure-laravel.dreamguystech.com/template/public/assets/img/doctors/doctor-13.jpg",
+  //     title: "Urology",
+  //     number: "110",
+  //     icon: FaCircle,
+  //   },
+  // ];
   return (
     <section className="px-5">
       <div className=" container mx-auto my-10">
@@ -122,7 +122,7 @@ const Doctors: React.FC = () => {
           </div>
         </div>
         <div className=" lg:w-3/5 2xl:w-3/5 w-full">
-          {cardData.map((card) => (
+          {data?.doctors?.map((card: Card) => (
             <DoctorCard card={card} />
           ))}
         </div>

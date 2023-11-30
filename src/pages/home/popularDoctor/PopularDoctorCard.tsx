@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 interface Card {
-  image: string;
+  imageUrl: string;
   name: string;
   number: string;
   icon: any;
+  department: string;
 }
 
 interface PopularDoctorCardProps {
@@ -12,10 +13,17 @@ interface PopularDoctorCardProps {
 
 const PopularDoctorCard: React.FC<PopularDoctorCardProps> = ({ card }) => {
   return (
-    <div className="hover:bg-gradient-to-b from-cyan-300 to-transparent p-[2px] rounded-3xl">
-      <div className=" bg-white rounded-3xl p-6 flex flex-col gap-4 mb-10">
-        <img className=" rounded-3xl" src={card.image} alt="" />
-        <div className=" flex items-center gap-3">
+    <div className="hover:bg-gradient-to-b from-blue-400 to-transparent p-[3px] pb-0 rounded-3xl group">
+      <div className=" bg-white rounded-3xl pb-6 flex flex-col gap-4 mb-10 overflow-hidden">
+        <div className="overflow-hidden">
+          <img
+            className=" rounded-t-3xl h-[240px] object-cover w-full object-top hover:scale-110 duration-300"
+            src={card?.imageUrl}
+            alt=""
+          />
+        </div>
+
+        <div className=" flex items-center gap-3 px-6">
           <span className=" bg-green-200 px-3 py-1 text-green-600">
             Cardiology
           </span>
@@ -23,14 +31,16 @@ const PopularDoctorCard: React.FC<PopularDoctorCardProps> = ({ card }) => {
             physiology
           </span>
         </div>
-        <div>
+        <div className=" px-6">
           <Link className=" subTitle hover:text-secondary duration-300" to="/">
             {card.name}
           </Link>
-          <p>Cardiologist</p>
+          <p>{card.department}</p>
         </div>
-        <div>
-          <button className="bttn common-btn">Consult</button>
+        <div className=" px-6">
+          <Link to={`/appointment`}>
+            <button className="bttn common-btn">Consult</button>
+          </Link>
         </div>
       </div>
     </div>

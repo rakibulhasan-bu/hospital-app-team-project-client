@@ -51,7 +51,10 @@ const PopularDoctor: React.FC = () => {
   // ];
 
   return (
-    <section data-aos="fade-up" className="bg-[#F7FCFC] h-[80vh] lg:py-20 2xl:py-20 my-20 min-h-[100vh]">
+    <section
+      data-aos="fade-up"
+      className="bg-[#F7FCFC] h-[80vh] lg:py-20 2xl:py-20 my-20 min-h-[100vh]"
+    >
       <h1 className="flex items-center justify-center gap-1 text-2xl font-semibold text-center lg:mb-16 text-primary">
         <FaCircle className="text-xs text-accent" />
         <FaCircle className="text-xl text-secondary" />
@@ -66,7 +69,7 @@ const PopularDoctor: React.FC = () => {
       <div className="container px-4 py-10 mx-auto">
         <Swiper
           slidesPerView={1}
-          spaceBetween={10}
+          spaceBetween={30}
           breakpoints={{
             640: {
               slidesPerView: 1,

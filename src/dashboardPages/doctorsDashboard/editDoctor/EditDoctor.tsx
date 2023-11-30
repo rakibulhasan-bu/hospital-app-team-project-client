@@ -27,13 +27,13 @@ interface formInputs {
 
 const EditDoctor = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id } = useParams<string>();
   console.log(id);
 
-  const [updateDoctor, { data, isSuccess, isError, error }] =
-    useUpdateDoctorMutation();
-  console.log(isSuccess, data, id);
   const { data: singleDoctor } = useGetDoctorByIdQuery(id);
+  const [updateDoctor, { data, isSuccess, isError, error, isLoading }] =
+    useUpdateDoctorMutation();
+  console.log(data);
 
   const { register, handleSubmit } = useForm<formInputs>();
 
@@ -76,7 +76,7 @@ const EditDoctor = () => {
               </label>
             </div>
 
-            {/* <div className=" flex-col flex relative w-full h-10 lg:col-start-3 lg:col-end-5">
+            <div className=" flex-col flex relative w-full h-10 lg:col-start-3 lg:col-end-5">
               <input
                 {...register("email")}
                 type="email"
@@ -162,6 +162,7 @@ const EditDoctor = () => {
                 type="number"
                 className="myInput peer"
                 placeholder=" "
+                defaultValue={singleDoctor?.doctor?.fees}
               />
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
                 Service Charge*
@@ -174,6 +175,7 @@ const EditDoctor = () => {
                 type="text"
                 className="myInput peer"
                 placeholder=" "
+                value={singleDoctor?.doctor?.education}
               />
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
                 Education*
@@ -188,6 +190,7 @@ const EditDoctor = () => {
                 type="number"
                 className="myInput peer"
                 placeholder=" "
+                value={singleDoctor?.doctor?.experience}
               />
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
                 Experience*
@@ -196,6 +199,7 @@ const EditDoctor = () => {
 
             <div className=" flex-col flex lg:col-start-3 lg:col-end-5">
               <select
+                value={singleDoctor?.doctor?.department}
                 {...register("department")}
                 className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400"
               >
@@ -214,6 +218,7 @@ const EditDoctor = () => {
                 type="text"
                 className="myInput peer h-10"
                 placeholder=" "
+                value={singleDoctor?.doctor?.qualifications}
               />
               <label className="myLabel before:content[' '] after:content[' '] peer-placeholder-shown:text-textGray">
                 qualifications*
@@ -223,6 +228,7 @@ const EditDoctor = () => {
             <div className=" flex-col flex relative w-full h-10 lg:col-start-1 lg:col-end-3">
               <select
                 {...register("division")}
+                value={singleDoctor?.doctor?.division}
                 className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400"
               >
                 <option disabled selected>
@@ -242,6 +248,7 @@ const EditDoctor = () => {
             <div className=" flex-col flex relative w-full h-10 lg:col-start-3 lg:col-end-5">
               <select
                 {...register("district")}
+                value={singleDoctor?.doctor?.district}
                 className="border shadow-sm rounded-lg h-10 text bg-white outline-secondary font-semibold text-gray-400"
               >
                 <option disabled selected>
@@ -256,15 +263,15 @@ const EditDoctor = () => {
                 <option value="Ranagpur">Rangpura</option>
                 <option value="Mymeansingh">Mymensaingh</option>
               </select>
-            </div> */}
+            </div>
 
             <div className=" flex justify-end gap-5 items-center lg:col-start-5 lg:col-end-7">
               <button type="submit" className=" bttn common-btn">
-                {/* {isLoading ? (
+                {isLoading ? (
                   <ImSpinner9 className="m-auto animate-spin" size={24} />
                 ) : (
                   "Submit"
-                )} */}
+                )}
               </button>
               <button className="btn plan-btn">Cancel</button>
             </div>

@@ -2,7 +2,7 @@ import { FaAward, FaDollarSign } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 interface Card {
-  img: string;
+  imageUrl: string;
   title: string;
   number: string;
   icon: any;
@@ -18,8 +18,8 @@ const DoctorCard: React.FC<DoctorCardProps> = ({ card }) => {
       <div className=" lg:flex gap-5 items-center">
         <div className=" overflow-hidden rounded-3xl">
           <img
-            className=" rounded-3xl w-40 hover:scale-110  duration-300"
-            src={card.img}
+            className=" rounded-3xl w-40 h-40 object-cover object-top hover:scale-110  duration-300"
+            src={card.imageUrl}
             alt=""
           />
         </div>
@@ -48,7 +48,9 @@ const DoctorCard: React.FC<DoctorCardProps> = ({ card }) => {
           <FaDollarSign />
           <span>$ 1500</span>
         </div>
-        <Link to={`/appointment`} className="bttn common-btn">Book Appointment</Link>
+        <Link to={`/appointment`} className="bttn common-btn">
+          Book Appointment
+        </Link>
         <Link to={`/appointment`} className="btn plan-btn text-sm">
           Book Online Consultation
         </Link>

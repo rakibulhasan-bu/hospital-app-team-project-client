@@ -8,6 +8,7 @@ const doctorApi = baseApi.injectEndpoints({
     }),
     getDoctorById: builder.query({
       query: (id) => `/doctor/${id}`,
+      providesTags: ["doctors"],
     }),
     addDoctor: builder.mutation({
       query: (doctor) => ({

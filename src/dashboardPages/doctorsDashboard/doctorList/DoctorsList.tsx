@@ -27,9 +27,6 @@ const DoctorsList = () => {
                         Deperment
                       </th>
                       <th scope="col" className="px-6 py-4">
-                        Specialization
-                      </th>
-                      <th scope="col" className="px-6 py-4">
                         Degree
                       </th>
                       <th scope="col" className="px-6 py-4">
