@@ -28,6 +28,7 @@ interface formInputs {
 const EditDoctor = () => {
   const navigate = useNavigate();
   const { id } = useParams<string>();
+  console.log(id);
 
   const { data: singleDoctor } = useGetDoctorByIdQuery(id);
   const [updateDoctor, { data, isSuccess, isError, error, isLoading }] =
@@ -51,7 +52,7 @@ const EditDoctor = () => {
     if (isError) {
       toast(error?.data?.message);
     }
-  }, [isSuccess, isError, id]);
+  }, [isSuccess, isError, id, navigate, error?.data?.message]);
 
   return (
     <section className="container mx-auto">
