@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useDeleteDoctorMutation } from "../../../redux/features/doctor/doctorApi";
-import { Link, useNavigate } from "react-router-dom";
-import { ImSpinner9 } from "react-icons/im";
+import { useNavigate } from "react-router-dom";
 import {
   Dropdown,
   DropdownTrigger,
@@ -30,7 +28,7 @@ interface RowProps {
 }
 
 const Row: React.FC<RowProps> = ({ singleData }) => {
-  const [deleteDoctor, { isLoading }] = useDeleteDoctorMutation();
+  const [deleteDoctor] = useDeleteDoctorMutation();
   const navigate = useNavigate();
 
   const {
