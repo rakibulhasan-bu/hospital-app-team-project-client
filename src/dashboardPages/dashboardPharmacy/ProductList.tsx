@@ -1,7 +1,7 @@
 import ProductRow from "./ProductRow";
 import { useGetAllProductQuery } from "../../redux/features/product/productApi";
 
-interface SingleProduct {
+interface SingleProductType {
   _id: undefined;
   name: string;
   description: string;
@@ -18,7 +18,9 @@ const ProductList = () => {
     <section className="container mx-auto">
       <p className="py-6 text-primary font-medium">Products | Product List</p>
       <div className="bg-white p-5 rounded-2xl">
-        <h2 className="mb-5 text-xl font-semibold text-primary">Product List</h2>
+        <h2 className="mb-5 text-xl font-semibold text-primary">
+          Product List
+        </h2>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -50,7 +52,9 @@ const ProductList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {data?.products.map((product: SingleProduct) => (<ProductRow key={product._id} singleProduct={product} />))}
+                    {data?.products.map((product: SingleProductType) => (
+                      <ProductRow key={product._id} singleProduct={product} />
+                    ))}
                   </tbody>
                 </table>
               </div>

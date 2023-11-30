@@ -17,6 +17,14 @@ interface formInputs {
   imageUrl: string;
 }
 
+interface UpdateDoctorMutationResult {
+  data: any;
+  isSuccess: boolean;
+  isError: boolean;
+  error: { data: { message: string } };
+  isLoading: boolean;
+}
+
 const EditProduct = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -24,8 +32,8 @@ const EditProduct = () => {
   const { register, handleSubmit } = useForm<formInputs>();
   const { data: singleProduct } = useGetSingleProductQuery(id);
   console.log(singleProduct?.product?.name, id);
-  const [updateProduct, { isLoading, data, isError, error, isSuccess }] =
-    useUpdateProductMutation();
+  const [updateProduct, { isLoading, isError, error, isSuccess }] =
+    useUpdateProductMutation<UpdateDoctorMutationResult>();
 
   const onSubmit: SubmitHandler<formInputs> = (updateData) => {
     updateProduct({ updateData, id });
