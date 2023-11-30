@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 interface SingleProduct {
   name: string;
-  _id: string;
+  _id: any;
   description: string;
   oldPrice: number;
   newPrice: number;

@@ -44,8 +44,8 @@ const Home = () => {
       <Banner />
       <PopularDoctor />
       <GalleryHome />
-      {/* <Specialities /> */}
-      {/* <AboutUsHome /> */}
+      <Specialities />
+      <AboutUsHome />
       <PharmacyHome />
       <BranchesHome />
       <Testimonial />

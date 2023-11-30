@@ -23,7 +23,7 @@ const PopularDoctorCard: React.FC<PopularDoctorCardProps> = ({ card }) => {
           />
         </div>
 
-        <div className=" flex items-center gap-3 px-6">
+        <div className=" flex items-center gap-3 lg:px-6">
           <span className=" bg-green-200 px-3 py-1 text-green-600">
             Cardiology
           </span>
