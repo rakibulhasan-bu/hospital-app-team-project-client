@@ -5,7 +5,10 @@ interface NavLink {
   title: string;
 }
 
-const MobileMenu: React.FC<{}> = ({ setOpen }) => {
+type SetOpen = {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+const MobileMenu: React.FC<SetOpen> = ({ setOpen }) => {
   const navlinks: NavLink[] = [
     {
       path: "/",
@@ -50,7 +53,7 @@ const MobileMenu: React.FC<{}> = ({ setOpen }) => {
         <ul className="flex flex-col justify-between gap-5 px-10 pt-10">
           {navlinks.map((link) => (
             <li
-              onClick={() => setOpen((prev) => !prev)}
+              onClick={() => setOpen((prev: boolean) => !prev)}
               key={link.path}
               className="  text-white font-medium duration-300 text-left"
             >

@@ -99,9 +99,7 @@ const Navbar: React.FC = () => {
                   {link.title === "Branches" ? (
                     <div className="">
                       <div className="flex items-center justify-between cursor-pointer">
-                        <h2 className="" onMouseOver={toggleAccordion}>
-                          Branches
-                        </h2>
+                        <h2 className="">Branches</h2>
                       </div>
                       {isOpen && (
                         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-700/90">

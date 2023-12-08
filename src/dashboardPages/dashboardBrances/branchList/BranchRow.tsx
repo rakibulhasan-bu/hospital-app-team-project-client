@@ -4,7 +4,7 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useDeleteBranchMutation } from "../../../redux/features/branch/branchApi";
 import { ImSpinner9 } from "react-icons/im";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface SingleData {
   name: string;
@@ -20,7 +20,7 @@ interface RowProps {
 }
 
 const BranchRow: React.FC<RowProps> = ({ singleData }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [deleteBranch, { isLoading }] = useDeleteBranchMutation();
   const { name, email, phone, division, _id } = singleData;
 

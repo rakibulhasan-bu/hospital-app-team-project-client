@@ -16,12 +16,20 @@ interface formInputs {
   imageUrl: string;
 }
 
+interface UpdateDoctorMutationResult {
+  data: any;
+  isSuccess: boolean;
+  isError: boolean;
+  error: { data: { message: string } };
+  isLoading: boolean;
+}
+
 const AddNews = () => {
   const navigate = useNavigate();
   const [
     addDoctor,
     { data: doctorData, isSuccess, isError, error, isLoading },
-  ] = useAddBlogMutation();
+  ] = useAddBlogMutation<UpdateDoctorMutationResult>();
 
   const { register, handleSubmit } = useForm<formInputs>();
 

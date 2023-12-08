@@ -13,6 +13,13 @@ interface formInputs {
   district: string;
   imageUrl: File;
 }
+interface UpdateDoctorMutationResult {
+  data: any;
+  isSuccess: boolean;
+  isError: boolean;
+  error: { data: { message: string } };
+  isLoading: boolean;
+}
 
 const AddBranch = () => {
   const navigate = useNavigate();
@@ -30,7 +37,7 @@ const AddBranch = () => {
   const [
     setBranch,
     { isError, isLoading, isSuccess, error, data: branchData },
-  ] = useSetBranchMutation();
+  ] = useSetBranchMutation<UpdateDoctorMutationResult>();
   const onSubmit: SubmitHandler<formInputs> = (data) => {
     setBranch(data);
   };
