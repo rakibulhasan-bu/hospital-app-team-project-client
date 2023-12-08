@@ -3,6 +3,7 @@ import { BsFillQuestionDiamondFill, BsDiamondHalf } from "react-icons/bs";
 
 interface AccordionProps {
   title: string;
+  children: any;
 }
 
 const Accordion: React.FC<AccordionProps> = ({ title, children }) => {
@@ -24,7 +25,11 @@ const Accordion: React.FC<AccordionProps> = ({ title, children }) => {
             isOpen ? "rotate-180" : ""
           }`}
         >
-          {isOpen ? <BsDiamondHalf className="text-2xl" /> : <BsFillQuestionDiamondFill className="text-2xl"/>}
+          {isOpen ? (
+            <BsDiamondHalf className="text-2xl" />
+          ) : (
+            <BsFillQuestionDiamondFill className="text-2xl" />
+          )}
         </span>
       </div>
       {isOpen && <div className="p-4">{children}</div>}
