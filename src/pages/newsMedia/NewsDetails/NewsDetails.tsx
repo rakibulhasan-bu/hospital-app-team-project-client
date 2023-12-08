@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 const NewsDetails = () => {
-  const { id } = useParams();
+  // const { id } = useParams();
 
   return <div>NewsDetails</div>;
 };

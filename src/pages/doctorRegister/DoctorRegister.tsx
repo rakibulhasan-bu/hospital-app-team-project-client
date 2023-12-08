@@ -6,7 +6,7 @@ import { ImSpinner9 } from "react-icons/im";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import { createUser } from "../../redux/features/user/userSlice";
 import toast from "react-hot-toast";
 import { useInsertUsersMutation } from "../../redux/features/user/userApi";
@@ -14,14 +14,14 @@ import { useInsertUsersMutation } from "../../redux/features/user/userApi";
 interface formInputs {
   name: string;
   email: string;
-  password: unknown;
+  password: string;
   confirmPassword: unknown;
   inputImage: File;
   role: string;
 }
 
 const DoctorRegister = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate()
   const [insertUser] = useInsertUsersMutation();
   const { name, error, isLoading, isError, email } = useSelector((state: RootState) => state.userState)
@@ -76,7 +76,7 @@ const DoctorRegister = () => {
   const onSubmit: SubmitHandler<formInputs> = data => {
     const { name, email, password } = data;
     insertUser({ email, userName: name, role: "DOCTOR", imageUrl: image });
-    dispatch(createUser({ name, email, password, role: "DOCTOR", image }))
+    dispatch(createUser({ name, email, password, role: "DOCTOR" }))
   };
 
   useEffect(() => {

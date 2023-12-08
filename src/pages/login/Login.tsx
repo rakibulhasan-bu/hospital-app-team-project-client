@@ -6,17 +6,17 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signInUser } from "../../redux/features/user/userSlice";
-import { RootState } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import toast from "react-hot-toast";
 
 interface formInputs {
   email: string;
-  password: unknown;
+  password: string;
   role: string;
 }
 
 const Login = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.path || "/";
@@ -30,7 +30,10 @@ const Login = () => {
 
   const onSubmit: SubmitHandler<formInputs> = data => {
     const { email, password } = data;
-    dispatch(signInUser({ email, password }))
+    dispatch(signInUser({
+      email, password,
+      role: "PATIENT"
+    }))
   };
 
   useEffect(() => {
